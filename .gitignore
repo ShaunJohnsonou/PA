@@ -1,0 +1,52 @@
+# ──────────────────────────────────────────────
+#  Personal Assistant — .gitignore
+# ──────────────────────────────────────────────
+
+# ── Environment & Secrets ──
+.env
+*.pem
+*.key
+
+# ── OAuth / Gmail MCP credentials ──
+# These contain real tokens — NEVER commit
+scripts/gmail-mcp/gcp-oauth.keys.json
+scripts/gmail-mcp/credentials.json
+gcp-oauth.keys.json
+credentials.json
+
+# ── Personal Documents ──
+# Your actual files — these stay local
+document_storage/**
+!document_storage/README.md
+
+# ── Hermes runtime state ──
+# Personal memories, sessions, plugins
+hermes_config/memories/
+hermes_config/skills/
+hermes_config/sessions/
+hermes_config/plugins/
+hermes_config/cron/
+
+# ── Docker volumes (if bind-mounted locally) ──
+postgres_data/
+n8n_data/
+ollama_data/
+hermes_data/
+
+# ── Legacy ──
+index.md
+
+# ── OS / IDE ──
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# ── Node / Python ──
+node_modules/
+__pycache__/
+*.pyc
+.venv/
