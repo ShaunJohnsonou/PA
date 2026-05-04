@@ -36,7 +36,7 @@ A self-hosted, containerized personal assistant powered by [Hermes Agent](https:
 ### 1. Clone & Configure
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/PA.git
+git clone https://github.com/ShaunJohnsonCALI/PA.git
 cd PA
 
 # Copy the env template and fill in your values
