@@ -40,4 +40,4 @@ services:
       LLM_PROVIDER: ${LLM_PROVIDER}
       LLM_MODEL: ${LLM_MODEL}
       HERMES_ALLOW_ROOT_GATEWAY: 1
-    command: [ "hermes", "gateway", "run", "--ignore-user-config" ]
+    command: [ "hermes", "gateway", "run" ]
