@@ -18,12 +18,12 @@ services:
       args:
         HERMES_BRANCH: ${HERMES_BRANCH:-custom-agent}
     image: hermes-agent:local
-    container_name: personal_assistant
+    container_name: ${CONTAINER_NAME:-personal_assistant}
     restart: unless-stopped
     networks:
       - n8n-net
     ports:
-      - "9119:9119"
+      - "${GATEWAY_PORT:-9119}:9119"
     volumes:
       - hermes_data:/opt/data
     environment:
