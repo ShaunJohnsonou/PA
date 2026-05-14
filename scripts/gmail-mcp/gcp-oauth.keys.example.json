@@ -2,7 +2,9 @@
   "web": {
     "client_id": "YOUR_CLIENT_ID.apps.googleusercontent.com",
     "client_secret": "GOCSPX-YOUR_CLIENT_SECRET",
-    "redirect_uris": ["http://localhost:3000/oauth2callback"],
+    "redirect_uris": [
+      "http://localhost:3000/oauth2callback"
+    ],
     "auth_uri": "https://accounts.google.com/o/oauth2/auth",
     "token_uri": "https://oauth2.googleapis.com/token"
   }

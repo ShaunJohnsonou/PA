@@ -1,7 +1,6 @@
-
 # ──────────────────────────────────────────────
-#  n8n  +  PostgreSQL 16  +  Hermes Agentic Layer
-#  Base URL: http://localhost:5678
+#  Personal Assistant (Hermes Agentic Layer)
+#  Base URL: http://localhost:9119
 # ──────────────────────────────────────────────
 
 networks:
@@ -9,54 +8,17 @@ networks:
     driver: bridge
 
 volumes:
-  postgres_data:
-  n8n_data:
   hermes_data:
 
 services:
-  # ── PostgreSQL ────────────────────────────────
-  postgres:
-    image: postgres:16-alpine
-    container_name: n8n-postgres
-    restart: unless-stopped
-    networks:
-      - n8n-net
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_USER: ${POSTGRES_USER:-n8n_user}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-n8n_password}
-      POSTGRES_DB: ${POSTGRES_DB:-n8n_db}
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-      - ./init/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
-    healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-n8n_user} -d ${POSTGRES_DB:-n8n_db}" ]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 30s
-
-  # ── Agentic Layer (Hermes Agent on Ubuntu) ───
-  #
-  #  Builds from docker_files/hermes.Dockerfile:
-  #  clones NousResearch/hermes-agent into Ubuntu
-  #  24.04 and installs all skills + dependencies.
-  #
-  #  Pin a version with:
-  #    HERMES_BRANCH=v0.12.0 docker compose build agentic_layer
-  #
-  #  Gateway: http://localhost:9119
-  #  From n8n: http://agentic_layer:9119
-  #
   agentic_layer:
     build:
       context: .
       dockerfile: docker_files/hermes.Dockerfile
       args:
-        HERMES_BRANCH: ${HERMES_BRANCH:-main}
+        HERMES_BRANCH: ${HERMES_BRANCH:-custom-agent}
     image: hermes-agent:local
-    container_name: n8n-agentic-layer
+    container_name: personal_assistant
     restart: unless-stopped
     networks:
       - n8n-net
@@ -71,38 +33,6 @@ services:
       GATEWAY_ALLOW_ALL_USERS: ${GATEWAY_ALLOW_ALL_USERS:-true}
       TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
       TELEGRAM_ALLOWED_USERS: ${TELEGRAM_ALLOWED_USERS:-7238643612}
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY}
+      HERMES_ALLOW_ROOT_GATEWAY: 1
     command: [ "hermes", "gateway", "run" ]
-
-  # ── n8n ───────────────────────────────────────
-  n8n:
-    image: docker.n8n.io/n8nio/n8n:latest
-    container_name: n8n
-    restart: unless-stopped
-    networks:
-      - n8n-net
-    ports:
-      - "5678:5678"
-    depends_on:
-      postgres:
-        condition: service_healthy
-    environment:
-      # ── General ──
-      N8N_HOST: ${N8N_HOST:-localhost}
-      N8N_PORT: ${N8N_PORT:-5678}
-      N8N_PROTOCOL: ${N8N_PROTOCOL:-http}
-      NODE_ENV: ${NODE_ENV:-production}
-      GENERIC_TIMEZONE: ${GENERIC_TIMEZONE:-Africa/Johannesburg}
-
-      # ── Telemetry & Personalization ──
-      N8N_DIAGNOSTICS_ENABLED: "false"
-      N8N_PERSONALIZATION_ENABLED: "false"
-
-      # ── Postgres connection ──
-      DB_TYPE: postgresdb
-      DB_POSTGRESDB_HOST: postgres
-      DB_POSTGRESDB_PORT: 5432
-      DB_POSTGRESDB_DATABASE: ${POSTGRES_DB:-n8n_db}
-      DB_POSTGRESDB_USER: ${POSTGRES_USER:-n8n_user}
-      DB_POSTGRESDB_PASSWORD: ${POSTGRES_PASSWORD:-n8n_password}
-    volumes:
-      - n8n_data:/home/node/.n8n
