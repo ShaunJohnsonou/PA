@@ -267,6 +267,16 @@ class ImportOrchestrator:
         if not transactions:
             return []
 
+        # TODO (Future Improvement): Edge case with identical same-day transactions.
+        # Currently, if two completely separate but identical purchases are made on
+        # the exact same day (e.g., two Uber rides for R150.00 each), the second one 
+        # is wrongly flagged as a duplicate because they share the same Date, Amount, 
+        # and Description.
+        # 
+        # Proposed fix: Include the running `balance_after_cents` in the duplicate
+        # check key (if the bank provides it per row). If the balance is different, 
+        # we can safely guarantee they are two separate identical transactions.
+
         # Reason: fetch all existing transactions for this account to do
         # an in-memory set-based dedup — much faster than per-row queries
         try:
