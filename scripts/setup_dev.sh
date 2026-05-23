@@ -27,11 +27,11 @@ fi
 # 2. Register Document Catalog MCP Server
 # Instead of using the CLI which requires user interaction, we write the config directly.
 HERMES_CONFIG_DIR="${HERMES_HOME:-/opt/data}/.hermes"
-MCP_CONFIG_FILE="$HERMES_CONFIG_DIR/mcp.json"
+HERMES_CONFIG_FILE="$HERMES_CONFIG_DIR/config.yaml"
 
 mkdir -p "$HERMES_CONFIG_DIR"
 
-echo "⚙️  Configuring MCP Servers in $MCP_CONFIG_FILE..."
+echo "⚙️  Configuring MCP Servers in $HERMES_CONFIG_FILE..."
 
 # Reason: Write environment variables to a dedicated .env file because the Hermes gateway
 # explicitly strips environment variables from the MCP child process.
@@ -51,25 +51,29 @@ echo "✅ Wrote environment variables to /hermes-vault/.env"
 
 # Reason: the MCP server runs as a child process, so we need to
 # explicitly forward the Azure credentials for embedding generation.
-cat << EOF > "$MCP_CONFIG_FILE"
-{
-  "mcpServers": {
-    "document_catalog": {
-      "command": "/opt/hermes/.venv/bin/python",
-      "args": ["-m", "mcp_servers.document_catalog.server"],
-      "env": {
-        "HERMES_VAULT_PATH": "/hermes-vault",
-        "PYTHONPATH": "/opt/hermes",
-        "AZURE_API_KEY": "${AZURE_API_KEY:-}",
-        "AZURE_API_BASE": "${AZURE_API_BASE:-}",
-        "AZURE_EMBEDDING_API_BASE": "${AZURE_EMBEDDING_API_BASE:-}",
-        "AZURE_API_VERSION": "${AZURE_API_VERSION:-2024-12-01-preview}",
-        "AZURE_EMBEDDING_DEPLOYMENT": "${AZURE_EMBEDDING_DEPLOYMENT:-text-embedding-3-large}"
-      },
-      "disabled": false
-    }
-  }
-}
+HERMES_CONFIG_FILE="$HERMES_CONFIG_DIR/config.yaml"
+
+# Reason: the MCP server runs as a child process, so we need to
+# explicitly forward the Azure credentials for embedding generation.
+# We append to the config.yaml so we don't overwrite other Hermes settings.
+touch "$HERMES_CONFIG_FILE"
+
+# Remove any existing mcp_servers block to prevent duplicates
+sed -i '/^mcp_servers:/,$d' "$HERMES_CONFIG_FILE"
+
+cat << EOF >> "$HERMES_CONFIG_FILE"
+mcp_servers:
+  document_catalog:
+    command: "/opt/hermes/.venv/bin/python"
+    args: ["-m", "mcp_servers.document_catalog.server"]
+    env:
+      HERMES_VAULT_PATH: "/hermes-vault"
+      PYTHONPATH: "/opt/hermes"
+      AZURE_API_KEY: "${AZURE_API_KEY:-}"
+      AZURE_API_BASE: "${AZURE_API_BASE:-}"
+      AZURE_EMBEDDING_API_BASE: "${AZURE_EMBEDDING_API_BASE:-}"
+      AZURE_API_VERSION: "${AZURE_API_VERSION:-2024-12-01-preview}"
+      AZURE_EMBEDDING_DEPLOYMENT: "${AZURE_EMBEDDING_DEPLOYMENT:-text-embedding-3-large}"
 EOF
 
 echo "✅ Setup complete. MCP Server 'document_catalog' is ready to use!"
