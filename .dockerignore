@@ -1,0 +1,33 @@
+# Git and local configs
+.git
+.gitignore
+.env
+
+# Dependencies
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+env/
+node_modules/
+dist/
+build/
+*.egg-info/
+
+# Data and states
+vault/
+document_storage/
+hermes_config/
+*.sqlite
+*.db
+*.log
+
+# Temp files
+.DS_Store
+*~
+*.swp

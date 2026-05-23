@@ -9,6 +9,7 @@ networks:
 
 volumes:
   hermes_data:
+  langfuse_db_data:
 
 services:
   agentic_layer:
@@ -26,6 +27,11 @@ services:
       - "${GATEWAY_PORT:-9119}:9119"
     volumes:
       - hermes_data:/opt/data
+      - ./vault:/hermes-vault
+      - ./mcp_servers:/opt/hermes/mcp_servers:ro
+      - ./scripts:/opt/hermes/scripts:ro
+      - ./pyproject.toml:/opt/hermes/pyproject.toml:ro
+      - ./logs:/opt/hermes/logs
     environment:
       HERMES_HOME: /opt/data
       HERMES_UID: ${HERMES_UID:-10000}
@@ -36,8 +42,74 @@ services:
       OPENROUTER_API_KEY: ${OPENROUTER_API_KEY}
       AZURE_API_KEY: ${AZURE_API_KEY}
       AZURE_API_BASE: ${AZURE_API_BASE}
+      AZURE_EMBEDDING_API_BASE: ${AZURE_EMBEDDING_API_BASE:-}
       AZURE_API_VERSION: ${AZURE_API_VERSION}
+      AZURE_EMBEDDING_DEPLOYMENT: ${AZURE_EMBEDDING_DEPLOYMENT:-text-embedding-3-large}
       LLM_PROVIDER: ${LLM_PROVIDER}
       LLM_MODEL: ${LLM_MODEL}
       HERMES_ALLOW_ROOT_GATEWAY: 1
+      HERMES_LANGFUSE_PUBLIC_KEY: ${HERMES_LANGFUSE_PUBLIC_KEY}
+      HERMES_LANGFUSE_SECRET_KEY: ${HERMES_LANGFUSE_SECRET_KEY}
+      HERMES_LANGFUSE_BASE_URL: ${HERMES_LANGFUSE_BASE_URL:-http://langfuse-server:3000}
+      HERMES_LANGFUSE_DEBUG: ${HERMES_LANGFUSE_DEBUG:-false}
+      HERMES_VAULT_PATH: ${HERMES_VAULT_PATH:-/hermes-vault}
     command: [ "hermes", "gateway", "run" ]
+
+  langfuse-server:
+    image: ghcr.io/langfuse/langfuse:2
+    container_name: langfuse_server
+    depends_on:
+      - langfuse-db
+    ports:
+      - "3000:3000"
+    networks:
+      - n8n-net
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@langfuse-db:5432/postgres
+      - NEXTAUTH_URL=http://localhost:3000
+      - NEXTAUTH_SECRET=${LANGFUSE_NEXTAUTH_SECRET:-mysecret_change_me_in_production}
+      - SALT=${LANGFUSE_SALT:-mysalt_change_me_in_production}
+      - TELEMETRY_ENABLED=false
+      - LANGFUSE_INIT_ORG_ID=org_local
+      - LANGFUSE_INIT_ORG_NAME=Local
+      - LANGFUSE_INIT_PROJECT_ID=proj_local
+      - LANGFUSE_INIT_PROJECT_NAME=PA
+      - LANGFUSE_INIT_PROJECT_PUBLIC_KEY=${HERMES_LANGFUSE_PUBLIC_KEY:-pk-lf-local-test}
+      - LANGFUSE_INIT_PROJECT_SECRET_KEY=${HERMES_LANGFUSE_SECRET_KEY:-sk-lf-local-test}
+      - LANGFUSE_INIT_USER_EMAIL=admin@localhost.com
+      - LANGFUSE_INIT_USER_PASSWORD=password
+    restart: unless-stopped
+
+  langfuse-db:
+    image: postgres:15
+    container_name: langfuse_db
+    restart: unless-stopped
+    networks:
+      - n8n-net
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    volumes:
+      - langfuse_db_data:/var/lib/postgresql/data
+
+  # ── Database Viewer UI ──────────────────────────
+  # Lightweight dashboard for inspecting the SQLite catalog
+  # and DuckDB financial ledger.
+  # URL: http://localhost:8642
+  db-viewer:
+    image: python:3.11-slim
+    container_name: hermes_db_viewer
+    restart: unless-stopped
+    networks:
+      - n8n-net
+    ports:
+      - "${DB_VIEWER_PORT:-8642}:8642"
+    volumes:
+      - ./vault:/hermes-vault:ro
+      - ./tools:/opt/tools:ro
+    working_dir: /opt/tools
+    command: >
+      sh -c "pip install --quiet duckdb &&
+             python db_viewer.py --vault /hermes-vault --port 8642"
+

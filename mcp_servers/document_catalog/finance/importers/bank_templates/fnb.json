@@ -1,0 +1,13 @@
+{
+    "bank_name": "FNB",
+    "skip_rows": 0,
+    "date_column": "Date",
+    "date_format": "%d/%m/%Y",
+    "description_column": "Description",
+    "amount_column": "Amount",
+    "balance_column": "Balance",
+    "amount_sign": "negative_is_debit",
+    "currency": "ZAR",
+    "encoding": "utf-8-sig",
+    "header_patterns": ["Date", "Description", "Amount", "Balance"]
+}

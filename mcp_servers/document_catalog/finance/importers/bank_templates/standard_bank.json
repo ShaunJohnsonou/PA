@@ -1,0 +1,14 @@
+{
+    "bank_name": "Standard Bank",
+    "skip_rows": 0,
+    "date_column": "Date",
+    "date_format": "%d %b %Y",
+    "description_column": "Description",
+    "debit_column": "Debit",
+    "credit_column": "Credit",
+    "balance_column": "Balance",
+    "amount_sign": "separate_columns",
+    "currency": "ZAR",
+    "encoding": "utf-8",
+    "header_patterns": ["Date", "Description", "Debit", "Credit", "Balance"]
+}

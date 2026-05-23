@@ -19,6 +19,9 @@ credentials.json
 document_storage/**
 !document_storage/README.md
 
+# ── Internal Planning ──
+phases/
+
 # ── Hermes runtime state ──
 # Personal memories, sessions, plugins
 hermes_config/memories/
@@ -32,9 +35,8 @@ postgres_data/
 n8n_data/
 ollama_data/
 hermes_data/
+vault/
 
-# ── Legacy ──
-index.md
 
 # ── OS / IDE ──
 .DS_Store
@@ -50,3 +52,7 @@ node_modules/
 __pycache__/
 *.pyc
 .venv/
+
+
+
+phases/
