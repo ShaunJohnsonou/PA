@@ -30,6 +30,8 @@ from .tools.financial_coverage import handle_get_financial_coverage
 from .tools.transaction_evidence import handle_get_transaction_evidence
 from .tools.spending_analysis import handle_run_spending_analysis
 from .tools.find_anomalies import handle_find_anomalies
+from .tools.review import handle_get_validation_issues, handle_override_validation, handle_set_document_status
+from .tools.report import handle_run_financial_report
 
 logger = logging.getLogger("document_catalog_mcp")
 
@@ -391,6 +393,58 @@ TOOLS = [
             "required": ["start_date", "end_date"],
         },
     ),
+    Tool(
+        name="get_validation_issues",
+        description="Query validation results that failed. Use this to review why a financial statement was flagged as 'needs_review'.",
+        inputSchema={
+            "type": "object",
+            "properties": {
+                "statement_id": {"type": "string"},
+                "document_id": {"type": "string"},
+                "severity": {"type": "string", "description": "'error' or 'warning'"},
+            },
+        },
+    ),
+    Tool(
+        name="override_validation",
+        description="Override a failed validation result with a reason, unblocking the statement if it was an error.",
+        inputSchema={
+            "type": "object",
+            "properties": {
+                "validation_id": {"type": "string"},
+                "reason": {"type": "string"},
+                "overridden_by": {"type": "string"},
+            },
+            "required": ["validation_id", "reason"],
+        },
+    ),
+    Tool(
+        name="set_document_status",
+        description="Update a document's status in the catalog (e.g., to 'excluded' or 'archived').",
+        inputSchema={
+            "type": "object",
+            "properties": {
+                "document_id": {"type": "string"},
+                "status": {"type": "string", "description": "'active', 'excluded', or 'archived'"},
+                "reason": {"type": "string"},
+            },
+            "required": ["document_id", "status"],
+        },
+    ),
+    Tool(
+        name="run_financial_report",
+        description="Generate comprehensive financial reports (monthly_summary, annual_overview, category_breakdown). Returns formatted markdown and metrics.",
+        inputSchema={
+            "type": "object",
+            "properties": {
+                "report_type": {"type": "string", "description": "'monthly_summary', 'annual_overview', 'category_breakdown'"},
+                "account_id": {"type": "string"},
+                "start_date": {"type": "string"},
+                "end_date": {"type": "string"},
+            },
+            "required": ["report_type", "start_date", "end_date"],
+        },
+    ),
 ]
 
 
@@ -528,6 +582,37 @@ async def call_tool(name: str, arguments: dict) -> list[TextContent]:
                 end_date=arguments.get("end_date", ""),
                 account_id=arguments.get("account_id"),
                 sensitivity=arguments.get("sensitivity", "medium"),
+                ledger=_finance_ledger,
+            )
+        elif name == "get_validation_issues":
+            result = await handle_get_validation_issues(
+                statement_id=arguments.get("statement_id"),
+                document_id=arguments.get("document_id"),
+                severity=arguments.get("severity"),
+                ledger=_finance_ledger,
+            )
+        elif name == "override_validation":
+            result = await handle_override_validation(
+                validation_id=arguments.get("validation_id", ""),
+                reason=arguments.get("reason", ""),
+                overridden_by=arguments.get("overridden_by"),
+                ledger=_finance_ledger,
+                audit=logging.getLogger("audit"),
+            )
+        elif name == "set_document_status":
+            result = await handle_set_document_status(
+                document_id=arguments.get("document_id", ""),
+                status=arguments.get("status", ""),
+                reason=arguments.get("reason"),
+                catalog=_catalog,
+                audit=logging.getLogger("audit"),
+            )
+        elif name == "run_financial_report":
+            result = await handle_run_financial_report(
+                report_type=arguments.get("report_type", ""),
+                account_id=arguments.get("account_id"),
+                start_date=arguments.get("start_date", ""),
+                end_date=arguments.get("end_date", ""),
                 ledger=_finance_ledger,
             )
         else:
