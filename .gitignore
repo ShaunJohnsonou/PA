@@ -25,7 +25,6 @@ phases/
 # ── Hermes runtime state ──
 # Personal memories, sessions, plugins
 hermes_config/memories/
-hermes_config/skills/
 hermes_config/sessions/
 hermes_config/plugins/
 hermes_config/cron/
