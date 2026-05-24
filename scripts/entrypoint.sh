@@ -43,12 +43,13 @@ HERMES_ENV="$HERMES_DIR/.env"
 echo "✅ Langfuse credentials written to $HERMES_ENV"
 
 # ── Sync SOUL.md from mounted hermes_config ──
-# Reason: hermes_config/ is mounted read-only at /opt/hermes/hermes_config/
-# but Hermes reads SOUL.md from $HOME/.hermes/SOUL.md. Copy it there.
+# Reason: `hermes config path` returns /opt/data/config.yaml, so Hermes
+# reads everything from $HERMES_HOME (/opt/data), NOT $HOME/.hermes/.
 PA_CONFIG="/opt/hermes/hermes_config"
+HERMES_DATA="${HERMES_HOME:-/opt/data}"
 if [ -f "$PA_CONFIG/SOUL.md" ]; then
-    cp "$PA_CONFIG/SOUL.md" "$HERMES_DIR/SOUL.md"
-    echo "✅ SOUL.md synced to $HERMES_DIR/SOUL.md"
+    cp "$PA_CONFIG/SOUL.md" "$HERMES_DATA/SOUL.md"
+    echo "✅ SOUL.md synced to $HERMES_DATA/SOUL.md"
 else
     echo "⚠️  No SOUL.md found in $PA_CONFIG"
 fi

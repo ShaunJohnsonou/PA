@@ -25,10 +25,9 @@ else
 fi
 
 # 2. Register Document Catalog MCP Server
-# Reason: Hermes reads config from $HOME/.hermes/ (which is /root/.hermes/ in Docker).
-# Previous versions incorrectly wrote to $HERMES_HOME/.hermes/ (/opt/data/.hermes/)
-# which the gateway never reads.
-HERMES_CONFIG_DIR="${HOME}/.hermes"
+# Reason: `hermes config path` returns /opt/data/config.yaml.
+# HERMES_HOME=/opt/data, so the config file is $HERMES_HOME/config.yaml (no .hermes subdir).
+HERMES_CONFIG_DIR="${HERMES_HOME:-/opt/data}"
 HERMES_CONFIG_FILE="$HERMES_CONFIG_DIR/config.yaml"
 
 mkdir -p "$HERMES_CONFIG_DIR"
