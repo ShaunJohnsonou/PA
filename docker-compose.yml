@@ -28,6 +28,7 @@ services:
     volumes:
       - hermes_data:/opt/data
       - ./vault:/hermes-vault
+      - ./hermes_config:/opt/hermes/hermes_config:ro
       - ./mcp_servers:/opt/hermes/mcp_servers:ro
       - ./scripts:/opt/hermes/scripts:ro
       - ./pyproject.toml:/opt/hermes/pyproject.toml:ro

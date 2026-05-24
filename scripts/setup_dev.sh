@@ -25,8 +25,10 @@ else
 fi
 
 # 2. Register Document Catalog MCP Server
-# Instead of using the CLI which requires user interaction, we write the config directly.
-HERMES_CONFIG_DIR="${HERMES_HOME:-/opt/data}/.hermes"
+# Reason: Hermes reads config from $HOME/.hermes/ (which is /root/.hermes/ in Docker).
+# Previous versions incorrectly wrote to $HERMES_HOME/.hermes/ (/opt/data/.hermes/)
+# which the gateway never reads.
+HERMES_CONFIG_DIR="${HOME}/.hermes"
 HERMES_CONFIG_FILE="$HERMES_CONFIG_DIR/config.yaml"
 
 mkdir -p "$HERMES_CONFIG_DIR"
@@ -48,10 +50,6 @@ LANGFUSE_SECRET_KEY=${HERMES_LANGFUSE_SECRET_KEY:-}
 LANGFUSE_HOST=${HERMES_LANGFUSE_BASE_URL:-}
 EOF
 echo "✅ Wrote environment variables to /hermes-vault/.env"
-
-# Reason: the MCP server runs as a child process, so we need to
-# explicitly forward the Azure credentials for embedding generation.
-HERMES_CONFIG_FILE="$HERMES_CONFIG_DIR/config.yaml"
 
 # Reason: the MCP server runs as a child process, so we need to
 # explicitly forward the Azure credentials for embedding generation.
