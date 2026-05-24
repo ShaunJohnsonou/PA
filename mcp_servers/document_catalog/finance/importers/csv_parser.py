@@ -165,26 +165,26 @@ class CSVBankParser:
         # -- Step 1: resolve bank template ------------------------------------
         if bank is None:
             bank = self.detect_bank(csv_path)
+            
         if bank is None:
-            errors.append(
-                "Could not detect bank format. Provide bank= or add a template."
+            logger.info("No bank format detected, using generic fallback template for %s", csv_path)
+            template = BankTemplate(
+                bank_name="Generic", 
+                date_column="Date",
+                description_column="Description",
+                amount_column="Amount",
+                balance_column="Balance",
             )
-            return ParseResult(
-                metadata=StatementMetadata(),
-                transactions=[],
-                warnings=warnings,
-                errors=errors,
-            )
-
-        template = self._templates.get(bank.lower())
-        if template is None:
-            errors.append(f"No template found for bank '{bank}'")
-            return ParseResult(
-                metadata=StatementMetadata(),
-                transactions=[],
-                warnings=warnings,
-                errors=errors,
-            )
+        else:
+            template = self._templates.get(bank.lower())
+            if template is None:
+                errors.append(f"No template found for bank '{bank}'")
+                return ParseResult(
+                    metadata=StatementMetadata(),
+                    transactions=[],
+                    warnings=warnings,
+                    errors=errors,
+                )
 
         logger.info("Parsing CSV %s with template '%s'", csv_path, template.bank_name)
 
@@ -305,21 +305,29 @@ class CSVBankParser:
         # variations in header capitalisation across CSV exports
         header_lower = [h.lower() for h in headers]
 
-        def _find(column_name: str | None) -> int | None:
-            if column_name is None:
-                return None
-            target = column_name.lower()
-            for i, h in enumerate(header_lower):
-                if h == target:
-                    return i
+        def _find(column_name: str | None, synonyms: list[str]) -> int | None:
+            targets = [column_name.lower()] if column_name else []
+            targets.extend(s.lower() for s in synonyms)
+            
+            # 1. Exact matches
+            for target in targets:
+                for i, h in enumerate(header_lower):
+                    if h == target:
+                        return i
+                        
+            # 2. Substring matches (e.g. "transaction date" contains "date")
+            for target in targets:
+                for i, h in enumerate(header_lower):
+                    if target in h:
+                        return i
             return None
 
-        mapping["date_idx"] = _find(template.date_column)
-        mapping["desc_idx"] = _find(template.description_column)
-        mapping["amount_idx"] = _find(template.amount_column)
-        mapping["debit_idx"] = _find(template.debit_column)
-        mapping["credit_idx"] = _find(template.credit_column)
-        mapping["balance_idx"] = _find(template.balance_column)
+        mapping["date_idx"] = _find(template.date_column, ["date", "posting date", "transaction date", "time"])
+        mapping["desc_idx"] = _find(template.description_column, ["description", "narration", "payee", "transaction details", "memo", "reference", "desc"])
+        mapping["amount_idx"] = _find(template.amount_column, ["amount", "value", "transaction amount"])
+        mapping["debit_idx"] = _find(template.debit_column, ["debit", "money out", "withdrawal", "paid out"])
+        mapping["credit_idx"] = _find(template.credit_column, ["credit", "money in", "deposit", "paid in"])
+        mapping["balance_idx"] = _find(template.balance_column, ["balance", "running balance", "available balance"])
 
         return mapping
 
@@ -414,11 +422,20 @@ class CSVBankParser:
         raw = raw.strip()
         if not raw:
             return None
-        try:
-            dt = datetime.strptime(raw, fmt)
-            return dt.strftime("%Y-%m-%d")
-        except ValueError:
-            return None
+            
+        formats_to_try = [
+            fmt, "%Y%m%d", "%Y-%m-%d", "%Y/%m/%d", "%d/%m/%Y", 
+            "%d-%m-%Y", "%m/%d/%Y", "%d %b %Y", "%d %B %Y"
+        ]
+        
+        for f in formats_to_try:
+            try:
+                dt = datetime.strptime(raw, f)
+                return dt.strftime("%Y-%m-%d")
+            except ValueError:
+                continue
+                
+        return None
 
 
 # ── Module-level utility ────────────────────────────────────────────────
