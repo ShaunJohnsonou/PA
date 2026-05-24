@@ -63,6 +63,7 @@ mcp_servers:
   document_catalog:
     command: "/opt/hermes/.venv/bin/python"
     args: ["-m", "mcp_servers.document_catalog.server"]
+    timeout: 3600
     env:
       HERMES_VAULT_PATH: "/hermes-vault"
       PYTHONPATH: "/opt/hermes"
