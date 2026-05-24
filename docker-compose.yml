@@ -54,6 +54,7 @@ services:
       HERMES_LANGFUSE_BASE_URL: ${HERMES_LANGFUSE_BASE_URL:-http://langfuse-server:3000}
       HERMES_LANGFUSE_DEBUG: ${HERMES_LANGFUSE_DEBUG:-false}
       HERMES_VAULT_PATH: ${HERMES_VAULT_PATH:-/hermes-vault}
+      HERMES_AGENT_TIMEOUT: 3600
     command: [ "hermes", "gateway", "run" ]
 
   langfuse-server:
