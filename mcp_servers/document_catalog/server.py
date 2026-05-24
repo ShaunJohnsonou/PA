@@ -32,6 +32,7 @@ from .tools.spending_analysis import handle_run_spending_analysis
 from .tools.find_anomalies import handle_find_anomalies
 from .tools.review import handle_get_validation_issues, handle_override_validation, handle_set_document_status
 from .tools.report import handle_run_financial_report
+from .tools.import_transactions import handle_import_transactions
 
 logger = logging.getLogger("document_catalog_mcp")
 
@@ -445,6 +446,18 @@ TOOLS = [
             "required": ["report_type", "start_date", "end_date"],
         },
     ),
+    Tool(
+        name="import_transactions",
+        description="Directly import and ingest raw transactional data (CSV/OFX) into the financial ledger.",
+        inputSchema={
+            "type": "object",
+            "properties": {
+                "document_id": {"type": "string", "description": "UUID of the document to import"},
+                "bank": {"type": "string", "description": "Optional bank name (for CSV parsing)"},
+            },
+            "required": ["document_id"],
+        },
+    ),
 ]
 
 
@@ -613,6 +626,14 @@ async def call_tool(name: str, arguments: dict) -> list[TextContent]:
                 account_id=arguments.get("account_id"),
                 start_date=arguments.get("start_date", ""),
                 end_date=arguments.get("end_date", ""),
+                ledger=_finance_ledger,
+            )
+        elif name == "import_transactions":
+            result = await handle_import_transactions(
+                document_id=arguments.get("document_id", ""),
+                bank=arguments.get("bank"),
+                catalog=_catalog,
+                vault=_vault,
                 ledger=_finance_ledger,
             )
         else:
