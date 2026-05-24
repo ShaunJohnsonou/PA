@@ -30,7 +30,7 @@ services:
       - ./vault:/hermes-vault
       - ./hermes_config:/opt/hermes/hermes_config:ro
       - ./mcp_servers:/opt/hermes/mcp_servers:ro
-      - ./scripts:/opt/hermes/scripts:ro
+      - ./scripts/setup_dev.sh:/opt/hermes/scripts/setup_dev.sh:ro
       - ./pyproject.toml:/opt/hermes/pyproject.toml:ro
       - ./logs:/opt/hermes/logs
     environment:
