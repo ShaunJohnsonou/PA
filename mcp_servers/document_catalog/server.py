@@ -512,6 +512,7 @@ async def call_tool(name: str, arguments: dict) -> list[TextContent]:
                 docling_engine=_docling_engine,
                 markitdown_engine=_markitdown_engine,
                 pdfplumber_engine=_pdfplumber_engine,
+                finance_pipeline=_finance_pipeline,
             )
         elif name == "get_document_page":
             result = await handle_get_document_page(

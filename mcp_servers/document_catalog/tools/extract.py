@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import logging
 import os
+from typing import Any
 
 from ..artifact_writer import write_artifacts, write_failed_meta
 from ..catalog_db import CatalogDB
@@ -31,6 +32,7 @@ async def handle_extract_document(
     docling_engine: DoclingEngine,
     markitdown_engine: MarkItDownEngine,
     pdfplumber_engine: PdfPlumberEngine,
+    finance_pipeline: Any = None,
 ) -> dict:
     """Extract a document and store the resulting artifacts.
 
@@ -187,6 +189,42 @@ async def handle_extract_document(
     if force:
         update_fields["indexing_status"] = "pending"
     catalog.update_document(document_id, **update_fields)
+
+    # ── 9. Run Financial Pipeline if applicable ──────────────────
+    if finance_pipeline and document_type in ["bank_statement", "invoice"]:
+        try:
+            logger.info("Triggering financial extraction pipeline for %s", document_id)
+            tables_to_use = []
+            if pdfplumber_tables:
+                tables_to_use = pdfplumber_tables
+            elif result.tables:
+                for t in result.tables:
+                    tables_to_use.append({
+                        "page_number": t.page_number,
+                        "headers": t.headers,
+                        "rows": t.rows
+                    })
+                    
+            finance_res = await finance_pipeline.extract_financial_data(
+                document_id=document_id,
+                tables=tables_to_use,
+                full_text=result.markdown,
+                filename=doc.original_filename,
+                extraction_method=result.engine,
+            )
+            
+            if "error" in finance_res:
+                logger.error("Financial extraction failed: %s", finance_res["message"])
+                if result.warnings is None:
+                    result.warnings = []
+                result.warnings.append(f"Financial extraction error: {finance_res['message']}")
+            else:
+                logger.info("Financial extraction succeeded: %d transactions", finance_res.get("transaction_count", 0))
+        except Exception as exc:
+            logger.error("Financial extraction pipeline failed: %s", exc)
+            if result.warnings is None:
+                result.warnings = []
+            result.warnings.append(f"Financial extraction pipeline failed: {exc}")
 
     logger.info(
         "Extracted %s (%s) with %s: %d pages, %d tables, %d chars",
