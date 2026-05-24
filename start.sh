@@ -20,24 +20,48 @@ docker compose up -d --build
 echo "⏳ Waiting for container to start..."
 sleep 5
 
-# 5. Sync configuration and skills into the container
-#    Reason: Hermes reads SOUL.md and skills from $HERMES_HOME/.hermes/ 
-#    which is /opt/data/.hermes/ inside the container.
-echo "📂 Syncing SOUL.md, skills, and config to container..."
+# 5. Sync SOUL.md into /root/.hermes/ (where Hermes actually reads it)
+# Reason: The container runs as root, so Hermes reads from /root/.hermes/,
+# NOT from /opt/data/.hermes/. Our setup_dev.sh writes MCP config to the
+# wrong location. We fix both SOUL.md and config.yaml here.
+echo "📂 Syncing SOUL.md to container..."
+docker compose cp ./hermes_config/SOUL.md agentic_layer:/root/.hermes/SOUL.md
 
-# Ensure the .hermes directory exists
-docker compose exec -T agentic_layer mkdir -p /opt/data/.hermes
+# 6. Inject MCP server config into the REAL config.yaml at /root/.hermes/
+# Reason: setup_dev.sh writes to /opt/data/.hermes/config.yaml but the
+# gateway reads /root/.hermes/config.yaml. We append the mcp_servers block
+# to the real config if it's missing.
+echo "⚙️  Injecting MCP server config..."
+docker compose exec -T agentic_layer bash -c '
+  CONFIG="/root/.hermes/config.yaml"
+  if ! grep -q "^mcp_servers:" "$CONFIG" 2>/dev/null; then
+    cat >> "$CONFIG" <<MCPEOF
 
-# Copy SOUL.md to the correct Hermes location
-docker compose cp ./hermes_config/SOUL.md agentic_layer:/opt/data/.hermes/SOUL.md
+mcp_servers:
+  document_catalog:
+    command: "/opt/hermes/.venv/bin/python"
+    args: ["-m", "mcp_servers.document_catalog.server"]
+    env:
+      HERMES_VAULT_PATH: "/hermes-vault"
+      PYTHONPATH: "/opt/hermes"
+      AZURE_API_KEY: "${AZURE_API_KEY:-}"
+      AZURE_API_BASE: "${AZURE_API_BASE:-}"
+      AZURE_EMBEDDING_API_BASE: "${AZURE_EMBEDDING_API_BASE:-}"
+      AZURE_API_VERSION: "${AZURE_API_VERSION:-2024-12-01-preview}"
+      AZURE_EMBEDDING_DEPLOYMENT: "${AZURE_EMBEDDING_DEPLOYMENT:-text-embedding-3-large}"
+MCPEOF
+    echo "  ✅ MCP config injected into $CONFIG"
+  else
+    echo "  ✅ MCP config already present in $CONFIG"
+  fi
+'
 
-# Copy skills directory
+# 7. Copy skills directory
+echo "📚 Syncing skills..."
 docker compose cp ./hermes_config/skills agentic_layer:/opt/data/
+docker compose exec -T agentic_layer chown -R hermes:hermes /opt/data/skills
 
-# Fix ownership so the hermes user can read everything
-docker compose exec -T agentic_layer chown -R hermes:hermes /opt/data/.hermes /opt/data/skills
-
-# 6. Restart the gateway so it picks up the new SOUL.md and MCP config
+# 8. Restart the gateway so it picks up the new SOUL.md and MCP config
 echo "🔁 Restarting gateway to load updated config..."
 docker compose restart agentic_layer
 
@@ -47,4 +71,5 @@ echo "   - Hermes Gateway: http://localhost:9119"
 echo "   - Langfuse:       http://localhost:3000"
 echo "   - DB Viewer:      http://localhost:8642"
 echo ""
-echo "💡 To verify, send this to your agent: './hermes tools list'"
+echo "💡 To verify, send this to your agent:"
+echo '   "SYSTEM DIAGNOSTIC REQUEST: list your tools and confirm you are Shaun'\''s personal assistant"'
