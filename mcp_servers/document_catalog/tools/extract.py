@@ -191,6 +191,7 @@ async def handle_extract_document(
     catalog.update_document(document_id, **update_fields)
 
     # ── 9. Run Financial Pipeline if applicable ──────────────────
+    finance_output_summary = "Not a financial document"
     if finance_pipeline and document_type in ["bank_statement", "invoice"]:
         try:
             logger.info("Triggering financial extraction pipeline for %s", document_id)
@@ -214,13 +215,17 @@ async def handle_extract_document(
             )
             
             if "error" in finance_res:
+                finance_output_summary = f"Error: {finance_res['message']}"
                 logger.error("Financial extraction failed: %s", finance_res["message"])
                 if result.warnings is None:
                     result.warnings = []
                 result.warnings.append(f"Financial extraction error: {finance_res['message']}")
             else:
-                logger.info("Financial extraction succeeded: %d transactions", finance_res.get("transaction_count", 0))
+                txn_count = finance_res.get("transaction_count", 0)
+                finance_output_summary = f"Success: Inserted {txn_count} transactions into ledger"
+                logger.info("Financial extraction succeeded: %d transactions", txn_count)
         except Exception as exc:
+            finance_output_summary = f"Failed: {exc}"
             logger.error("Financial extraction pipeline failed: %s", exc)
             if result.warnings is None:
                 result.warnings = []
@@ -247,8 +252,9 @@ async def handle_extract_document(
         "table_count": result.table_count,
         "duration_seconds": round(result.duration_seconds, 2),
         "artifacts_written": written,
+        "financial_pipeline_result": finance_output_summary,
         "warnings": result.warnings if result.warnings else None,
-        "message": f"Successfully extracted {doc.original_filename}",
+        "message": f"Successfully extracted {doc.original_filename}. Financial Pipeline: {finance_output_summary}",
     }
 
 
