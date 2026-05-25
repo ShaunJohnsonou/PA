@@ -97,8 +97,11 @@ async def handle_extract_document(
 
     if engine_name == "docling":
         try:
-            logger.debug("Calling DoclingEngine.convert on %s", original_path)
-            result = docling_engine.convert(original_path)
+            logger.info("Starting page-by-page Docling extraction for %s", document_id)
+            result = docling_engine.convert_by_page(
+                original_path,
+                pdfplumber_engine=pdfplumber_engine,
+            )
         except (DoclingError, Exception) as exc:
             logger.warning(
                 "Docling failed for %s, falling back to MarkItDown: %s",

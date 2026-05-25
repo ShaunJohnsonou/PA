@@ -692,6 +692,12 @@ async def _run() -> None:
     _markitdown_engine = MarkItDownEngine(vault_path)
     _pdfplumber_engine = PdfPlumberEngine(vault_path)
 
+    # Reason: pre-warm Docling's ML models at startup so the first
+    # extract_document call doesn't block for ~3.5 minutes.
+    # The server will take longer to start, but every extraction
+    # call will be fast afterwards.
+    _docling_engine.warm_up()
+
     # ── Phase 3: search subsystem ────────────────────────────────
     from .search.embeddings import EmbeddingService
     from .search.faiss_index import FaissIndexManager

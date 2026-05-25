@@ -33,7 +33,7 @@ WORKDIR /opt/hermes
 
 # ── Pre-install heavy Python dependencies to cache them ──
 RUN python3 -m venv .venv && \
-    .venv/bin/pip install --no-cache-dir docling markitdown python-magic faiss-cpu numpy openai pdfplumber duckdb pyarrow
+    .venv/bin/pip install --no-cache-dir docling markitdown python-magic faiss-cpu numpy openai pdfplumber pypdf duckdb pyarrow
 
 # ── Copy hermes-agent submodule ───────────────
 COPY hermes-agent/ .
