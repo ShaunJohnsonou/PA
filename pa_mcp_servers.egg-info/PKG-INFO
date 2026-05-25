@@ -1,0 +1,11 @@
+Metadata-Version: 2.4
+Name: pa-mcp-servers
+Version: 0.1.0
+Summary: MCP servers for the Personal Assistant document intelligence stack
+Requires-Python: >=3.11
+Requires-Dist: mcp>=1.0.0
+Provides-Extra: dev
+Requires-Dist: pytest>=8.0; extra == "dev"
+Requires-Dist: pytest-asyncio>=0.23; extra == "dev"
+Provides-Extra: magic
+Requires-Dist: python-magic>=0.4; extra == "magic"

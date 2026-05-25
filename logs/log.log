@@ -1,0 +1,745 @@
+2026-05-24 05:49:06,101 [INFO] mcp_servers: Custom file logging initialised at /opt/hermes/logs/log.log
+2026-05-24 05:49:06,101 [DEBUG] mcp_servers: Environment variables present on startup: Azure=['AZURE_API_KEY', 'AZURE_API_BASE', 'AZURE_EMBEDDING_API_BASE', 'AZURE_API_VERSION', 'AZURE_EMBEDDING_DEPLOYMENT'], Langfuse=['LANGFUSE_PUBLIC_KEY', 'LANGFUSE_SECRET_KEY', 'LANGFUSE_HOST']
+2026-05-24 05:49:06,113 [INFO] mcp_servers.document_catalog.vault: Vault directories ensured at /hermes-vault
+2026-05-24 05:49:06,140 [INFO] mcp_servers.document_catalog.catalog_db: CatalogDB opened: /hermes-vault/hermes_catalog.sqlite (schema v2)
+2026-05-24 05:49:06,191 [INFO] mcp_servers.document_catalog.search.faiss_index: Loaded FAISS index: 18 vectors, dim=3072
+2026-05-24 05:49:06,228 [INFO] mcp_servers.document_catalog.search.fts_search: FTS5 search tables ensured in /hermes-vault/hermes_catalog.sqlite
+2026-05-24 05:49:06,487 [INFO] mcp_servers.document_catalog.finance.ledger_db: FinanceLedger opened: /hermes-vault/finance.duckdb (schema v1)
+2026-05-24 05:49:06,488 [DEBUG] mcp_servers.document_catalog.finance.parsers: Registered parser: FNB (generic=False)
+2026-05-24 05:49:06,489 [DEBUG] mcp_servers.document_catalog.finance.parsers: Registered parser: generic (generic=True)
+2026-05-24 06:18:21,029 [INFO] mcp_servers: Custom file logging initialised at /opt/hermes/logs/log.log
+2026-05-24 06:18:21,029 [DEBUG] mcp_servers: Environment variables present on startup: Azure=['AZURE_API_KEY', 'AZURE_API_BASE', 'AZURE_EMBEDDING_API_BASE', 'AZURE_API_VERSION', 'AZURE_EMBEDDING_DEPLOYMENT'], Langfuse=['LANGFUSE_PUBLIC_KEY', 'LANGFUSE_SECRET_KEY', 'LANGFUSE_HOST']
+2026-05-24 06:18:21,034 [INFO] mcp_servers.document_catalog.vault: Vault directories ensured at /hermes-vault
+2026-05-24 06:18:21,061 [INFO] mcp_servers.document_catalog.catalog_db: CatalogDB opened: /hermes-vault/hermes_catalog.sqlite (schema v2)
+2026-05-24 06:18:21,109 [INFO] mcp_servers.document_catalog.search.faiss_index: Loaded FAISS index: 18 vectors, dim=3072
+2026-05-24 06:18:21,137 [INFO] mcp_servers.document_catalog.search.fts_search: FTS5 search tables ensured in /hermes-vault/hermes_catalog.sqlite
+2026-05-24 06:18:21,375 [INFO] mcp_servers.document_catalog.finance.ledger_db: FinanceLedger opened: /hermes-vault/finance.duckdb (schema v1)
+2026-05-24 06:18:21,376 [DEBUG] mcp_servers.document_catalog.finance.parsers: Registered parser: FNB (generic=False)
+2026-05-24 06:18:21,376 [DEBUG] mcp_servers.document_catalog.finance.parsers: Registered parser: generic (generic=True)
+2026-05-24 06:26:05,854 [INFO] mcp_servers: Custom file logging initialised at /opt/hermes/logs/log.log
+2026-05-24 06:26:05,855 [DEBUG] mcp_servers: Environment variables present on startup: Azure=['AZURE_API_KEY', 'AZURE_API_BASE', 'AZURE_EMBEDDING_API_BASE', 'AZURE_API_VERSION', 'AZURE_EMBEDDING_DEPLOYMENT'], Langfuse=['LANGFUSE_PUBLIC_KEY', 'LANGFUSE_SECRET_KEY', 'LANGFUSE_HOST']
+2026-05-24 06:26:05,860 [INFO] mcp_servers.document_catalog.vault: Vault directories ensured at /hermes-vault
+2026-05-24 06:26:05,880 [INFO] mcp_servers.document_catalog.catalog_db: CatalogDB opened: /hermes-vault/hermes_catalog.sqlite (schema v2)
+2026-05-24 06:26:05,904 [INFO] mcp_servers.document_catalog.search.faiss_index: Loaded FAISS index: 18 vectors, dim=3072
+2026-05-24 06:26:05,930 [INFO] mcp_servers.document_catalog.search.fts_search: FTS5 search tables ensured in /hermes-vault/hermes_catalog.sqlite
+2026-05-24 06:26:06,093 [INFO] mcp_servers.document_catalog.finance.ledger_db: FinanceLedger opened: /hermes-vault/finance.duckdb (schema v1)
+2026-05-24 06:26:06,099 [DEBUG] mcp_servers.document_catalog.finance.parsers: Registered parser: FNB (generic=False)
+2026-05-24 06:26:06,099 [DEBUG] mcp_servers.document_catalog.finance.parsers: Registered parser: generic (generic=True)
+2026-05-24 06:32:06,092 [DEBUG] mcp_servers.document_catalog.tools.list_docs: list_documents called: type=None, status=None, date_from=None, date_to=None, search='None', limit=100, offset=0
+2026-05-24 06:32:06,093 [INFO] mcp_servers.document_catalog.tools.list_docs: Executing list_documents catalog query (limit=100, offset=0)
+2026-05-24 06:32:06,095 [DEBUG] mcp_servers.document_catalog.tools.list_docs: list_documents: returned 6 of 6 (offset=0, limit=100)
+2026-05-24 06:32:12,659 [DEBUG] mcp_servers.document_catalog.tools.extract: Attempting to retrieve document metadata for b0ba50ac-57d6-40b1-a14b-6958c3598a4b
+2026-05-24 06:32:12,662 [INFO] mcp_servers.document_catalog.tools.extract: Selected engine 'docling' for mime type 'application/pdf' (document_id=b0ba50ac-57d6-40b1-a14b-6958c3598a4b)
+2026-05-24 06:32:12,662 [DEBUG] mcp_servers.document_catalog.tools.extract: Calling DoclingEngine.convert on /hermes-vault/originals/a0/4c/a04c7fe19c25451dbe2cd7681dd12df04ec2fedde0b3ae09e3d2f3cbb9a76e04.pdf
+2026-05-24 06:32:19,334 [INFO] mcp_servers.document_catalog.engines.docling_engine: Docling DocumentConverter initialised
+2026-05-24 06:33:22,854 [INFO] mcp_servers.document_catalog.engines.docling_engine: Docling converted /hermes-vault/originals/a0/4c/a04c7fe19c25451dbe2cd7681dd12df04ec2fedde0b3ae09e3d2f3cbb9a76e04.pdf: 2 pages, 4721 chars, 0 tables in 63.5s
+2026-05-24 06:33:22,884 [INFO] mcp_servers.document_catalog.artifact_writer: Wrote 2 artifacts to extracted/a04c7fe19c25/ (4999 bytes total)
+2026-05-24 06:33:22,891 [INFO] mcp_servers.document_catalog.tools.extract: Extracted b0ba50ac-57d6-40b1-a14b-6958c3598a4b (doc_27d8c458bb81_October 2025.pdf) with docling: 2 pages, 0 tables, 4721 chars
+2026-05-24 06:33:29,431 [INFO] mcp_servers.document_catalog.tools.index: Starting index_document tool for document_id=b0ba50ac-57d6-40b1-a14b-6958c3598a4b
+2026-05-24 06:33:29,433 [DEBUG] mcp_servers.document_catalog.tools.index: Calling IndexLifecycle.index_document for b0ba50ac-57d6-40b1-a14b-6958c3598a4b (sha256: a04c7fe19c25451dbe2cd7681dd12df04ec2fedde0b3ae09e3d2f3cbb9a76e04)
+2026-05-24 06:33:29,439 [INFO] mcp_servers.document_catalog.search.chunker: Chunked document b0ba50ac: 9 chunks (target=512, overlap=64)
+2026-05-24 06:33:29,458 [INFO] mcp_servers.document_catalog.search.fts_search: Indexed 9 chunks into FTS5
+2026-05-24 06:33:29,792 [INFO] mcp_servers.document_catalog.search.embeddings: Langfuse-wrapped Azure OpenAI client initialised (endpoint=https://llm-openai-sweat.cognitiveservices.azure.com, deployment=text-embedding-3-large)
+2026-05-24 06:33:30,181 [INFO] mcp_servers.document_catalog.search.embeddings: Embedded 9 chunks, ~1K tokens, est. $0.0001
+2026-05-24 06:33:30,206 [INFO] mcp_servers.document_catalog.search.faiss_index: Added 9 vectors to FAISS index (total: 27)
+2026-05-24 06:33:30,212 [INFO] mcp_servers.document_catalog.search.faiss_index: Saved FAISS index to /hermes-vault/indexes/faiss.index (27 vectors)
+2026-05-24 06:33:30,213 [INFO] mcp_servers.document_catalog.search.lifecycle: Indexed document b0ba50ac: 9 chunks, 9 vectors in 0.8s
+2026-05-24 06:33:30,213 [INFO] mcp_servers.document_catalog.tools.index: Indexing complete for b0ba50ac-57d6-40b1-a14b-6958c3598a4b. Chunks: 9, Vectors: 9
+2026-05-24 06:33:30,213 [DEBUG] mcp_servers.document_catalog.tools.index: Marking document b0ba50ac-57d6-40b1-a14b-6958c3598a4b as fully indexed
+2026-05-24 06:33:34,736 [DEBUG] mcp_servers.document_catalog.tools.list_docs: list_documents called: type=None, status=None, date_from=None, date_to=None, search='None', limit=100, offset=0
+2026-05-24 06:33:34,736 [INFO] mcp_servers.document_catalog.tools.list_docs: Executing list_documents catalog query (limit=100, offset=0)
+2026-05-24 06:33:34,739 [DEBUG] mcp_servers.document_catalog.tools.list_docs: list_documents: returned 6 of 6 (offset=0, limit=100)
+2026-05-24 06:36:04,590 [DEBUG] mcp_servers.document_catalog.tools.get_page: get_document_page requested for document_id=b0ba50ac-57d6-40b1-a14b-6958c3598a4b, page=1
+2026-05-24 06:36:05,604 [DEBUG] mcp_servers.document_catalog.tools.get_page: get_document_page requested for document_id=b0ba50ac-57d6-40b1-a14b-6958c3598a4b, page=2
+2026-05-24 06:39:58,486 [DEBUG] mcp_servers.document_catalog.tools.ingest: Detected MIME: text/plain for /opt/data/cache/documents/doc_d1d3c276b9c9_23 Feb 2026 - 23 May 2026 (2).csv
+2026-05-24 06:39:58,486 [DEBUG] mcp_servers.document_catalog.tools.ingest: Computing SHA256 for file: /opt/data/cache/documents/doc_d1d3c276b9c9_23 Feb 2026 - 23 May 2026 (2).csv
+2026-05-24 06:39:58,487 [DEBUG] mcp_servers.document_catalog.tools.ingest: SHA256 computed: f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952
+2026-05-24 06:39:58,488 [DEBUG] mcp_servers.document_catalog.tools.ingest: Storing original file in vault (sha256=f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952, ext=.csv)
+2026-05-24 06:39:58,512 [DEBUG] mcp_servers.document_catalog.vault: Stored original: originals/f5/7e/f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952.csv
+2026-05-24 06:39:58,514 [DEBUG] mcp_servers.document_catalog.tools.ingest: Stored successfully at originals/f5/7e/f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952.csv
+2026-05-24 06:39:58,518 [INFO] mcp_servers.document_catalog.tools.ingest: Ingested doc_d1d3c276b9c9_23 Feb 2026 - 23 May 2026 (2).csv → 2b6f1592-7ce5-44e9-9a9c-536b71ce9761 (text/plain, 12571 bytes)
+2026-05-24 06:40:01,462 [DEBUG] mcp_servers.document_catalog.tools.extract: Attempting to retrieve document metadata for 2b6f1592-7ce5-44e9-9a9c-536b71ce9761
+2026-05-24 06:40:01,465 [INFO] mcp_servers.document_catalog.tools.extract: Selected engine 'markitdown' for mime type 'text/plain' (document_id=2b6f1592-7ce5-44e9-9a9c-536b71ce9761)
+2026-05-24 06:40:01,466 [DEBUG] mcp_servers.document_catalog.tools.extract: Calling MarkItDownEngine.convert on /hermes-vault/originals/f5/7e/f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952.csv
+2026-05-24 06:40:01,562 [INFO] mcp_servers.document_catalog.engines.markitdown_engine: MarkItDown converter initialised
+2026-05-24 06:40:01,574 [INFO] mcp_servers.document_catalog.engines.markitdown_engine: MarkItDown converted /hermes-vault/originals/f5/7e/f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952.csv: ~5 pages, 13920 chars, ~1 tables in 0.0s
+2026-05-24 06:40:01,575 [INFO] mcp_servers.document_catalog.tools.extract: Classified doc_d1d3c276b9c9_23 Feb 2026 - 23 May 2026 (2).csv as general (confidence: 0.50)
+2026-05-24 06:40:01,616 [INFO] mcp_servers.document_catalog.artifact_writer: Wrote 2 artifacts to extracted/f57eb0a18e8d/ (14202 bytes total)
+2026-05-24 06:40:01,619 [INFO] mcp_servers.document_catalog.tools.extract: Extracted 2b6f1592-7ce5-44e9-9a9c-536b71ce9761 (doc_d1d3c276b9c9_23 Feb 2026 - 23 May 2026 (2).csv) with markitdown: 5 pages, 1 tables, 13920 chars
+2026-05-24 06:40:04,648 [INFO] mcp_servers.document_catalog.tools.index: Starting index_document tool for document_id=2b6f1592-7ce5-44e9-9a9c-536b71ce9761
+2026-05-24 06:40:04,650 [DEBUG] mcp_servers.document_catalog.tools.index: Calling IndexLifecycle.index_document for 2b6f1592-7ce5-44e9-9a9c-536b71ce9761 (sha256: f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952)
+2026-05-24 06:40:04,655 [INFO] mcp_servers.document_catalog.search.chunker: Chunked document 2b6f1592: 1 chunks (target=512, overlap=64)
+2026-05-24 06:40:04,661 [INFO] mcp_servers.document_catalog.search.fts_search: Indexed 1 chunks into FTS5
+2026-05-24 06:40:05,279 [INFO] mcp_servers.document_catalog.search.embeddings: Embedded 1 chunks, ~2K tokens, est. $0.0004
+2026-05-24 06:40:05,282 [INFO] mcp_servers.document_catalog.search.faiss_index: Added 1 vectors to FAISS index (total: 28)
+2026-05-24 06:40:05,289 [INFO] mcp_servers.document_catalog.search.faiss_index: Saved FAISS index to /hermes-vault/indexes/faiss.index (28 vectors)
+2026-05-24 06:40:05,289 [INFO] mcp_servers.document_catalog.search.lifecycle: Indexed document 2b6f1592: 1 chunks, 1 vectors in 0.6s
+2026-05-24 06:40:05,289 [INFO] mcp_servers.document_catalog.tools.index: Indexing complete for 2b6f1592-7ce5-44e9-9a9c-536b71ce9761. Chunks: 1, Vectors: 1
+2026-05-24 06:40:05,289 [DEBUG] mcp_servers.document_catalog.tools.index: Marking document 2b6f1592-7ce5-44e9-9a9c-536b71ce9761 as fully indexed
+2026-05-24 06:40:08,789 [DEBUG] mcp_servers.document_catalog.tools.get_page: get_document_page requested for document_id=2b6f1592-7ce5-44e9-9a9c-536b71ce9761, page=1
+2026-05-24 06:42:28,241 [INFO] mcp_servers.document_catalog.tools.financial_coverage: get_financial_coverage called: account=None, start=None, end=None
+2026-05-24 06:42:28,242 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Accounts query: SELECT
+            a.account_id,
+            a.bank_name,
+            a.account_number_masked,
+            a.account_type,
+            a.currency,
+            COUNT(DISTINCT bs.statement_id) AS statem  params=[]
+2026-05-24 06:42:28,266 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Found 1 accounts
+2026-05-24 06:42:28,268 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Overall stats: 1 statements, 0 transactions, range=1900-01-01 to 2099-12-31
+2026-05-24 06:42:28,273 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Covered months: ['1900-01', '1900-02', '1900-03', '1900-04', '1900-05', '1900-06', '1900-07', '1900-08', '1900-09', '1900-10', '1900-11', '1900-12']
+2026-05-24 06:42:28,276 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Found 0 coverage gaps
+2026-05-24 06:42:28,278 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Validation summary: passed=0, needs_review=1, pending=0
+2026-05-24 06:42:28,279 [INFO] mcp_servers.document_catalog.tools.financial_coverage: get_financial_coverage complete: 1 accounts, 1 statements, 0 gaps
+2026-05-24 06:42:34,167 [INFO] mcp_servers.document_catalog.tools.review: get_validation_issues: statement=None, document=2b6f1592-7ce5-44e9-9a9c-536b71ce9761, severity=error
+2026-05-24 06:42:34,167 [DEBUG] mcp_servers.document_catalog.tools.review: Issues SQL: SELECT * FROM validation_results WHERE passed = FALSE AND document_id = ? AND severity = ? ORDER BY validated_at DESC  params=['2b6f1592-7ce5-44e9-9a9c-536b71ce9761', 'error']
+2026-05-24 06:42:34,172 [DEBUG] mcp_servers.document_catalog.tools.review: Found 0 failed validation results
+2026-05-24 06:42:34,173 [INFO] mcp_servers.document_catalog.tools.review: get_validation_issues complete: 0 issues (0 errors, 0 warnings)
+2026-05-24 06:42:42,534 [DEBUG] mcp_servers.document_catalog.tools.get_page: get_document_page requested for document_id=2b6f1592-7ce5-44e9-9a9c-536b71ce9761, page=2
+2026-05-24 06:42:43,546 [DEBUG] mcp_servers.document_catalog.tools.get_page: get_document_page requested for document_id=2b6f1592-7ce5-44e9-9a9c-536b71ce9761, page=3
+2026-05-24 06:42:44,558 [DEBUG] mcp_servers.document_catalog.tools.get_page: get_document_page requested for document_id=2b6f1592-7ce5-44e9-9a9c-536b71ce9761, page=4
+2026-05-24 06:42:47,568 [DEBUG] mcp_servers.document_catalog.tools.get_page: get_document_page requested for document_id=2b6f1592-7ce5-44e9-9a9c-536b71ce9761, page=5
+2026-05-24 06:45:23,005 [INFO] mcp_servers.document_catalog.tools.query_transactions: query_transactions called: date_from=2026-02-23, date_to=2026-05-23, category=None, merchant=None, account_id=7a95e4c2-de61-425b-b86e-a6e1ae4fb467, group_by=None, metrics=None, only_validated=True, limit=5, offset=0
+2026-05-24 06:45:23,006 [DEBUG] mcp_servers.document_catalog.tools.query_transactions: WHERE clause:  WHERE t.statement_id IN (SELECT statement_id FROM bank_statements WHERE validation_status = 'passed') AND t.account_id = ? AND t.transaction_date >= ? AND t.transaction_date <= ?  params=['7a95e4c2-de61-425b-b86e-a6e1ae4fb467', '2026-02-23', '2026-05-23']
+2026-05-24 06:45:23,006 [DEBUG] mcp_servers.document_catalog.tools.query_transactions: Count SQL: SELECT COUNT(*) FROM transactions t WHERE t.statement_id IN (SELECT statement_id FROM bank_statements WHERE validation_status = 'passed') AND t.account_id = ? AND t.transaction_date >= ? AND t.transaction_date <= ?
+2026-05-24 06:45:23,009 [DEBUG] mcp_servers.document_catalog.tools.query_transactions: Total matching transactions: 0
+2026-05-24 06:45:23,011 [DEBUG] mcp_servers.document_catalog.tools.query_transactions: Query SQL: SELECT t.* FROM transactions t WHERE t.statement_id IN (SELECT statement_id FROM bank_statements WHERE validation_status = 'passed') AND t.account_id = ? AND t.transaction_date >= ? AND t.transaction_date <= ? ORDER BY t.transaction_date LIMIT ? OFFSET ?
+2026-05-24 06:45:23,014 [DEBUG] mcp_servers.document_catalog.tools.query_transactions: Fetched 0 rows (limit=5, offset=0)
+2026-05-24 06:45:23,014 [INFO] mcp_servers.document_catalog.tools.query_transactions: query_transactions complete: 0/0 returned, coverage=N/A-N/A
+2026-05-24 06:45:29,791 [DEBUG] mcp_servers.document_catalog.tools.list_docs: list_documents called: type=None, status=None, date_from=None, date_to=None, search='statement', limit=20, offset=0
+2026-05-24 06:45:29,791 [INFO] mcp_servers.document_catalog.tools.list_docs: Executing list_documents catalog query (limit=20, offset=0)
+2026-05-24 06:45:29,793 [DEBUG] mcp_servers.document_catalog.tools.list_docs: list_documents: returned 0 of 0 (offset=0, limit=20)
+2026-05-24 06:45:37,598 [DEBUG] mcp_servers.document_catalog.tools.list_docs: list_documents called: type=None, status=None, date_from=None, date_to=None, search='None', limit=100, offset=0
+2026-05-24 06:45:37,599 [INFO] mcp_servers.document_catalog.tools.list_docs: Executing list_documents catalog query (limit=100, offset=0)
+2026-05-24 06:45:37,600 [DEBUG] mcp_servers.document_catalog.tools.list_docs: list_documents: returned 7 of 7 (offset=0, limit=100)
+2026-05-24 06:46:42,555 [DEBUG] mcp_servers.document_catalog.tools.ingest: Detected MIME: text/plain for /opt/data/cache/documents/doc_d1d3c276b9c9_23 Feb 2026 - 23 May 2026 (2).csv
+2026-05-24 06:46:42,555 [DEBUG] mcp_servers.document_catalog.tools.ingest: Computing SHA256 for file: /opt/data/cache/documents/doc_d1d3c276b9c9_23 Feb 2026 - 23 May 2026 (2).csv
+2026-05-24 06:46:42,556 [DEBUG] mcp_servers.document_catalog.tools.ingest: SHA256 computed: f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952
+2026-05-24 06:46:42,556 [INFO] mcp_servers.document_catalog.tools.ingest: Duplicate detected: /opt/data/cache/documents/doc_d1d3c276b9c9_23 Feb 2026 - 23 May 2026 (2).csv already stored as 2b6f1592-7ce5-44e9-9a9c-536b71ce9761
+2026-05-24 06:48:25,022 [INFO] mcp_servers.document_catalog.tools.delete: Starting delete_document for document_id=2b6f1592-7ce5-44e9-9a9c-536b71ce9761
+2026-05-24 06:48:25,027 [INFO] mcp_servers.document_catalog.search.faiss_index: Soft-deleted 1 vectors for document 2b6f1592
+2026-05-24 06:48:25,038 [INFO] mcp_servers.document_catalog.search.fts_search: Removed 1 chunks for document 2b6f1592
+2026-05-24 06:48:25,038 [INFO] mcp_servers.document_catalog.search.lifecycle: Removed document 2b6f1592 from indexes: 1 chunks, 1 vectors
+2026-05-24 06:48:25,038 [INFO] mcp_servers.document_catalog.tools.delete: Removed from indexes: 1 vectors, 1 chunks
+2026-05-24 06:48:25,047 [INFO] mcp_servers.document_catalog.tools.delete: Deleted extraction dir: /hermes-vault/extracted/f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952
+2026-05-24 06:48:25,053 [INFO] mcp_servers.document_catalog.tools.delete: Deleted original: originals/f5/7e/f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952.csv
+2026-05-24 06:48:25,059 [INFO] mcp_servers.document_catalog.tools.delete: Document 2b6f1592-7ce5-44e9-9a9c-536b71ce9761 (doc_d1d3c276b9c9_23 Feb 2026 - 23 May 2026 (2).csv) fully deleted
+2026-05-24 06:48:29,506 [DEBUG] mcp_servers.document_catalog.tools.ingest: Detected MIME: text/plain for /opt/data/cache/documents/doc_d1d3c276b9c9_23 Feb 2026 - 23 May 2026 (2).csv
+2026-05-24 06:48:29,507 [DEBUG] mcp_servers.document_catalog.tools.ingest: Computing SHA256 for file: /opt/data/cache/documents/doc_d1d3c276b9c9_23 Feb 2026 - 23 May 2026 (2).csv
+2026-05-24 06:48:29,507 [DEBUG] mcp_servers.document_catalog.tools.ingest: SHA256 computed: f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952
+2026-05-24 06:48:29,509 [DEBUG] mcp_servers.document_catalog.tools.ingest: Storing original file in vault (sha256=f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952, ext=.csv)
+2026-05-24 06:48:29,536 [DEBUG] mcp_servers.document_catalog.vault: Stored original: originals/f5/7e/f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952.csv
+2026-05-24 06:48:29,538 [DEBUG] mcp_servers.document_catalog.tools.ingest: Stored successfully at originals/f5/7e/f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952.csv
+2026-05-24 06:48:29,542 [INFO] mcp_servers.document_catalog.tools.ingest: Ingested doc_d1d3c276b9c9_23 Feb 2026 - 23 May 2026 (2).csv → 52dfc57f-568d-4d30-befe-9499d10c5c29 (text/plain, 12571 bytes)
+2026-05-24 06:48:32,655 [DEBUG] mcp_servers.document_catalog.tools.extract: Attempting to retrieve document metadata for 52dfc57f-568d-4d30-befe-9499d10c5c29
+2026-05-24 06:48:32,658 [INFO] mcp_servers.document_catalog.tools.extract: Selected engine 'markitdown' for mime type 'text/plain' (document_id=52dfc57f-568d-4d30-befe-9499d10c5c29)
+2026-05-24 06:48:32,658 [DEBUG] mcp_servers.document_catalog.tools.extract: Calling MarkItDownEngine.convert on /hermes-vault/originals/f5/7e/f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952.csv
+2026-05-24 06:48:32,672 [INFO] mcp_servers.document_catalog.engines.markitdown_engine: MarkItDown converted /hermes-vault/originals/f5/7e/f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952.csv: ~5 pages, 13920 chars, ~1 tables in 0.0s
+2026-05-24 06:48:32,694 [INFO] mcp_servers.document_catalog.artifact_writer: Wrote 2 artifacts to extracted/f57eb0a18e8d/ (14203 bytes total)
+2026-05-24 06:48:32,696 [INFO] mcp_servers.document_catalog.tools.extract: Extracted 52dfc57f-568d-4d30-befe-9499d10c5c29 (doc_d1d3c276b9c9_23 Feb 2026 - 23 May 2026 (2).csv) with markitdown: 5 pages, 1 tables, 13920 chars
+2026-05-24 06:48:35,894 [INFO] mcp_servers.document_catalog.tools.index: Starting index_document tool for document_id=52dfc57f-568d-4d30-befe-9499d10c5c29
+2026-05-24 06:48:35,896 [DEBUG] mcp_servers.document_catalog.tools.index: Calling IndexLifecycle.index_document for 52dfc57f-568d-4d30-befe-9499d10c5c29 (sha256: f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952)
+2026-05-24 06:48:35,900 [INFO] mcp_servers.document_catalog.search.chunker: Chunked document 52dfc57f: 1 chunks (target=512, overlap=64)
+2026-05-24 06:48:35,909 [INFO] mcp_servers.document_catalog.search.fts_search: Indexed 1 chunks into FTS5
+2026-05-24 06:48:36,552 [INFO] mcp_servers.document_catalog.search.embeddings: Embedded 1 chunks, ~2K tokens, est. $0.0004
+2026-05-24 06:48:36,557 [INFO] mcp_servers.document_catalog.search.faiss_index: Added 1 vectors to FAISS index (total: 29)
+2026-05-24 06:48:36,564 [INFO] mcp_servers.document_catalog.search.faiss_index: Saved FAISS index to /hermes-vault/indexes/faiss.index (29 vectors)
+2026-05-24 06:48:36,564 [INFO] mcp_servers.document_catalog.search.lifecycle: Indexed document 52dfc57f: 1 chunks, 1 vectors in 0.7s
+2026-05-24 06:48:36,564 [INFO] mcp_servers.document_catalog.tools.index: Indexing complete for 52dfc57f-568d-4d30-befe-9499d10c5c29. Chunks: 1, Vectors: 1
+2026-05-24 06:48:36,564 [DEBUG] mcp_servers.document_catalog.tools.index: Marking document 52dfc57f-568d-4d30-befe-9499d10c5c29 as fully indexed
+2026-05-24 06:48:40,195 [INFO] mcp_servers.document_catalog.tools.financial_coverage: get_financial_coverage called: account=None, start=None, end=None
+2026-05-24 06:48:40,196 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Accounts query: SELECT
+            a.account_id,
+            a.bank_name,
+            a.account_number_masked,
+            a.account_type,
+            a.currency,
+            COUNT(DISTINCT bs.statement_id) AS statem  params=[]
+2026-05-24 06:48:40,201 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Found 1 accounts
+2026-05-24 06:48:40,203 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Overall stats: 1 statements, 0 transactions, range=1900-01-01 to 2099-12-31
+2026-05-24 06:48:40,207 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Covered months: ['1900-01', '1900-02', '1900-03', '1900-04', '1900-05', '1900-06', '1900-07', '1900-08', '1900-09', '1900-10', '1900-11', '1900-12']
+2026-05-24 06:48:40,212 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Found 0 coverage gaps
+2026-05-24 06:48:40,213 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Validation summary: passed=0, needs_review=1, pending=0
+2026-05-24 06:48:40,213 [INFO] mcp_servers.document_catalog.tools.financial_coverage: get_financial_coverage complete: 1 accounts, 1 statements, 0 gaps
+2026-05-24 06:48:44,994 [INFO] mcp_servers.document_catalog.tools.review: get_validation_issues: statement=None, document=52dfc57f-568d-4d30-befe-9499d10c5c29, severity=warning
+2026-05-24 06:48:44,994 [DEBUG] mcp_servers.document_catalog.tools.review: Issues SQL: SELECT * FROM validation_results WHERE passed = FALSE AND document_id = ? AND severity = ? ORDER BY validated_at DESC  params=['52dfc57f-568d-4d30-befe-9499d10c5c29', 'warning']
+2026-05-24 06:48:44,996 [DEBUG] mcp_servers.document_catalog.tools.review: Found 0 failed validation results
+2026-05-24 06:48:44,996 [INFO] mcp_servers.document_catalog.tools.review: get_validation_issues complete: 0 issues (0 errors, 0 warnings)
+2026-05-24 06:48:53,887 [INFO] mcp_servers.document_catalog.tools.spending_analysis: run_spending_analysis: start=2026-02-23, end=2026-05-23, account=None, group_by=category, top_n=10, only_validated=True
+2026-05-24 06:48:53,887 [DEBUG] mcp_servers.document_catalog.tools.spending_analysis: WHERE clause:  WHERE t.transaction_date >= ? AND t.transaction_date <= ? AND t.statement_id IN (SELECT statement_id FROM bank_statements WHERE validation_status = 'passed')  params=['2026-02-23', '2026-05-23']
+2026-05-24 06:48:53,887 [DEBUG] mcp_servers.document_catalog.tools.spending_analysis: Totals SQL: SELECT
+            COALESCE(SUM(CASE WHEN t.amount_cents > 0 THEN t.amount_cents ELSE 0 END), 0) AS income,
+            COALESCE(SUM(CASE WHEN t.amount_cents < 0 THEN t.amount_cents ELSE 0 END), 0) AS
+2026-05-24 06:48:53,892 [DEBUG] mcp_servers.document_catalog.tools.spending_analysis: Totals: income=0 cents, expenses=0 cents, txn_count=0
+2026-05-24 06:48:53,894 [DEBUG] mcp_servers.document_catalog.tools.spending_analysis: Statements in range: 0
+2026-05-24 06:48:53,894 [DEBUG] mcp_servers.document_catalog.tools.spending_analysis: Breakdown SQL: SELECT
+            COALESCE(t.category, 'other') AS category,
+            SUM(t.amount_cents) AS total_cents,
+            COUNT(*) AS count
+        FROM transactions t WHERE t.transaction_date >= ? AN
+2026-05-24 06:48:53,896 [DEBUG] mcp_servers.document_catalog.tools.spending_analysis: Breakdown returned 0 groups
+2026-05-24 06:48:53,896 [DEBUG] mcp_servers.document_catalog.tools.spending_analysis: Detecting recurring payments...
+2026-05-24 06:48:53,898 [DEBUG] mcp_servers.document_catalog.tools.spending_analysis: Found 0 recurring patterns
+2026-05-24 06:48:53,899 [INFO] mcp_servers.document_catalog.tools.spending_analysis: run_spending_analysis complete: income=0, expenses=0, groups=0, recurring=0
+2026-05-24 07:06:41,939 [INFO] mcp_servers: Custom file logging initialised at /opt/hermes/logs/log.log
+2026-05-24 07:06:41,939 [DEBUG] mcp_servers: Environment variables present on startup: Azure=['AZURE_API_KEY', 'AZURE_API_BASE', 'AZURE_EMBEDDING_API_BASE', 'AZURE_API_VERSION', 'AZURE_EMBEDDING_DEPLOYMENT'], Langfuse=['LANGFUSE_PUBLIC_KEY', 'LANGFUSE_SECRET_KEY', 'LANGFUSE_HOST']
+2026-05-24 07:06:41,945 [INFO] mcp_servers.document_catalog.vault: Vault directories ensured at /hermes-vault
+2026-05-24 07:06:41,990 [INFO] mcp_servers.document_catalog.catalog_db: CatalogDB opened: /hermes-vault/hermes_catalog.sqlite (schema v2)
+2026-05-24 07:06:42,056 [INFO] mcp_servers.document_catalog.search.faiss_index: Loaded FAISS index: 29 vectors, dim=3072
+2026-05-24 07:06:42,092 [INFO] mcp_servers.document_catalog.search.fts_search: FTS5 search tables ensured in /hermes-vault/hermes_catalog.sqlite
+2026-05-24 07:06:42,367 [INFO] mcp_servers.document_catalog.finance.ledger_db: FinanceLedger opened: /hermes-vault/finance.duckdb (schema v1)
+2026-05-24 07:06:42,368 [DEBUG] mcp_servers.document_catalog.finance.parsers: Registered parser: FNB (generic=False)
+2026-05-24 07:06:42,368 [DEBUG] mcp_servers.document_catalog.finance.parsers: Registered parser: generic (generic=True)
+2026-05-24 07:07:50,755 [DEBUG] mcp_servers.document_catalog.tools.list_docs: list_documents called: type=None, status=None, date_from=None, date_to=None, search='23 Feb 2026 - 23 May 2026', limit=20, offset=0
+2026-05-24 07:07:50,755 [INFO] mcp_servers.document_catalog.tools.list_docs: Executing list_documents catalog query (limit=20, offset=0)
+2026-05-24 07:07:50,757 [DEBUG] mcp_servers.document_catalog.tools.list_docs: list_documents: returned 2 of 2 (offset=0, limit=20)
+2026-05-24 07:07:51,765 [INFO] mcp_servers.document_catalog.tools.financial_coverage: get_financial_coverage called: account=None, start=None, end=None
+2026-05-24 07:07:51,766 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Accounts query: SELECT
+            a.account_id,
+            a.bank_name,
+            a.account_number_masked,
+            a.account_type,
+            a.currency,
+            COUNT(DISTINCT bs.statement_id) AS statem  params=[]
+2026-05-24 07:07:51,778 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Found 1 accounts
+2026-05-24 07:07:51,780 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Overall stats: 1 statements, 0 transactions, range=1900-01-01 to 2099-12-31
+2026-05-24 07:07:51,785 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Covered months: ['1900-01', '1900-02', '1900-03', '1900-04', '1900-05', '1900-06', '1900-07', '1900-08', '1900-09', '1900-10', '1900-11', '1900-12']
+2026-05-24 07:07:51,790 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Found 0 coverage gaps
+2026-05-24 07:07:51,791 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Validation summary: passed=0, needs_review=1, pending=0
+2026-05-24 07:07:51,792 [INFO] mcp_servers.document_catalog.tools.financial_coverage: get_financial_coverage complete: 1 accounts, 1 statements, 0 gaps
+2026-05-24 07:07:52,800 [INFO] mcp_servers.document_catalog.tools.query_transactions: query_transactions called: date_from=None, date_to=None, category=None, merchant=None, account_id=None, group_by=None, metrics=None, only_validated=True, limit=50, offset=0
+2026-05-24 07:07:52,800 [DEBUG] mcp_servers.document_catalog.tools.query_transactions: WHERE clause:  WHERE t.statement_id IN (SELECT statement_id FROM bank_statements WHERE validation_status = 'passed')  params=[]
+2026-05-24 07:07:52,801 [DEBUG] mcp_servers.document_catalog.tools.query_transactions: Count SQL: SELECT COUNT(*) FROM transactions t WHERE t.statement_id IN (SELECT statement_id FROM bank_statements WHERE validation_status = 'passed')
+2026-05-24 07:07:52,803 [DEBUG] mcp_servers.document_catalog.tools.query_transactions: Total matching transactions: 0
+2026-05-24 07:07:52,805 [DEBUG] mcp_servers.document_catalog.tools.query_transactions: Query SQL: SELECT t.* FROM transactions t WHERE t.statement_id IN (SELECT statement_id FROM bank_statements WHERE validation_status = 'passed') ORDER BY t.transaction_date LIMIT ? OFFSET ?
+2026-05-24 07:07:53,164 [DEBUG] mcp_servers.document_catalog.tools.query_transactions: Fetched 0 rows (limit=50, offset=0)
+2026-05-24 07:07:53,164 [INFO] mcp_servers.document_catalog.tools.query_transactions: query_transactions complete: 0/0 returned, coverage=N/A-N/A
+2026-05-24 07:07:59,042 [INFO] mcp_servers.document_catalog.tools.delete: Starting delete_document for document_id=52dfc57f-568d-4d30-befe-9499d10c5c29
+2026-05-24 07:07:59,046 [INFO] mcp_servers.document_catalog.search.faiss_index: Soft-deleted 1 vectors for document 52dfc57f
+2026-05-24 07:07:59,058 [INFO] mcp_servers.document_catalog.search.fts_search: Removed 1 chunks for document 52dfc57f
+2026-05-24 07:07:59,058 [INFO] mcp_servers.document_catalog.search.lifecycle: Removed document 52dfc57f from indexes: 1 chunks, 1 vectors
+2026-05-24 07:07:59,058 [INFO] mcp_servers.document_catalog.tools.delete: Removed from indexes: 1 vectors, 1 chunks
+2026-05-24 07:07:59,068 [INFO] mcp_servers.document_catalog.tools.delete: Deleted extraction dir: /hermes-vault/extracted/f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952
+2026-05-24 07:07:59,076 [INFO] mcp_servers.document_catalog.tools.delete: Deleted original: originals/f5/7e/f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952.csv
+2026-05-24 07:07:59,084 [INFO] mcp_servers.document_catalog.tools.delete: Document 52dfc57f-568d-4d30-befe-9499d10c5c29 (doc_d1d3c276b9c9_23 Feb 2026 - 23 May 2026 (2).csv) fully deleted
+2026-05-24 07:08:02,953 [DEBUG] mcp_servers.document_catalog.tools.ingest: Detected MIME: text/plain for /opt/data/cache/documents/doc_d1d3c276b9c9_23 Feb 2026 - 23 May 2026 (2).csv
+2026-05-24 07:08:02,954 [DEBUG] mcp_servers.document_catalog.tools.ingest: Computing SHA256 for file: /opt/data/cache/documents/doc_d1d3c276b9c9_23 Feb 2026 - 23 May 2026 (2).csv
+2026-05-24 07:08:02,955 [DEBUG] mcp_servers.document_catalog.tools.ingest: SHA256 computed: f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952
+2026-05-24 07:08:02,960 [DEBUG] mcp_servers.document_catalog.tools.ingest: Storing original file in vault (sha256=f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952, ext=.csv)
+2026-05-24 07:08:03,022 [DEBUG] mcp_servers.document_catalog.vault: Stored original: originals/f5/7e/f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952.csv
+2026-05-24 07:08:03,029 [DEBUG] mcp_servers.document_catalog.tools.ingest: Stored successfully at originals/f5/7e/f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952.csv
+2026-05-24 07:08:03,038 [INFO] mcp_servers.document_catalog.tools.ingest: Ingested doc_d1d3c276b9c9_23 Feb 2026 - 23 May 2026 (2).csv → 3d0bccfa-7fde-4a9b-bf8a-e89474588554 (text/plain, 12571 bytes)
+2026-05-24 07:08:06,595 [DEBUG] mcp_servers.document_catalog.tools.extract: Attempting to retrieve document metadata for 3d0bccfa-7fde-4a9b-bf8a-e89474588554
+2026-05-24 07:08:06,600 [INFO] mcp_servers.document_catalog.tools.extract: Selected engine 'markitdown' for mime type 'text/plain' (document_id=3d0bccfa-7fde-4a9b-bf8a-e89474588554)
+2026-05-24 07:08:06,600 [DEBUG] mcp_servers.document_catalog.tools.extract: Calling MarkItDownEngine.convert on /hermes-vault/originals/f5/7e/f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952.csv
+2026-05-24 07:08:06,989 [INFO] mcp_servers.document_catalog.engines.markitdown_engine: MarkItDown converter initialised
+2026-05-24 07:08:07,003 [INFO] mcp_servers.document_catalog.engines.markitdown_engine: MarkItDown converted /hermes-vault/originals/f5/7e/f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952.csv: ~5 pages, 13920 chars, ~1 tables in 0.0s
+2026-05-24 07:08:07,036 [INFO] mcp_servers.document_catalog.artifact_writer: Wrote 2 artifacts to extracted/f57eb0a18e8d/ (14202 bytes total)
+2026-05-24 07:08:07,039 [INFO] mcp_servers.document_catalog.tools.extract: Extracted 3d0bccfa-7fde-4a9b-bf8a-e89474588554 (doc_d1d3c276b9c9_23 Feb 2026 - 23 May 2026 (2).csv) with markitdown: 5 pages, 1 tables, 13920 chars
+2026-05-24 07:08:09,993 [INFO] mcp_servers.document_catalog.tools.index: Starting index_document tool for document_id=3d0bccfa-7fde-4a9b-bf8a-e89474588554
+2026-05-24 07:08:09,996 [DEBUG] mcp_servers.document_catalog.tools.index: Calling IndexLifecycle.index_document for 3d0bccfa-7fde-4a9b-bf8a-e89474588554 (sha256: f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952)
+2026-05-24 07:08:10,003 [INFO] mcp_servers.document_catalog.search.chunker: Chunked document 3d0bccfa: 1 chunks (target=512, overlap=64)
+2026-05-24 07:08:10,014 [INFO] mcp_servers.document_catalog.search.fts_search: Indexed 1 chunks into FTS5
+2026-05-24 07:08:10,506 [INFO] mcp_servers.document_catalog.search.embeddings: Langfuse-wrapped Azure OpenAI client initialised (endpoint=https://llm-openai-sweat.cognitiveservices.azure.com, deployment=text-embedding-3-large)
+2026-05-24 07:08:11,098 [INFO] mcp_servers.document_catalog.search.embeddings: Embedded 1 chunks, ~2K tokens, est. $0.0004
+2026-05-24 07:08:11,103 [INFO] mcp_servers.document_catalog.search.faiss_index: Added 1 vectors to FAISS index (total: 30)
+2026-05-24 07:08:11,111 [INFO] mcp_servers.document_catalog.search.faiss_index: Saved FAISS index to /hermes-vault/indexes/faiss.index (30 vectors)
+2026-05-24 07:08:11,112 [INFO] mcp_servers.document_catalog.search.lifecycle: Indexed document 3d0bccfa: 1 chunks, 1 vectors in 1.1s
+2026-05-24 07:08:11,112 [INFO] mcp_servers.document_catalog.tools.index: Indexing complete for 3d0bccfa-7fde-4a9b-bf8a-e89474588554. Chunks: 1, Vectors: 1
+2026-05-24 07:08:11,113 [DEBUG] mcp_servers.document_catalog.tools.index: Marking document 3d0bccfa-7fde-4a9b-bf8a-e89474588554 as fully indexed
+2026-05-24 07:08:14,269 [INFO] mcp_servers.document_catalog.tools.financial_coverage: get_financial_coverage called: account=None, start=None, end=None
+2026-05-24 07:08:14,270 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Accounts query: SELECT
+            a.account_id,
+            a.bank_name,
+            a.account_number_masked,
+            a.account_type,
+            a.currency,
+            COUNT(DISTINCT bs.statement_id) AS statem  params=[]
+2026-05-24 07:08:14,274 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Found 1 accounts
+2026-05-24 07:08:14,276 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Overall stats: 1 statements, 0 transactions, range=1900-01-01 to 2099-12-31
+2026-05-24 07:08:14,281 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Covered months: ['1900-01', '1900-02', '1900-03', '1900-04', '1900-05', '1900-06', '1900-07', '1900-08', '1900-09', '1900-10', '1900-11', '1900-12']
+2026-05-24 07:08:14,284 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Found 0 coverage gaps
+2026-05-24 07:08:14,286 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Validation summary: passed=0, needs_review=1, pending=0
+2026-05-24 07:08:14,286 [INFO] mcp_servers.document_catalog.tools.financial_coverage: get_financial_coverage complete: 1 accounts, 1 statements, 0 gaps
+2026-05-24 07:08:15,294 [INFO] mcp_servers.document_catalog.tools.query_transactions: query_transactions called: date_from=None, date_to=None, category=None, merchant=None, account_id=None, group_by=None, metrics=None, only_validated=True, limit=50, offset=0
+2026-05-24 07:08:15,295 [DEBUG] mcp_servers.document_catalog.tools.query_transactions: WHERE clause:  WHERE t.statement_id IN (SELECT statement_id FROM bank_statements WHERE validation_status = 'passed')  params=[]
+2026-05-24 07:08:15,296 [DEBUG] mcp_servers.document_catalog.tools.query_transactions: Count SQL: SELECT COUNT(*) FROM transactions t WHERE t.statement_id IN (SELECT statement_id FROM bank_statements WHERE validation_status = 'passed')
+2026-05-24 07:08:15,299 [DEBUG] mcp_servers.document_catalog.tools.query_transactions: Total matching transactions: 0
+2026-05-24 07:08:15,301 [DEBUG] mcp_servers.document_catalog.tools.query_transactions: Query SQL: SELECT t.* FROM transactions t WHERE t.statement_id IN (SELECT statement_id FROM bank_statements WHERE validation_status = 'passed') ORDER BY t.transaction_date LIMIT ? OFFSET ?
+2026-05-24 07:08:15,304 [DEBUG] mcp_servers.document_catalog.tools.query_transactions: Fetched 0 rows (limit=50, offset=0)
+2026-05-24 07:08:15,304 [INFO] mcp_servers.document_catalog.tools.query_transactions: query_transactions complete: 0/0 returned, coverage=N/A-N/A
+2026-05-24 07:43:37,271 [INFO] mcp_servers: Custom file logging initialised at /opt/hermes/logs/log.log
+2026-05-24 07:43:37,272 [DEBUG] mcp_servers: Environment variables present on startup: Azure=['AZURE_API_KEY', 'AZURE_API_BASE', 'AZURE_EMBEDDING_API_BASE', 'AZURE_API_VERSION', 'AZURE_EMBEDDING_DEPLOYMENT'], Langfuse=['LANGFUSE_PUBLIC_KEY', 'LANGFUSE_SECRET_KEY', 'LANGFUSE_HOST']
+2026-05-24 07:43:37,278 [INFO] mcp_servers.document_catalog.vault: Vault directories ensured at /hermes-vault
+2026-05-24 07:43:37,353 [INFO] mcp_servers.document_catalog.catalog_db: CatalogDB opened: /hermes-vault/hermes_catalog.sqlite (schema v2)
+2026-05-24 07:43:37,454 [INFO] mcp_servers.document_catalog.search.faiss_index: Loaded FAISS index: 30 vectors, dim=3072
+2026-05-24 07:43:37,501 [INFO] mcp_servers.document_catalog.search.fts_search: FTS5 search tables ensured in /hermes-vault/hermes_catalog.sqlite
+2026-05-24 07:43:38,004 [INFO] mcp_servers.document_catalog.finance.ledger_db: FinanceLedger opened: /hermes-vault/finance.duckdb (schema v1)
+2026-05-24 07:43:38,005 [DEBUG] mcp_servers.document_catalog.finance.parsers: Registered parser: FNB (generic=False)
+2026-05-24 07:43:38,007 [DEBUG] mcp_servers.document_catalog.finance.parsers: Registered parser: generic (generic=True)
+2026-05-24 07:46:32,862 [DEBUG] mcp_servers.document_catalog.tools.ingest: Detected MIME: text/plain for /opt/data/cache/documents/doc_59f4a504f743_23 Feb 2026 - 23 May 2026 (2).csv
+2026-05-24 07:46:32,863 [DEBUG] mcp_servers.document_catalog.tools.ingest: Computing SHA256 for file: /opt/data/cache/documents/doc_59f4a504f743_23 Feb 2026 - 23 May 2026 (2).csv
+2026-05-24 07:46:32,864 [DEBUG] mcp_servers.document_catalog.tools.ingest: SHA256 computed: f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952
+2026-05-24 07:46:32,866 [INFO] mcp_servers.document_catalog.tools.ingest: Duplicate detected: /opt/data/cache/documents/doc_59f4a504f743_23 Feb 2026 - 23 May 2026 (2).csv already stored as 3d0bccfa-7fde-4a9b-bf8a-e89474588554
+2026-05-24 07:46:37,794 [DEBUG] mcp_servers.document_catalog.tools.extract: Attempting to retrieve document metadata for 3d0bccfa-7fde-4a9b-bf8a-e89474588554
+2026-05-24 07:46:37,802 [INFO] mcp_servers.document_catalog.tools.extract: Selected engine 'markitdown' for mime type 'text/plain' (document_id=3d0bccfa-7fde-4a9b-bf8a-e89474588554)
+2026-05-24 07:46:37,803 [DEBUG] mcp_servers.document_catalog.tools.extract: Calling MarkItDownEngine.convert on /hermes-vault/originals/f5/7e/f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952.csv
+2026-05-24 07:46:39,454 [INFO] mcp_servers.document_catalog.engines.markitdown_engine: MarkItDown converter initialised
+2026-05-24 07:46:39,508 [INFO] mcp_servers.document_catalog.engines.markitdown_engine: MarkItDown converted /hermes-vault/originals/f5/7e/f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952.csv: ~5 pages, 13920 chars, ~1 tables in 0.1s
+2026-05-24 07:46:39,607 [INFO] mcp_servers.document_catalog.artifact_writer: Wrote 2 artifacts to extracted/f57eb0a18e8d/ (14201 bytes total)
+2026-05-24 07:46:39,670 [INFO] mcp_servers.document_catalog.tools.extract: Extracted 3d0bccfa-7fde-4a9b-bf8a-e89474588554 (doc_d1d3c276b9c9_23 Feb 2026 - 23 May 2026 (2).csv) with markitdown: 5 pages, 1 tables, 13920 chars
+2026-05-24 07:46:46,284 [INFO] mcp_servers.document_catalog.tools.index: Starting index_document tool for document_id=3d0bccfa-7fde-4a9b-bf8a-e89474588554
+2026-05-24 07:46:46,287 [DEBUG] mcp_servers.document_catalog.tools.index: Calling IndexLifecycle.index_document for 3d0bccfa-7fde-4a9b-bf8a-e89474588554 (sha256: f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952)
+2026-05-24 07:46:46,298 [INFO] mcp_servers.document_catalog.search.chunker: Chunked document 3d0bccfa: 1 chunks (target=512, overlap=64)
+2026-05-24 07:46:46,322 [INFO] mcp_servers.document_catalog.search.fts_search: Indexed 1 chunks into FTS5
+2026-05-24 07:46:47,330 [INFO] mcp_servers.document_catalog.search.embeddings: Langfuse-wrapped Azure OpenAI client initialised (endpoint=https://llm-openai-sweat.cognitiveservices.azure.com, deployment=text-embedding-3-large)
+2026-05-24 07:46:48,405 [INFO] mcp_servers.document_catalog.search.embeddings: Embedded 1 chunks, ~2K tokens, est. $0.0004
+2026-05-24 07:46:48,415 [INFO] mcp_servers.document_catalog.search.faiss_index: Added 1 vectors to FAISS index (total: 31)
+2026-05-24 07:46:48,446 [INFO] mcp_servers.document_catalog.search.faiss_index: Saved FAISS index to /hermes-vault/indexes/faiss.index (31 vectors)
+2026-05-24 07:46:48,448 [INFO] mcp_servers.document_catalog.search.lifecycle: Indexed document 3d0bccfa: 1 chunks, 1 vectors in 2.2s
+2026-05-24 07:46:48,450 [INFO] mcp_servers.document_catalog.tools.index: Indexing complete for 3d0bccfa-7fde-4a9b-bf8a-e89474588554. Chunks: 1, Vectors: 1
+2026-05-24 07:46:48,450 [DEBUG] mcp_servers.document_catalog.tools.index: Marking document 3d0bccfa-7fde-4a9b-bf8a-e89474588554 as fully indexed
+2026-05-24 07:46:51,717 [INFO] mcp_servers.document_catalog.tools.financial_coverage: get_financial_coverage called: account=None, start=None, end=None
+2026-05-24 07:46:51,718 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Accounts query: SELECT
+            a.account_id,
+            a.bank_name,
+            a.account_number_masked,
+            a.account_type,
+            a.currency,
+            COUNT(DISTINCT bs.statement_id) AS statem  params=[]
+2026-05-24 07:46:51,797 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Found 1 accounts
+2026-05-24 07:46:51,808 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Overall stats: 1 statements, 0 transactions, range=1900-01-01 to 2099-12-31
+2026-05-24 07:46:51,822 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Covered months: ['1900-01', '1900-02', '1900-03', '1900-04', '1900-05', '1900-06', '1900-07', '1900-08', '1900-09', '1900-10', '1900-11', '1900-12']
+2026-05-24 07:46:51,839 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Found 0 coverage gaps
+2026-05-24 07:46:51,867 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Validation summary: passed=0, needs_review=1, pending=0
+2026-05-24 07:46:51,868 [INFO] mcp_servers.document_catalog.tools.financial_coverage: get_financial_coverage complete: 1 accounts, 1 statements, 0 gaps
+2026-05-24 07:46:55,141 [INFO] mcp_servers.document_catalog.tools.review: get_validation_issues: statement=None, document=3d0bccfa-7fde-4a9b-bf8a-e89474588554, severity=warning
+2026-05-24 07:46:55,142 [DEBUG] mcp_servers.document_catalog.tools.review: Issues SQL: SELECT * FROM validation_results WHERE passed = FALSE AND document_id = ? AND severity = ? ORDER BY validated_at DESC  params=['3d0bccfa-7fde-4a9b-bf8a-e89474588554', 'warning']
+2026-05-24 07:46:55,148 [DEBUG] mcp_servers.document_catalog.tools.review: Found 0 failed validation results
+2026-05-24 07:46:55,149 [INFO] mcp_servers.document_catalog.tools.review: get_validation_issues complete: 0 issues (0 errors, 0 warnings)
+2026-05-24 07:47:00,838 [INFO] mcp_servers.document_catalog.tools.review: get_validation_issues: statement=None, document=3d0bccfa-7fde-4a9b-bf8a-e89474588554, severity=error
+2026-05-24 07:47:00,839 [DEBUG] mcp_servers.document_catalog.tools.review: Issues SQL: SELECT * FROM validation_results WHERE passed = FALSE AND document_id = ? AND severity = ? ORDER BY validated_at DESC  params=['3d0bccfa-7fde-4a9b-bf8a-e89474588554', 'error']
+2026-05-24 07:47:00,842 [DEBUG] mcp_servers.document_catalog.tools.review: Found 0 failed validation results
+2026-05-24 07:47:00,843 [INFO] mcp_servers.document_catalog.tools.review: get_validation_issues complete: 0 issues (0 errors, 0 warnings)
+2026-05-24 07:47:01,853 [INFO] mcp_servers.document_catalog.tools.review: get_validation_issues: statement=None, document=3d0bccfa-7fde-4a9b-bf8a-e89474588554, severity=None
+2026-05-24 07:47:01,854 [DEBUG] mcp_servers.document_catalog.tools.review: Issues SQL: SELECT * FROM validation_results WHERE passed = FALSE AND document_id = ? ORDER BY validated_at DESC  params=['3d0bccfa-7fde-4a9b-bf8a-e89474588554']
+2026-05-24 07:47:01,856 [DEBUG] mcp_servers.document_catalog.tools.review: Found 0 failed validation results
+2026-05-24 07:47:01,857 [INFO] mcp_servers.document_catalog.tools.review: get_validation_issues complete: 0 issues (0 errors, 0 warnings)
+2026-05-24 07:47:08,159 [INFO] mcp_servers.document_catalog.tools.query_transactions: query_transactions called: date_from=2026-02-23, date_to=2026-05-23, category=None, merchant=None, account_id=7a95e4c2-de61-425b-b86e-a6e1ae4fb467, group_by=None, metrics=None, only_validated=False, limit=5, offset=0
+2026-05-24 07:47:08,159 [DEBUG] mcp_servers.document_catalog.tools.query_transactions: WHERE clause:  WHERE t.account_id = ? AND t.transaction_date >= ? AND t.transaction_date <= ?  params=['7a95e4c2-de61-425b-b86e-a6e1ae4fb467', '2026-02-23', '2026-05-23']
+2026-05-24 07:47:08,160 [DEBUG] mcp_servers.document_catalog.tools.query_transactions: Count SQL: SELECT COUNT(*) FROM transactions t WHERE t.account_id = ? AND t.transaction_date >= ? AND t.transaction_date <= ?
+2026-05-24 07:47:08,162 [DEBUG] mcp_servers.document_catalog.tools.query_transactions: Total matching transactions: 0
+2026-05-24 07:47:08,165 [DEBUG] mcp_servers.document_catalog.tools.query_transactions: Query SQL: SELECT t.* FROM transactions t WHERE t.account_id = ? AND t.transaction_date >= ? AND t.transaction_date <= ? ORDER BY t.transaction_date LIMIT ? OFFSET ?
+2026-05-24 07:47:08,170 [DEBUG] mcp_servers.document_catalog.tools.query_transactions: Fetched 0 rows (limit=5, offset=0)
+2026-05-24 07:47:08,170 [INFO] mcp_servers.document_catalog.tools.query_transactions: query_transactions complete: 0/0 returned, coverage=N/A-N/A
+2026-05-24 07:47:14,182 [INFO] mcp_servers.document_catalog.tools.import_transactions: Starting import_transactions tool for document_id=3d0bccfa-7fde-4a9b-bf8a-e89474588554, bank=ABSA
+2026-05-24 07:47:14,190 [DEBUG] mcp_servers.document_catalog.tools.import_transactions: Found original file at /hermes-vault/originals/f5/7e/f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952.csv
+2026-05-24 07:47:14,214 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: ABSA from absa.json
+2026-05-24 07:47:14,222 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: Capitec from capitec.json
+2026-05-24 07:47:14,230 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: FNB from fnb.json
+2026-05-24 07:47:14,237 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: Nedbank from nedbank.json
+2026-05-24 07:47:14,244 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: Standard Bank from standard_bank.json
+2026-05-24 07:47:14,245 [INFO] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded 5 bank templates from /opt/hermes/mcp_servers/document_catalog/tools/../finance/importers/bank_templates
+2026-05-24 07:47:14,245 [INFO] mcp_servers.document_catalog.tools.import_transactions: Routing file /hermes-vault/originals/f5/7e/f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952.csv with mime='text/plain', ext='.csv'
+2026-05-24 07:47:14,245 [INFO] mcp_servers.document_catalog.finance.importers.import_orchestrator: === CSV import starting: path=/hermes-vault/originals/f5/7e/f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952.csv, doc=3d0bccfa-7fde-4a9b-bf8a-e89474588554 ===
+2026-05-24 07:47:14,246 [INFO] mcp_servers.document_catalog.finance.importers.csv_parser: Parsing CSV /hermes-vault/originals/f5/7e/f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952.csv with template 'ABSA'
+2026-05-24 07:47:14,251 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Read CSV: headers=['Date', 'Description', 'Amount', 'Balance'], data_rows=153, encoding=utf-8
+2026-05-24 07:47:14,251 [ERROR] mcp_servers.document_catalog.finance.importers.import_orchestrator: CSV parse errors: ["Date column 'Posting Date' not found in headers: ['Date', 'Description', 'Amount', 'Balance']"]
+2026-05-24 07:47:44,108 [DEBUG] mcp_servers.document_catalog.tools.ingest: Detected MIME: text/csv for /opt/data/cache/documents/doc_59f4a504f743_posting_date_header.csv
+2026-05-24 07:47:44,109 [DEBUG] mcp_servers.document_catalog.tools.ingest: Computing SHA256 for file: /opt/data/cache/documents/doc_59f4a504f743_posting_date_header.csv
+2026-05-24 07:47:44,109 [DEBUG] mcp_servers.document_catalog.tools.ingest: SHA256 computed: 15f3ca2fa95423c26cf38fd14b41822264db7cd7f2012baa185c632d2eb1c715
+2026-05-24 07:47:44,111 [DEBUG] mcp_servers.document_catalog.tools.ingest: Storing original file in vault (sha256=15f3ca2fa95423c26cf38fd14b41822264db7cd7f2012baa185c632d2eb1c715, ext=.csv)
+2026-05-24 07:47:44,173 [DEBUG] mcp_servers.document_catalog.vault: Stored original: originals/15/f3/15f3ca2fa95423c26cf38fd14b41822264db7cd7f2012baa185c632d2eb1c715.csv
+2026-05-24 07:47:44,179 [DEBUG] mcp_servers.document_catalog.tools.ingest: Stored successfully at originals/15/f3/15f3ca2fa95423c26cf38fd14b41822264db7cd7f2012baa185c632d2eb1c715.csv
+2026-05-24 07:47:44,193 [INFO] mcp_servers.document_catalog.tools.ingest: Ingested doc_59f4a504f743_posting_date_header.csv → 784c88f4-1bed-4816-a6f7-31cafec0f5cc (text/csv, 12765 bytes)
+2026-05-24 07:47:48,720 [DEBUG] mcp_servers.document_catalog.tools.extract: Attempting to retrieve document metadata for 784c88f4-1bed-4816-a6f7-31cafec0f5cc
+2026-05-24 07:47:48,726 [INFO] mcp_servers.document_catalog.tools.extract: Selected engine 'markitdown' for mime type 'text/csv' (document_id=784c88f4-1bed-4816-a6f7-31cafec0f5cc)
+2026-05-24 07:47:48,727 [DEBUG] mcp_servers.document_catalog.tools.extract: Calling MarkItDownEngine.convert on /hermes-vault/originals/15/f3/15f3ca2fa95423c26cf38fd14b41822264db7cd7f2012baa185c632d2eb1c715.csv
+2026-05-24 07:47:48,825 [INFO] mcp_servers.document_catalog.engines.markitdown_engine: MarkItDown converted /hermes-vault/originals/15/f3/15f3ca2fa95423c26cf38fd14b41822264db7cd7f2012baa185c632d2eb1c715.csv: ~5 pages, 13928 chars, ~1 tables in 0.1s
+2026-05-24 07:47:48,882 [INFO] mcp_servers.document_catalog.artifact_writer: Wrote 2 artifacts to extracted/15f3ca2fa954/ (14210 bytes total)
+2026-05-24 07:47:48,894 [INFO] mcp_servers.document_catalog.tools.extract: Extracted 784c88f4-1bed-4816-a6f7-31cafec0f5cc (doc_59f4a504f743_posting_date_header.csv) with markitdown: 5 pages, 1 tables, 13928 chars
+2026-05-24 07:47:52,595 [INFO] mcp_servers.document_catalog.tools.index: Starting index_document tool for document_id=784c88f4-1bed-4816-a6f7-31cafec0f5cc
+2026-05-24 07:47:52,599 [DEBUG] mcp_servers.document_catalog.tools.index: Calling IndexLifecycle.index_document for 784c88f4-1bed-4816-a6f7-31cafec0f5cc (sha256: 15f3ca2fa95423c26cf38fd14b41822264db7cd7f2012baa185c632d2eb1c715)
+2026-05-24 07:47:52,608 [INFO] mcp_servers.document_catalog.search.chunker: Chunked document 784c88f4: 1 chunks (target=512, overlap=64)
+2026-05-24 07:47:52,641 [INFO] mcp_servers.document_catalog.search.fts_search: Indexed 1 chunks into FTS5
+2026-05-24 07:47:53,333 [INFO] mcp_servers.document_catalog.search.embeddings: Embedded 1 chunks, ~2K tokens, est. $0.0004
+2026-05-24 07:47:53,339 [INFO] mcp_servers.document_catalog.search.faiss_index: Added 1 vectors to FAISS index (total: 32)
+2026-05-24 07:47:53,353 [INFO] mcp_servers.document_catalog.search.faiss_index: Saved FAISS index to /hermes-vault/indexes/faiss.index (32 vectors)
+2026-05-24 07:47:53,353 [INFO] mcp_servers.document_catalog.search.lifecycle: Indexed document 784c88f4: 1 chunks, 1 vectors in 0.8s
+2026-05-24 07:47:53,353 [INFO] mcp_servers.document_catalog.tools.index: Indexing complete for 784c88f4-1bed-4816-a6f7-31cafec0f5cc. Chunks: 1, Vectors: 1
+2026-05-24 07:47:53,354 [DEBUG] mcp_servers.document_catalog.tools.index: Marking document 784c88f4-1bed-4816-a6f7-31cafec0f5cc as fully indexed
+2026-05-24 07:47:57,365 [INFO] mcp_servers.document_catalog.tools.import_transactions: Starting import_transactions tool for document_id=784c88f4-1bed-4816-a6f7-31cafec0f5cc, bank=ABSA
+2026-05-24 07:47:57,373 [DEBUG] mcp_servers.document_catalog.tools.import_transactions: Found original file at /hermes-vault/originals/15/f3/15f3ca2fa95423c26cf38fd14b41822264db7cd7f2012baa185c632d2eb1c715.csv
+2026-05-24 07:47:57,396 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: ABSA from absa.json
+2026-05-24 07:47:57,405 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: Capitec from capitec.json
+2026-05-24 07:47:57,416 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: FNB from fnb.json
+2026-05-24 07:47:57,426 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: Nedbank from nedbank.json
+2026-05-24 07:47:57,437 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: Standard Bank from standard_bank.json
+2026-05-24 07:47:57,438 [INFO] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded 5 bank templates from /opt/hermes/mcp_servers/document_catalog/tools/../finance/importers/bank_templates
+2026-05-24 07:47:57,438 [INFO] mcp_servers.document_catalog.tools.import_transactions: Routing file /hermes-vault/originals/15/f3/15f3ca2fa95423c26cf38fd14b41822264db7cd7f2012baa185c632d2eb1c715.csv with mime='text/csv', ext='.csv'
+2026-05-24 07:47:57,439 [INFO] mcp_servers.document_catalog.finance.importers.import_orchestrator: === CSV import starting: path=/hermes-vault/originals/15/f3/15f3ca2fa95423c26cf38fd14b41822264db7cd7f2012baa185c632d2eb1c715.csv, doc=784c88f4-1bed-4816-a6f7-31cafec0f5cc ===
+2026-05-24 07:47:57,439 [INFO] mcp_servers.document_catalog.finance.importers.csv_parser: Parsing CSV /hermes-vault/originals/15/f3/15f3ca2fa95423c26cf38fd14b41822264db7cd7f2012baa185c632d2eb1c715.csv with template 'ABSA'
+2026-05-24 07:47:57,447 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Read CSV: headers=['Posting Date', 'Description', 'Amount', 'Balance'], data_rows=153, encoding=utf-8
+2026-05-24 07:47:57,448 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Column map: {'date_idx': 0, 'desc_idx': 1, 'amount_idx': 2, 'debit_idx': None, 'credit_idx': None, 'balance_idx': None}
+2026-05-24 07:47:57,450 [INFO] mcp_servers.document_catalog.finance.importers.csv_parser: CSV parse complete: 0 transactions, 0 warnings, period=None–None
+2026-05-24 07:47:57,450 [DEBUG] mcp_servers.document_catalog.finance.ledger_db: upsert_account: bank=ABSA, number=****0000, type=None, currency=ZAR, seen=None
+2026-05-24 07:47:57,488 [INFO] mcp_servers.document_catalog.finance.ledger_db: Created account c2cb384c-a752-488d-943a-1669de8d8051: ABSA ****0000
+2026-05-24 07:47:57,488 [INFO] mcp_servers.document_catalog.finance.importers.import_orchestrator: Upserted account: id=c2cb384c-a752-488d-943a-1669de8d8051, bank=ABSA
+2026-05-24 07:47:57,489 [DEBUG] mcp_servers.document_catalog.finance.ledger_db: insert_statement: id=15e66b0c-1e3a-4ed1-a703-a0d39f915ca3, doc=784c88f4-1bed-4816-a6f7-31cafec0f5cc, account=c2cb384c-a752-488d-943a-1669de8d8051, period=1900-01-01 to 2099-12-31, txns=0
+2026-05-24 07:47:57,505 [INFO] mcp_servers.document_catalog.finance.ledger_db: Inserted statement 15e66b0c-1e3a-4ed1-a703-a0d39f915ca3
+2026-05-24 07:47:57,506 [INFO] mcp_servers.document_catalog.finance.importers.import_orchestrator: Inserted statement: id=15e66b0c-1e3a-4ed1-a703-a0d39f915ca3
+2026-05-24 07:47:57,507 [DEBUG] mcp_servers.document_catalog.finance.ledger_db: insert_transactions: no transactions to insert
+2026-05-24 07:47:57,507 [INFO] mcp_servers.document_catalog.finance.importers.import_orchestrator: === Import COMPLETE: statement=15e66b0c-1e3a-4ed1-a703-a0d39f915ca3, parsed=0, imported=0, duplicates=0 ===
+2026-05-24 07:48:03,967 [INFO] mcp_servers.document_catalog.tools.financial_coverage: get_financial_coverage called: account=None, start=None, end=None
+2026-05-24 07:48:03,967 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Accounts query: SELECT
+            a.account_id,
+            a.bank_name,
+            a.account_number_masked,
+            a.account_type,
+            a.currency,
+            COUNT(DISTINCT bs.statement_id) AS statem  params=[]
+2026-05-24 07:48:03,974 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Found 2 accounts
+2026-05-24 07:48:03,977 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Overall stats: 2 statements, 0 transactions, range=1900-01-01 to 2099-12-31
+2026-05-24 07:48:03,993 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Covered months: ['1900-01', '1900-02', '1900-03', '1900-04', '1900-05', '1900-06', '1900-07', '1900-08', '1900-09', '1900-10', '1900-11', '1900-12']
+2026-05-24 07:48:04,001 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Found 0 coverage gaps
+2026-05-24 07:48:04,003 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Validation summary: passed=0, needs_review=1, pending=1
+2026-05-24 07:48:04,003 [INFO] mcp_servers.document_catalog.tools.financial_coverage: get_financial_coverage complete: 2 accounts, 2 statements, 0 gaps
+2026-05-24 07:48:08,930 [INFO] mcp_servers.document_catalog.tools.review: get_validation_issues: statement=15e66b0c-1e3a-4ed1-a703-a0d39f915ca3, document=None, severity=error
+2026-05-24 07:48:08,930 [DEBUG] mcp_servers.document_catalog.tools.review: Issues SQL: SELECT * FROM validation_results WHERE passed = FALSE AND statement_id = ? AND severity = ? ORDER BY validated_at DESC  params=['15e66b0c-1e3a-4ed1-a703-a0d39f915ca3', 'error']
+2026-05-24 07:48:08,933 [DEBUG] mcp_servers.document_catalog.tools.review: Found 0 failed validation results
+2026-05-24 07:48:08,934 [INFO] mcp_servers.document_catalog.tools.review: get_validation_issues complete: 0 issues (0 errors, 0 warnings)
+2026-05-24 07:48:31,462 [DEBUG] mcp_servers.document_catalog.tools.ingest: Detected MIME: text/csv for /opt/data/cache/documents/doc_59f4a504f743_posting_date_ymd.csv
+2026-05-24 07:48:31,462 [DEBUG] mcp_servers.document_catalog.tools.ingest: Computing SHA256 for file: /opt/data/cache/documents/doc_59f4a504f743_posting_date_ymd.csv
+2026-05-24 07:48:31,463 [DEBUG] mcp_servers.document_catalog.tools.ingest: SHA256 computed: f936dbd81485b36bb64bad43b4853be02be5d5424478650a2863c826980c4036
+2026-05-24 07:48:31,464 [DEBUG] mcp_servers.document_catalog.tools.ingest: Storing original file in vault (sha256=f936dbd81485b36bb64bad43b4853be02be5d5424478650a2863c826980c4036, ext=.csv)
+2026-05-24 07:48:31,506 [DEBUG] mcp_servers.document_catalog.vault: Stored original: originals/f9/36/f936dbd81485b36bb64bad43b4853be02be5d5424478650a2863c826980c4036.csv
+2026-05-24 07:48:31,510 [DEBUG] mcp_servers.document_catalog.tools.ingest: Stored successfully at originals/f9/36/f936dbd81485b36bb64bad43b4853be02be5d5424478650a2863c826980c4036.csv
+2026-05-24 07:48:31,516 [INFO] mcp_servers.document_catalog.tools.ingest: Ingested doc_59f4a504f743_posting_date_ymd.csv → 0d7d5269-ac88-4bd7-bc87-6c6a3b9e7dd8 (text/csv, 12947 bytes)
+2026-05-24 07:48:37,282 [INFO] mcp_servers.document_catalog.tools.import_transactions: Starting import_transactions tool for document_id=0d7d5269-ac88-4bd7-bc87-6c6a3b9e7dd8, bank=ABSA
+2026-05-24 07:48:37,289 [DEBUG] mcp_servers.document_catalog.tools.import_transactions: Found original file at /hermes-vault/originals/f9/36/f936dbd81485b36bb64bad43b4853be02be5d5424478650a2863c826980c4036.csv
+2026-05-24 07:48:37,311 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: ABSA from absa.json
+2026-05-24 07:48:37,322 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: Capitec from capitec.json
+2026-05-24 07:48:37,335 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: FNB from fnb.json
+2026-05-24 07:48:37,350 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: Nedbank from nedbank.json
+2026-05-24 07:48:37,372 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: Standard Bank from standard_bank.json
+2026-05-24 07:48:37,373 [INFO] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded 5 bank templates from /opt/hermes/mcp_servers/document_catalog/tools/../finance/importers/bank_templates
+2026-05-24 07:48:37,374 [INFO] mcp_servers.document_catalog.tools.import_transactions: Routing file /hermes-vault/originals/f9/36/f936dbd81485b36bb64bad43b4853be02be5d5424478650a2863c826980c4036.csv with mime='text/csv', ext='.csv'
+2026-05-24 07:48:37,375 [INFO] mcp_servers.document_catalog.finance.importers.import_orchestrator: === CSV import starting: path=/hermes-vault/originals/f9/36/f936dbd81485b36bb64bad43b4853be02be5d5424478650a2863c826980c4036.csv, doc=0d7d5269-ac88-4bd7-bc87-6c6a3b9e7dd8 ===
+2026-05-24 07:48:37,376 [INFO] mcp_servers.document_catalog.finance.importers.csv_parser: Parsing CSV /hermes-vault/originals/f9/36/f936dbd81485b36bb64bad43b4853be02be5d5424478650a2863c826980c4036.csv with template 'ABSA'
+2026-05-24 07:48:37,391 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Read CSV: headers=['Posting Date', 'Description', 'Amount', 'Balance'], data_rows=153, encoding=utf-8
+2026-05-24 07:48:37,392 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Column map: {'date_idx': 0, 'desc_idx': 1, 'amount_idx': 2, 'debit_idx': None, 'credit_idx': None, 'balance_idx': None}
+2026-05-24 07:48:37,394 [INFO] mcp_servers.document_catalog.finance.importers.csv_parser: CSV parse complete: 0 transactions, 0 warnings, period=None–None
+2026-05-24 07:48:37,395 [DEBUG] mcp_servers.document_catalog.finance.ledger_db: upsert_account: bank=ABSA, number=****0000, type=None, currency=ZAR, seen=None
+2026-05-24 07:48:37,397 [DEBUG] mcp_servers.document_catalog.finance.ledger_db: Account c2cb384c-a752-488d-943a-1669de8d8051 already up-to-date
+2026-05-24 07:48:37,398 [INFO] mcp_servers.document_catalog.finance.importers.import_orchestrator: Upserted account: id=c2cb384c-a752-488d-943a-1669de8d8051, bank=ABSA
+2026-05-24 07:48:37,399 [DEBUG] mcp_servers.document_catalog.finance.ledger_db: insert_statement: id=6844d2d8-f82e-4889-98c5-77a595f0707f, doc=0d7d5269-ac88-4bd7-bc87-6c6a3b9e7dd8, account=c2cb384c-a752-488d-943a-1669de8d8051, period=1900-01-01 to 2099-12-31, txns=0
+2026-05-24 07:48:37,408 [INFO] mcp_servers.document_catalog.finance.ledger_db: Inserted statement 6844d2d8-f82e-4889-98c5-77a595f0707f
+2026-05-24 07:48:37,409 [INFO] mcp_servers.document_catalog.finance.importers.import_orchestrator: Inserted statement: id=6844d2d8-f82e-4889-98c5-77a595f0707f
+2026-05-24 07:48:37,409 [DEBUG] mcp_servers.document_catalog.finance.ledger_db: insert_transactions: no transactions to insert
+2026-05-24 07:48:37,410 [INFO] mcp_servers.document_catalog.finance.importers.import_orchestrator: === Import COMPLETE: statement=6844d2d8-f82e-4889-98c5-77a595f0707f, parsed=0, imported=0, duplicates=0 ===
+2026-05-24 07:49:07,803 [DEBUG] mcp_servers.document_catalog.tools.ingest: Detected MIME: text/csv for /opt/data/cache/documents/doc_59f4a504f743_posting_date_cents.csv
+2026-05-24 07:49:07,804 [DEBUG] mcp_servers.document_catalog.tools.ingest: Computing SHA256 for file: /opt/data/cache/documents/doc_59f4a504f743_posting_date_cents.csv
+2026-05-24 07:49:07,805 [DEBUG] mcp_servers.document_catalog.tools.ingest: SHA256 computed: 44940ffc19f6cf564c1a4a2b6a812f26db44561a778fcb112d974b0839505db8
+2026-05-24 07:49:07,807 [DEBUG] mcp_servers.document_catalog.tools.ingest: Storing original file in vault (sha256=44940ffc19f6cf564c1a4a2b6a812f26db44561a778fcb112d974b0839505db8, ext=.csv)
+2026-05-24 07:49:07,900 [DEBUG] mcp_servers.document_catalog.vault: Stored original: originals/44/94/44940ffc19f6cf564c1a4a2b6a812f26db44561a778fcb112d974b0839505db8.csv
+2026-05-24 07:49:07,911 [DEBUG] mcp_servers.document_catalog.tools.ingest: Stored successfully at originals/44/94/44940ffc19f6cf564c1a4a2b6a812f26db44561a778fcb112d974b0839505db8.csv
+2026-05-24 07:49:07,932 [INFO] mcp_servers.document_catalog.tools.ingest: Ingested doc_59f4a504f743_posting_date_cents.csv → e1cacdea-238e-4502-9fee-f295819ecc86 (text/csv, 12750 bytes)
+2026-05-24 07:49:14,425 [INFO] mcp_servers.document_catalog.tools.import_transactions: Starting import_transactions tool for document_id=e1cacdea-238e-4502-9fee-f295819ecc86, bank=ABSA
+2026-05-24 07:49:14,432 [DEBUG] mcp_servers.document_catalog.tools.import_transactions: Found original file at /hermes-vault/originals/44/94/44940ffc19f6cf564c1a4a2b6a812f26db44561a778fcb112d974b0839505db8.csv
+2026-05-24 07:49:14,452 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: ABSA from absa.json
+2026-05-24 07:49:14,461 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: Capitec from capitec.json
+2026-05-24 07:49:14,469 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: FNB from fnb.json
+2026-05-24 07:49:14,480 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: Nedbank from nedbank.json
+2026-05-24 07:49:14,489 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: Standard Bank from standard_bank.json
+2026-05-24 07:49:14,489 [INFO] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded 5 bank templates from /opt/hermes/mcp_servers/document_catalog/tools/../finance/importers/bank_templates
+2026-05-24 07:49:14,489 [INFO] mcp_servers.document_catalog.tools.import_transactions: Routing file /hermes-vault/originals/44/94/44940ffc19f6cf564c1a4a2b6a812f26db44561a778fcb112d974b0839505db8.csv with mime='text/csv', ext='.csv'
+2026-05-24 07:49:14,490 [INFO] mcp_servers.document_catalog.finance.importers.import_orchestrator: === CSV import starting: path=/hermes-vault/originals/44/94/44940ffc19f6cf564c1a4a2b6a812f26db44561a778fcb112d974b0839505db8.csv, doc=e1cacdea-238e-4502-9fee-f295819ecc86 ===
+2026-05-24 07:49:14,490 [INFO] mcp_servers.document_catalog.finance.importers.csv_parser: Parsing CSV /hermes-vault/originals/44/94/44940ffc19f6cf564c1a4a2b6a812f26db44561a778fcb112d974b0839505db8.csv with template 'ABSA'
+2026-05-24 07:49:14,496 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Read CSV: headers=['Posting Date', 'Description', 'Amount', 'Balance'], data_rows=153, encoding=utf-8
+2026-05-24 07:49:14,497 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Column map: {'date_idx': 0, 'desc_idx': 1, 'amount_idx': 2, 'debit_idx': None, 'credit_idx': None, 'balance_idx': None}
+2026-05-24 07:49:14,498 [INFO] mcp_servers.document_catalog.finance.importers.csv_parser: CSV parse complete: 0 transactions, 0 warnings, period=None–None
+2026-05-24 07:49:14,498 [DEBUG] mcp_servers.document_catalog.finance.ledger_db: upsert_account: bank=ABSA, number=****0000, type=None, currency=ZAR, seen=None
+2026-05-24 07:49:14,500 [DEBUG] mcp_servers.document_catalog.finance.ledger_db: Account c2cb384c-a752-488d-943a-1669de8d8051 already up-to-date
+2026-05-24 07:49:14,500 [INFO] mcp_servers.document_catalog.finance.importers.import_orchestrator: Upserted account: id=c2cb384c-a752-488d-943a-1669de8d8051, bank=ABSA
+2026-05-24 07:49:14,501 [DEBUG] mcp_servers.document_catalog.finance.ledger_db: insert_statement: id=d1c42610-be9a-4669-bd6f-21cf3936ec7a, doc=e1cacdea-238e-4502-9fee-f295819ecc86, account=c2cb384c-a752-488d-943a-1669de8d8051, period=1900-01-01 to 2099-12-31, txns=0
+2026-05-24 07:49:14,506 [INFO] mcp_servers.document_catalog.finance.ledger_db: Inserted statement d1c42610-be9a-4669-bd6f-21cf3936ec7a
+2026-05-24 07:49:14,507 [INFO] mcp_servers.document_catalog.finance.importers.import_orchestrator: Inserted statement: id=d1c42610-be9a-4669-bd6f-21cf3936ec7a
+2026-05-24 07:49:14,507 [DEBUG] mcp_servers.document_catalog.finance.ledger_db: insert_transactions: no transactions to insert
+2026-05-24 07:49:14,508 [INFO] mcp_servers.document_catalog.finance.importers.import_orchestrator: === Import COMPLETE: statement=d1c42610-be9a-4669-bd6f-21cf3936ec7a, parsed=0, imported=0, duplicates=0 ===
+2026-05-24 07:49:31,037 [DEBUG] mcp_servers.document_catalog.tools.ingest: Detected MIME: text/csv for /opt/data/cache/documents/doc_59f4a504f743_posting_date_dmy_amount_cents.csv
+2026-05-24 07:49:31,038 [DEBUG] mcp_servers.document_catalog.tools.ingest: Computing SHA256 for file: /opt/data/cache/documents/doc_59f4a504f743_posting_date_dmy_amount_cents.csv
+2026-05-24 07:49:31,038 [DEBUG] mcp_servers.document_catalog.tools.ingest: SHA256 computed: 3b340d04a49ca550767c645fb27cf416a99e345d3fb86485feee0ceb1d0c31c1
+2026-05-24 07:49:31,039 [DEBUG] mcp_servers.document_catalog.tools.ingest: Storing original file in vault (sha256=3b340d04a49ca550767c645fb27cf416a99e345d3fb86485feee0ceb1d0c31c1, ext=.csv)
+2026-05-24 07:49:31,085 [DEBUG] mcp_servers.document_catalog.vault: Stored original: originals/3b/34/3b340d04a49ca550767c645fb27cf416a99e345d3fb86485feee0ceb1d0c31c1.csv
+2026-05-24 07:49:31,090 [DEBUG] mcp_servers.document_catalog.tools.ingest: Stored successfully at originals/3b/34/3b340d04a49ca550767c645fb27cf416a99e345d3fb86485feee0ceb1d0c31c1.csv
+2026-05-24 07:49:31,097 [INFO] mcp_servers.document_catalog.tools.ingest: Ingested doc_59f4a504f743_posting_date_dmy_amount_cents.csv → 0673844d-8db1-4539-8b75-d40254ae7e15 (text/csv, 12750 bytes)
+2026-05-24 07:49:35,750 [INFO] mcp_servers.document_catalog.tools.import_transactions: Starting import_transactions tool for document_id=0673844d-8db1-4539-8b75-d40254ae7e15, bank=ABSA
+2026-05-24 07:49:35,758 [DEBUG] mcp_servers.document_catalog.tools.import_transactions: Found original file at /hermes-vault/originals/3b/34/3b340d04a49ca550767c645fb27cf416a99e345d3fb86485feee0ceb1d0c31c1.csv
+2026-05-24 07:49:35,780 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: ABSA from absa.json
+2026-05-24 07:49:35,790 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: Capitec from capitec.json
+2026-05-24 07:49:35,799 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: FNB from fnb.json
+2026-05-24 07:49:35,808 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: Nedbank from nedbank.json
+2026-05-24 07:49:35,816 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: Standard Bank from standard_bank.json
+2026-05-24 07:49:35,816 [INFO] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded 5 bank templates from /opt/hermes/mcp_servers/document_catalog/tools/../finance/importers/bank_templates
+2026-05-24 07:49:35,816 [INFO] mcp_servers.document_catalog.tools.import_transactions: Routing file /hermes-vault/originals/3b/34/3b340d04a49ca550767c645fb27cf416a99e345d3fb86485feee0ceb1d0c31c1.csv with mime='text/csv', ext='.csv'
+2026-05-24 07:49:35,817 [INFO] mcp_servers.document_catalog.finance.importers.import_orchestrator: === CSV import starting: path=/hermes-vault/originals/3b/34/3b340d04a49ca550767c645fb27cf416a99e345d3fb86485feee0ceb1d0c31c1.csv, doc=0673844d-8db1-4539-8b75-d40254ae7e15 ===
+2026-05-24 07:49:35,817 [INFO] mcp_servers.document_catalog.finance.importers.csv_parser: Parsing CSV /hermes-vault/originals/3b/34/3b340d04a49ca550767c645fb27cf416a99e345d3fb86485feee0ceb1d0c31c1.csv with template 'ABSA'
+2026-05-24 07:49:35,823 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Read CSV: headers=['Posting Date', 'Description', 'Amount', 'Balance'], data_rows=153, encoding=utf-8
+2026-05-24 07:49:35,824 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Column map: {'date_idx': 0, 'desc_idx': 1, 'amount_idx': 2, 'debit_idx': None, 'credit_idx': None, 'balance_idx': None}
+2026-05-24 07:49:35,825 [INFO] mcp_servers.document_catalog.finance.importers.csv_parser: CSV parse complete: 0 transactions, 0 warnings, period=None–None
+2026-05-24 07:49:35,825 [DEBUG] mcp_servers.document_catalog.finance.ledger_db: upsert_account: bank=ABSA, number=****0000, type=None, currency=ZAR, seen=None
+2026-05-24 07:49:35,827 [DEBUG] mcp_servers.document_catalog.finance.ledger_db: Account c2cb384c-a752-488d-943a-1669de8d8051 already up-to-date
+2026-05-24 07:49:35,827 [INFO] mcp_servers.document_catalog.finance.importers.import_orchestrator: Upserted account: id=c2cb384c-a752-488d-943a-1669de8d8051, bank=ABSA
+2026-05-24 07:49:35,828 [DEBUG] mcp_servers.document_catalog.finance.ledger_db: insert_statement: id=952d4364-3355-4757-b7e1-d4211216ef9a, doc=0673844d-8db1-4539-8b75-d40254ae7e15, account=c2cb384c-a752-488d-943a-1669de8d8051, period=1900-01-01 to 2099-12-31, txns=0
+2026-05-24 07:49:35,834 [INFO] mcp_servers.document_catalog.finance.ledger_db: Inserted statement 952d4364-3355-4757-b7e1-d4211216ef9a
+2026-05-24 07:49:35,834 [INFO] mcp_servers.document_catalog.finance.importers.import_orchestrator: Inserted statement: id=952d4364-3355-4757-b7e1-d4211216ef9a
+2026-05-24 07:49:35,835 [DEBUG] mcp_servers.document_catalog.finance.ledger_db: insert_transactions: no transactions to insert
+2026-05-24 07:49:35,835 [INFO] mcp_servers.document_catalog.finance.importers.import_orchestrator: === Import COMPLETE: statement=952d4364-3355-4757-b7e1-d4211216ef9a, parsed=0, imported=0, duplicates=0 ===
+2026-05-24 07:49:51,046 [DEBUG] mcp_servers.document_catalog.tools.ingest: Detected MIME: text/plain for /opt/data/cache/documents/doc_59f4a504f743_23 Feb 2026 - 23 May 2026 (2).csv
+2026-05-24 07:49:51,047 [DEBUG] mcp_servers.document_catalog.tools.ingest: Computing SHA256 for file: /opt/data/cache/documents/doc_59f4a504f743_23 Feb 2026 - 23 May 2026 (2).csv
+2026-05-24 07:49:51,047 [DEBUG] mcp_servers.document_catalog.tools.ingest: SHA256 computed: f57eb0a18e8de50d3c2c94fb1f6d422ff113f3d512082ba407ed1bc69e734952
+2026-05-24 07:49:51,049 [INFO] mcp_servers.document_catalog.tools.ingest: Duplicate detected: /opt/data/cache/documents/doc_59f4a504f743_23 Feb 2026 - 23 May 2026 (2).csv already stored as 3d0bccfa-7fde-4a9b-bf8a-e89474588554
+2026-05-24 07:49:55,823 [INFO] mcp_servers.document_catalog.tools.financial_coverage: get_financial_coverage called: account=None, start=None, end=None
+2026-05-24 07:49:55,824 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Accounts query: SELECT
+            a.account_id,
+            a.bank_name,
+            a.account_number_masked,
+            a.account_type,
+            a.currency,
+            COUNT(DISTINCT bs.statement_id) AS statem  params=[]
+2026-05-24 07:49:55,832 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Found 2 accounts
+2026-05-24 07:49:55,836 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Overall stats: 5 statements, 0 transactions, range=1900-01-01 to 2099-12-31
+2026-05-24 07:49:55,886 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Covered months: ['1900-01', '1900-02', '1900-03', '1900-04', '1900-05', '1900-06', '1900-07', '1900-08', '1900-09', '1900-10', '1900-11', '1900-12']
+2026-05-24 07:49:55,895 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Found 0 coverage gaps
+2026-05-24 07:49:55,898 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Validation summary: passed=0, needs_review=1, pending=4
+2026-05-24 07:49:55,899 [INFO] mcp_servers.document_catalog.tools.financial_coverage: get_financial_coverage complete: 2 accounts, 5 statements, 0 gaps
+2026-05-24 07:54:32,506 [DEBUG] mcp_servers.document_catalog.tools.ingest: Detected MIME: text/csv for /opt/data/cache/documents/doc_59f4a504f743_ABSA_import_format.csv
+2026-05-24 07:54:32,506 [DEBUG] mcp_servers.document_catalog.tools.ingest: Computing SHA256 for file: /opt/data/cache/documents/doc_59f4a504f743_ABSA_import_format.csv
+2026-05-24 07:54:32,507 [DEBUG] mcp_servers.document_catalog.tools.ingest: SHA256 computed: a12dda6b9472fb0dac6584559913daf7692cb3605bd68a1f1ad748305a49fad6
+2026-05-24 07:54:32,508 [DEBUG] mcp_servers.document_catalog.tools.ingest: Storing original file in vault (sha256=a12dda6b9472fb0dac6584559913daf7692cb3605bd68a1f1ad748305a49fad6, ext=.csv)
+2026-05-24 07:54:32,566 [DEBUG] mcp_servers.document_catalog.vault: Stored original: originals/a1/2d/a12dda6b9472fb0dac6584559913daf7692cb3605bd68a1f1ad748305a49fad6.csv
+2026-05-24 07:54:32,572 [DEBUG] mcp_servers.document_catalog.tools.ingest: Stored successfully at originals/a1/2d/a12dda6b9472fb0dac6584559913daf7692cb3605bd68a1f1ad748305a49fad6.csv
+2026-05-24 07:54:32,581 [INFO] mcp_servers.document_catalog.tools.ingest: Ingested doc_59f4a504f743_ABSA_import_format.csv → 16b0e90e-5500-4a86-bb3b-3730679de1cb (text/csv, 12955 bytes)
+2026-05-24 07:54:37,296 [DEBUG] mcp_servers.document_catalog.tools.extract: Attempting to retrieve document metadata for 16b0e90e-5500-4a86-bb3b-3730679de1cb
+2026-05-24 07:54:37,304 [INFO] mcp_servers.document_catalog.tools.extract: Selected engine 'markitdown' for mime type 'text/csv' (document_id=16b0e90e-5500-4a86-bb3b-3730679de1cb)
+2026-05-24 07:54:37,304 [DEBUG] mcp_servers.document_catalog.tools.extract: Calling MarkItDownEngine.convert on /hermes-vault/originals/a1/2d/a12dda6b9472fb0dac6584559913daf7692cb3605bd68a1f1ad748305a49fad6.csv
+2026-05-24 07:54:37,345 [INFO] mcp_servers.document_catalog.engines.markitdown_engine: MarkItDown converted /hermes-vault/originals/a1/2d/a12dda6b9472fb0dac6584559913daf7692cb3605bd68a1f1ad748305a49fad6.csv: ~5 pages, 14118 chars, ~1 tables in 0.0s
+2026-05-24 07:54:37,440 [INFO] mcp_servers.document_catalog.artifact_writer: Wrote 2 artifacts to extracted/a12dda6b9472/ (14401 bytes total)
+2026-05-24 07:54:37,448 [INFO] mcp_servers.document_catalog.tools.extract: Extracted 16b0e90e-5500-4a86-bb3b-3730679de1cb (doc_59f4a504f743_ABSA_import_format.csv) with markitdown: 5 pages, 1 tables, 14118 chars
+2026-05-24 07:54:42,169 [INFO] mcp_servers.document_catalog.tools.index: Starting index_document tool for document_id=16b0e90e-5500-4a86-bb3b-3730679de1cb
+2026-05-24 07:54:42,172 [DEBUG] mcp_servers.document_catalog.tools.index: Calling IndexLifecycle.index_document for 16b0e90e-5500-4a86-bb3b-3730679de1cb (sha256: a12dda6b9472fb0dac6584559913daf7692cb3605bd68a1f1ad748305a49fad6)
+2026-05-24 07:54:42,185 [INFO] mcp_servers.document_catalog.search.chunker: Chunked document 16b0e90e: 1 chunks (target=512, overlap=64)
+2026-05-24 07:54:42,204 [INFO] mcp_servers.document_catalog.search.fts_search: Indexed 1 chunks into FTS5
+2026-05-24 07:54:42,851 [INFO] mcp_servers.document_catalog.search.embeddings: Embedded 1 chunks, ~2K tokens, est. $0.0004
+2026-05-24 07:54:42,857 [INFO] mcp_servers.document_catalog.search.faiss_index: Added 1 vectors to FAISS index (total: 33)
+2026-05-24 07:54:42,869 [INFO] mcp_servers.document_catalog.search.faiss_index: Saved FAISS index to /hermes-vault/indexes/faiss.index (33 vectors)
+2026-05-24 07:54:42,870 [INFO] mcp_servers.document_catalog.search.lifecycle: Indexed document 16b0e90e: 1 chunks, 1 vectors in 0.7s
+2026-05-24 07:54:42,870 [INFO] mcp_servers.document_catalog.tools.index: Indexing complete for 16b0e90e-5500-4a86-bb3b-3730679de1cb. Chunks: 1, Vectors: 1
+2026-05-24 07:54:42,874 [DEBUG] mcp_servers.document_catalog.tools.index: Marking document 16b0e90e-5500-4a86-bb3b-3730679de1cb as fully indexed
+2026-05-24 07:54:47,028 [INFO] mcp_servers.document_catalog.tools.import_transactions: Starting import_transactions tool for document_id=16b0e90e-5500-4a86-bb3b-3730679de1cb, bank=ABSA
+2026-05-24 07:54:47,047 [DEBUG] mcp_servers.document_catalog.tools.import_transactions: Found original file at /hermes-vault/originals/a1/2d/a12dda6b9472fb0dac6584559913daf7692cb3605bd68a1f1ad748305a49fad6.csv
+2026-05-24 07:54:47,088 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: ABSA from absa.json
+2026-05-24 07:54:47,100 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: Capitec from capitec.json
+2026-05-24 07:54:47,117 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: FNB from fnb.json
+2026-05-24 07:54:47,153 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: Nedbank from nedbank.json
+2026-05-24 07:54:47,166 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: Standard Bank from standard_bank.json
+2026-05-24 07:54:47,167 [INFO] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded 5 bank templates from /opt/hermes/mcp_servers/document_catalog/tools/../finance/importers/bank_templates
+2026-05-24 07:54:47,168 [INFO] mcp_servers.document_catalog.tools.import_transactions: Routing file /hermes-vault/originals/a1/2d/a12dda6b9472fb0dac6584559913daf7692cb3605bd68a1f1ad748305a49fad6.csv with mime='text/csv', ext='.csv'
+2026-05-24 07:54:47,169 [INFO] mcp_servers.document_catalog.finance.importers.import_orchestrator: === CSV import starting: path=/hermes-vault/originals/a1/2d/a12dda6b9472fb0dac6584559913daf7692cb3605bd68a1f1ad748305a49fad6.csv, doc=16b0e90e-5500-4a86-bb3b-3730679de1cb ===
+2026-05-24 07:54:47,169 [INFO] mcp_servers.document_catalog.finance.importers.csv_parser: Parsing CSV /hermes-vault/originals/a1/2d/a12dda6b9472fb0dac6584559913daf7692cb3605bd68a1f1ad748305a49fad6.csv with template 'ABSA'
+2026-05-24 07:54:47,182 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Read CSV: headers=['Posting Date', 'Description', 'Amount', 'Running Balance'], data_rows=153, encoding=utf-8
+2026-05-24 07:54:47,183 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Column map: {'date_idx': 0, 'desc_idx': 1, 'amount_idx': 2, 'debit_idx': None, 'credit_idx': None, 'balance_idx': 3}
+2026-05-24 07:54:47,188 [INFO] mcp_servers.document_catalog.finance.importers.csv_parser: CSV parse complete: 85 transactions, 0 warnings, period=2026-02-26–2026-05-20
+2026-05-24 07:54:47,189 [DEBUG] mcp_servers.document_catalog.finance.ledger_db: upsert_account: bank=ABSA, number=****0000, type=None, currency=ZAR, seen=2026-02-26
+2026-05-24 07:54:47,204 [DEBUG] mcp_servers.document_catalog.finance.ledger_db: Updated account c2cb384c-a752-488d-943a-1669de8d8051: {'first_seen_date': '2026-02-26', 'last_seen_date': '2026-02-26'}
+2026-05-24 07:54:47,205 [INFO] mcp_servers.document_catalog.finance.importers.import_orchestrator: Upserted account: id=c2cb384c-a752-488d-943a-1669de8d8051, bank=ABSA
+2026-05-24 07:54:47,205 [DEBUG] mcp_servers.document_catalog.finance.ledger_db: insert_statement: id=01cf670c-12be-429e-a450-1f3aec2c7eb1, doc=16b0e90e-5500-4a86-bb3b-3730679de1cb, account=c2cb384c-a752-488d-943a-1669de8d8051, period=2026-02-26 to 2026-05-20, txns=85
+2026-05-24 07:54:47,216 [INFO] mcp_servers.document_catalog.finance.ledger_db: Inserted statement 01cf670c-12be-429e-a450-1f3aec2c7eb1
+2026-05-24 07:54:47,217 [INFO] mcp_servers.document_catalog.finance.importers.import_orchestrator: Inserted statement: id=01cf670c-12be-429e-a450-1f3aec2c7eb1
+2026-05-24 07:54:47,219 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-03-07, amount=-50000, desc=CASHSEND DIGITAL CARD NO. 6179 ABSA BANK
+2026-05-24 07:54:47,221 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-03-07, amount=-50000, desc=CASHSEND DIGITAL CARD NO. 6179 ABSA BANK
+2026-05-24 07:54:47,221 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-03-07, amount=50000, desc=CAN CASHSEND IB CARD NO. 6179 0793180000
+2026-05-24 07:54:47,222 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-04-11, amount=-50000, desc=CASHSEND DIGITAL CARD NO. 6179 ABSA BANK
+2026-05-24 07:54:47,223 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-04-18, amount=-50000, desc=CASHSEND DIGITAL CARD NO. 6179 ABSA BANK
+2026-05-24 07:54:47,224 [INFO] mcp_servers.document_catalog.finance.importers.import_orchestrator: Skipped 5 duplicate transactions (of 85 total)
+2026-05-24 07:54:47,225 [DEBUG] mcp_servers.document_catalog.finance.ledger_db: insert_transactions: inserting 80 rows...
+2026-05-24 07:54:47,821 [INFO] mcp_servers.document_catalog.finance.ledger_db: Inserted 80 transactions
+2026-05-24 07:54:47,822 [INFO] mcp_servers.document_catalog.finance.importers.import_orchestrator: === Import COMPLETE: statement=01cf670c-12be-429e-a450-1f3aec2c7eb1, parsed=85, imported=80, duplicates=5 ===
+2026-05-24 07:54:51,270 [INFO] mcp_servers.document_catalog.tools.financial_coverage: get_financial_coverage called: account=None, start=None, end=None
+2026-05-24 07:54:51,271 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Accounts query: SELECT
+            a.account_id,
+            a.bank_name,
+            a.account_number_masked,
+            a.account_type,
+            a.currency,
+            COUNT(DISTINCT bs.statement_id) AS statem  params=[]
+2026-05-24 07:54:51,280 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Found 2 accounts
+2026-05-24 07:54:51,284 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Overall stats: 6 statements, 85 transactions, range=1900-01-01 to 2099-12-31
+2026-05-24 07:54:51,333 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Covered months: ['1900-01', '1900-02', '1900-03', '1900-04', '1900-05', '1900-06', '1900-07', '1900-08', '1900-09', '1900-10', '1900-11', '1900-12']
+2026-05-24 07:54:51,342 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Found 0 coverage gaps
+2026-05-24 07:54:51,344 [DEBUG] mcp_servers.document_catalog.tools.financial_coverage: Validation summary: passed=0, needs_review=1, pending=5
+2026-05-24 07:54:51,345 [INFO] mcp_servers.document_catalog.tools.financial_coverage: get_financial_coverage complete: 2 accounts, 6 statements, 0 gaps
+2026-05-24 07:54:55,848 [INFO] mcp_servers.document_catalog.tools.query_transactions: query_transactions called: date_from=2026-02-26, date_to=2026-05-20, category=None, merchant=None, account_id=c2cb384c-a752-488d-943a-1669de8d8051, group_by=None, metrics=None, only_validated=False, limit=5, offset=0
+2026-05-24 07:54:55,849 [DEBUG] mcp_servers.document_catalog.tools.query_transactions: WHERE clause:  WHERE t.account_id = ? AND t.transaction_date >= ? AND t.transaction_date <= ?  params=['c2cb384c-a752-488d-943a-1669de8d8051', '2026-02-26', '2026-05-20']
+2026-05-24 07:54:55,850 [DEBUG] mcp_servers.document_catalog.tools.query_transactions: Count SQL: SELECT COUNT(*) FROM transactions t WHERE t.account_id = ? AND t.transaction_date >= ? AND t.transaction_date <= ?
+2026-05-24 07:54:55,852 [DEBUG] mcp_servers.document_catalog.tools.query_transactions: Total matching transactions: 80
+2026-05-24 07:54:55,854 [DEBUG] mcp_servers.document_catalog.tools.query_transactions: Query SQL: SELECT t.* FROM transactions t WHERE t.account_id = ? AND t.transaction_date >= ? AND t.transaction_date <= ? ORDER BY t.transaction_date LIMIT ? OFFSET ?
+2026-05-24 07:54:55,867 [DEBUG] mcp_servers.document_catalog.tools.query_transactions: Fetched 5 rows (limit=5, offset=0)
+2026-05-24 07:54:55,867 [INFO] mcp_servers.document_catalog.tools.query_transactions: query_transactions complete: 5/80 returned, coverage=2026-02-26-2026-05-20
+2026-05-24 07:55:02,769 [INFO] mcp_servers.document_catalog.tools.spending_analysis: run_spending_analysis: start=2026-02-26, end=2026-05-20, account=None, group_by=category, top_n=10, only_validated=False
+2026-05-24 07:55:02,769 [DEBUG] mcp_servers.document_catalog.tools.spending_analysis: WHERE clause:  WHERE t.transaction_date >= ? AND t.transaction_date <= ?  params=['2026-02-26', '2026-05-20']
+2026-05-24 07:55:02,770 [DEBUG] mcp_servers.document_catalog.tools.spending_analysis: Totals SQL: SELECT
+            COALESCE(SUM(CASE WHEN t.amount_cents > 0 THEN t.amount_cents ELSE 0 END), 0) AS income,
+            COALESCE(SUM(CASE WHEN t.amount_cents < 0 THEN t.amount_cents ELSE 0 END), 0) AS
+2026-05-24 07:55:02,773 [DEBUG] mcp_servers.document_catalog.tools.spending_analysis: Totals: income=293823856 cents, expenses=-292711241 cents, txn_count=80
+2026-05-24 07:55:02,776 [DEBUG] mcp_servers.document_catalog.tools.spending_analysis: Statements in range: 1
+2026-05-24 07:55:02,776 [DEBUG] mcp_servers.document_catalog.tools.spending_analysis: Breakdown SQL: SELECT
+            COALESCE(t.category, 'other') AS category,
+            SUM(t.amount_cents) AS total_cents,
+            COUNT(*) AS count
+        FROM transactions t WHERE t.transaction_date >= ? AN
+2026-05-24 07:55:02,781 [DEBUG] mcp_servers.document_catalog.tools.spending_analysis: Breakdown returned 1 groups
+2026-05-24 07:55:02,781 [DEBUG] mcp_servers.document_catalog.tools.spending_analysis:   Group other: total=1112615 cents, count=80, pct=100.0%
+2026-05-24 07:55:02,781 [DEBUG] mcp_servers.document_catalog.tools.spending_analysis: Detecting recurring payments...
+2026-05-24 07:55:02,787 [DEBUG] mcp_servers.document_catalog.tools.spending_analysis:   Recurring: INT DEBIT ORDER TO ABSA LIFE 6433848601 x3, avg=-27050 cents
+2026-05-24 07:55:02,787 [DEBUG] mcp_servers.document_catalog.tools.spending_analysis:   Recurring: AIRTIME DEBIT CARD NO. 9726 VODACOM: 0793180000 x3, avg=-10500 cents
+2026-05-24 07:55:02,788 [DEBUG] mcp_servers.document_catalog.tools.spending_analysis:   Recurring: MONTHLY ACC FEE x3, avg=-30000 cents
+2026-05-24 07:55:02,788 [DEBUG] mcp_servers.document_catalog.tools.spending_analysis:   Recurring: DIGITAL PAYMENT DT ABSA BANK SJ park avenue rent x3, avg=-350000 cents
+2026-05-24 07:55:02,788 [DEBUG] mcp_servers.document_catalog.tools.spending_analysis: Found 4 recurring patterns
+2026-05-24 07:55:02,789 [INFO] mcp_servers.document_catalog.tools.spending_analysis: run_spending_analysis complete: income=293823856, expenses=-292711241, groups=1, recurring=4
+2026-05-24 07:55:11,635 [INFO] mcp_servers.document_catalog.tools.review: get_validation_issues: statement=01cf670c-12be-429e-a450-1f3aec2c7eb1, document=None, severity=warning
+2026-05-24 07:55:11,636 [DEBUG] mcp_servers.document_catalog.tools.review: Issues SQL: SELECT * FROM validation_results WHERE passed = FALSE AND statement_id = ? AND severity = ? ORDER BY validated_at DESC  params=['01cf670c-12be-429e-a450-1f3aec2c7eb1', 'warning']
+2026-05-24 07:55:11,639 [DEBUG] mcp_servers.document_catalog.tools.review: Found 0 failed validation results
+2026-05-24 07:55:11,645 [INFO] mcp_servers.document_catalog.tools.review: get_validation_issues complete: 0 issues (0 errors, 0 warnings)
+2026-05-24 08:01:27,251 [DEBUG] mcp_servers.document_catalog.tools.list_docs: list_documents called: type=None, status=None, date_from=None, date_to=None, search='.csv', limit=20, offset=0
+2026-05-24 08:01:27,251 [INFO] mcp_servers.document_catalog.tools.list_docs: Executing list_documents catalog query (limit=20, offset=0)
+2026-05-24 08:01:27,253 [DEBUG] mcp_servers.document_catalog.tools.list_docs: list_documents: returned 7 of 7 (offset=0, limit=20)
+2026-05-24 08:01:28,260 [DEBUG] mcp_servers.document_catalog.tools.list_docs: list_documents called: type=None, status=None, date_from=None, date_to=None, search='ABSA', limit=20, offset=0
+2026-05-24 08:01:28,260 [INFO] mcp_servers.document_catalog.tools.list_docs: Executing list_documents catalog query (limit=20, offset=0)
+2026-05-24 08:01:28,263 [DEBUG] mcp_servers.document_catalog.tools.list_docs: list_documents: returned 1 of 1 (offset=0, limit=20)
+2026-05-24 08:01:29,269 [DEBUG] mcp_servers.document_catalog.tools.list_docs: list_documents called: type=bank_statement, status=None, date_from=None, date_to=None, search='None', limit=20, offset=0
+2026-05-24 08:01:29,270 [INFO] mcp_servers.document_catalog.tools.list_docs: Executing list_documents catalog query (limit=20, offset=0)
+2026-05-24 08:01:29,271 [DEBUG] mcp_servers.document_catalog.tools.list_docs: list_documents: returned 6 of 6 (offset=0, limit=20)
+2026-05-24 08:01:45,240 [INFO] mcp_servers.document_catalog.tools.delete: Starting delete_document for document_id=16b0e90e-5500-4a86-bb3b-3730679de1cb
+2026-05-24 08:01:45,243 [INFO] mcp_servers.document_catalog.search.faiss_index: Soft-deleted 1 vectors for document 16b0e90e
+2026-05-24 08:01:45,257 [INFO] mcp_servers.document_catalog.search.fts_search: Removed 1 chunks for document 16b0e90e
+2026-05-24 08:01:45,258 [INFO] mcp_servers.document_catalog.search.lifecycle: Removed document 16b0e90e from indexes: 1 chunks, 1 vectors
+2026-05-24 08:01:45,258 [INFO] mcp_servers.document_catalog.tools.delete: Removed from indexes: 1 vectors, 1 chunks
+2026-05-24 08:01:45,270 [INFO] mcp_servers.document_catalog.tools.delete: Deleted extraction dir: /hermes-vault/extracted/a12dda6b9472fb0dac6584559913daf7692cb3605bd68a1f1ad748305a49fad6
+2026-05-24 08:01:45,280 [INFO] mcp_servers.document_catalog.tools.delete: Deleted original: originals/a1/2d/a12dda6b9472fb0dac6584559913daf7692cb3605bd68a1f1ad748305a49fad6.csv
+2026-05-24 08:01:45,293 [INFO] mcp_servers.document_catalog.tools.delete: Document 16b0e90e-5500-4a86-bb3b-3730679de1cb (doc_59f4a504f743_ABSA_import_format.csv) fully deleted
+2026-05-24 08:01:47,890 [DEBUG] mcp_servers.document_catalog.tools.ingest: Detected MIME: text/csv for /opt/data/cache/documents/doc_59f4a504f743_ABSA_import_format.csv
+2026-05-24 08:01:47,890 [DEBUG] mcp_servers.document_catalog.tools.ingest: Computing SHA256 for file: /opt/data/cache/documents/doc_59f4a504f743_ABSA_import_format.csv
+2026-05-24 08:01:47,891 [DEBUG] mcp_servers.document_catalog.tools.ingest: SHA256 computed: a12dda6b9472fb0dac6584559913daf7692cb3605bd68a1f1ad748305a49fad6
+2026-05-24 08:01:47,892 [DEBUG] mcp_servers.document_catalog.tools.ingest: Storing original file in vault (sha256=a12dda6b9472fb0dac6584559913daf7692cb3605bd68a1f1ad748305a49fad6, ext=.csv)
+2026-05-24 08:01:47,918 [DEBUG] mcp_servers.document_catalog.vault: Stored original: originals/a1/2d/a12dda6b9472fb0dac6584559913daf7692cb3605bd68a1f1ad748305a49fad6.csv
+2026-05-24 08:01:47,921 [DEBUG] mcp_servers.document_catalog.tools.ingest: Stored successfully at originals/a1/2d/a12dda6b9472fb0dac6584559913daf7692cb3605bd68a1f1ad748305a49fad6.csv
+2026-05-24 08:01:47,925 [INFO] mcp_servers.document_catalog.tools.ingest: Ingested doc_59f4a504f743_ABSA_import_format.csv → c6a62ffa-e765-45f1-92a7-bf02d0f99e18 (text/csv, 12955 bytes)
+2026-05-24 08:01:51,576 [INFO] mcp_servers.document_catalog.tools.import_transactions: Starting import_transactions tool for document_id=c6a62ffa-e765-45f1-92a7-bf02d0f99e18, bank=ABSA
+2026-05-24 08:01:51,580 [DEBUG] mcp_servers.document_catalog.tools.import_transactions: Found original file at /hermes-vault/originals/a1/2d/a12dda6b9472fb0dac6584559913daf7692cb3605bd68a1f1ad748305a49fad6.csv
+2026-05-24 08:01:51,589 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: ABSA from absa.json
+2026-05-24 08:01:51,593 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: Capitec from capitec.json
+2026-05-24 08:01:51,597 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: FNB from fnb.json
+2026-05-24 08:01:51,601 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: Nedbank from nedbank.json
+2026-05-24 08:01:51,605 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded bank template: Standard Bank from standard_bank.json
+2026-05-24 08:01:51,605 [INFO] mcp_servers.document_catalog.finance.importers.csv_parser: Loaded 5 bank templates from /opt/hermes/mcp_servers/document_catalog/tools/../finance/importers/bank_templates
+2026-05-24 08:01:51,605 [INFO] mcp_servers.document_catalog.tools.import_transactions: Routing file /hermes-vault/originals/a1/2d/a12dda6b9472fb0dac6584559913daf7692cb3605bd68a1f1ad748305a49fad6.csv with mime='text/csv', ext='.csv'
+2026-05-24 08:01:51,605 [INFO] mcp_servers.document_catalog.finance.importers.import_orchestrator: === CSV import starting: path=/hermes-vault/originals/a1/2d/a12dda6b9472fb0dac6584559913daf7692cb3605bd68a1f1ad748305a49fad6.csv, doc=c6a62ffa-e765-45f1-92a7-bf02d0f99e18 ===
+2026-05-24 08:01:51,605 [INFO] mcp_servers.document_catalog.finance.importers.csv_parser: Parsing CSV /hermes-vault/originals/a1/2d/a12dda6b9472fb0dac6584559913daf7692cb3605bd68a1f1ad748305a49fad6.csv with template 'ABSA'
+2026-05-24 08:01:51,609 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Read CSV: headers=['Posting Date', 'Description', 'Amount', 'Running Balance'], data_rows=153, encoding=utf-8
+2026-05-24 08:01:51,609 [DEBUG] mcp_servers.document_catalog.finance.importers.csv_parser: Column map: {'date_idx': 0, 'desc_idx': 1, 'amount_idx': 2, 'debit_idx': None, 'credit_idx': None, 'balance_idx': 3}
+2026-05-24 08:01:51,610 [INFO] mcp_servers.document_catalog.finance.importers.csv_parser: CSV parse complete: 85 transactions, 0 warnings, period=2026-02-26–2026-05-20
+2026-05-24 08:01:51,610 [DEBUG] mcp_servers.document_catalog.finance.ledger_db: upsert_account: bank=ABSA, number=****0000, type=None, currency=ZAR, seen=2026-02-26
+2026-05-24 08:01:51,612 [DEBUG] mcp_servers.document_catalog.finance.ledger_db: Account c2cb384c-a752-488d-943a-1669de8d8051 already up-to-date
+2026-05-24 08:01:51,612 [INFO] mcp_servers.document_catalog.finance.importers.import_orchestrator: Upserted account: id=c2cb384c-a752-488d-943a-1669de8d8051, bank=ABSA
+2026-05-24 08:01:51,612 [DEBUG] mcp_servers.document_catalog.finance.ledger_db: insert_statement: id=a8d2f6f4-abcd-4e12-a80a-8b412a9c98eb, doc=c6a62ffa-e765-45f1-92a7-bf02d0f99e18, account=c2cb384c-a752-488d-943a-1669de8d8051, period=2026-02-26 to 2026-05-20, txns=85
+2026-05-24 08:01:51,616 [INFO] mcp_servers.document_catalog.finance.ledger_db: Inserted statement a8d2f6f4-abcd-4e12-a80a-8b412a9c98eb
+2026-05-24 08:01:51,616 [INFO] mcp_servers.document_catalog.finance.importers.import_orchestrator: Inserted statement: id=a8d2f6f4-abcd-4e12-a80a-8b412a9c98eb
+2026-05-24 08:01:51,617 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-02-26, amount=3000000, desc=ACB CREDIT Shaun from discovery
+2026-05-24 08:01:51,617 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-02-26, amount=-2000000, desc=DIGITAL TRANSF DT 47876925-3962-6015 ABS
+2026-05-24 08:01:51,618 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-02-27, amount=-751140, desc=DC TRACK INTERNAL ABSAHL 8095413262 2602
+2026-05-24 08:01:51,618 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-02-27, amount=-50000, desc=CASHSEND DIGITAL CARD NO. 6179 ABSA BANK
+2026-05-24 08:01:51,618 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-02-28, amount=-50000, desc=CASHSEND DIGITAL CARD NO. 6179 ABSA BANK
+2026-05-24 08:01:51,618 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-02-28, amount=-1350, desc=TRANSACTION FEE (EFFEC 27022026) CASHSEN
+2026-05-24 08:01:51,618 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-02-28, amount=100000, desc=DIGITAL PAYMENT CR ABSA BANK Dankie
+2026-05-24 08:01:51,618 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-02-28, amount=-23005, desc=OVERSEAS PURCHASE (EFFEC 26022026) MICRO
+2026-05-24 08:01:51,619 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-03-01, amount=93, desc=CREDIT INTEREST
+2026-05-24 08:01:51,619 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-03-01, amount=-30000, desc=MONTHLY ACC FEE
+2026-05-24 08:01:51,619 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-03-02, amount=-27050, desc=INT DEBIT ORDER TO ABSA LIFE 6433848601
+2026-05-24 08:01:51,619 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-03-02, amount=-430247, desc=ACB DEBIT:EXTERNAL QUARTZ 395052589 NETC
+2026-05-24 08:01:51,620 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-03-02, amount=430247, desc=UNPAID DEBIT QUARTZ 395052589 NETCASH NO
+2026-05-24 08:01:51,620 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-03-03, amount=500000, desc=DIGITAL TRANSF CR 47876925-3962-6015 ABS
+2026-05-24 08:01:51,620 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-03-03, amount=30200, desc=DIGITAL PAYMENT CR ABSA BANK Dankie
+2026-05-24 08:01:51,620 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-03-05, amount=-6999, desc=OVERSEAS PURCHASE (EFFEC 03032026) Spoti
+2026-05-24 08:01:51,620 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-03-07, amount=-100000, desc=CASHSEND DIGITAL CARD NO. 6179 ABSA BANK
+2026-05-24 08:01:51,621 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-03-07, amount=25000, desc=DIGITAL PAYMENT CR ABSA BANK Dankie
+2026-05-24 08:01:51,621 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-03-07, amount=-50000, desc=CASHSEND DIGITAL CARD NO. 6179 ABSA BANK
+2026-05-24 08:01:51,621 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-03-07, amount=-50000, desc=CASHSEND DIGITAL CARD NO. 6179 ABSA BANK
+2026-05-24 08:01:51,621 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-03-07, amount=-50000, desc=CASHSEND DIGITAL CARD NO. 6179 ABSA BANK
+2026-05-24 08:01:51,621 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-03-07, amount=50000, desc=CAN CASHSEND IB CARD NO. 6179 0793180000
+2026-05-24 08:01:51,621 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-03-07, amount=50000, desc=CAN CASHSEND IB CARD NO. 6179 0793180000
+2026-05-24 08:01:51,622 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-03-07, amount=-100000, desc=CASHSEND DIGITAL CARD NO. 6179 ABSA BANK
+2026-05-24 08:01:51,622 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-03-09, amount=37350000, desc=ACB CREDIT CAPITEC KC ALTERITE
+2026-05-24 08:01:51,622 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-03-11, amount=-350000, desc=DIGITAL PAYMENT DT ABSA BANK SJ park ave
+2026-05-24 08:01:51,622 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-03-11, amount=41350000, desc=ACB CREDIT CAPITEC KC ALTERITE
+2026-05-24 08:01:51,622 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-03-12, amount=120000000, desc=DIGITAL TRANSF CR 93-7890-5953 ABSA BANK
+2026-05-24 08:01:51,622 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-03-12, amount=71200000, desc=DIGITAL TRANSF CR 80-9541-3262 ABSA BANK
+2026-05-24 08:01:51,623 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-03-12, amount=-100000, desc=DIGITAL PAYMENT DT ABSA BANK Shaun Johns
+2026-05-24 08:01:51,623 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-03-12, amount=-269900000, desc=DIGITAL PAYMENT DT ABSA BANK Shaun Johns
+2026-05-24 08:01:51,623 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-03-12, amount=-5000, desc=POS PURCHASE (EFFEC 10032026) UBER CPT C
+2026-05-24 08:01:51,623 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-03-15, amount=-30000, desc=CASHSEND DIGITAL CARD NO. 6179 ABSA BANK
+2026-05-24 08:01:51,624 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-03-15, amount=30000, desc=CAN CASHSEND IB CARD NO. 6179 0793180000
+2026-05-24 08:01:51,624 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-03-15, amount=-45000, desc=CASHSEND DIGITAL CARD NO. 6179 ABSA BANK
+2026-05-24 08:01:51,624 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-03-27, amount=-9500, desc=AIRTIME DEBIT CARD NO. 9726 VODACOM: 079
+2026-05-24 08:01:51,624 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-03-31, amount=-18200, desc=ACB DEBIT:INTERNAL (EFFEC 30032026) PAYM
+2026-05-24 08:01:51,624 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-03-31, amount=18200, desc=UNPAID DEBIT (EFFEC 30032026) PAYMENT TO
+2026-05-24 08:01:51,625 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-04-01, amount=1, desc=CREDIT INTEREST
+2026-05-24 08:01:51,625 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-04-01, amount=1500000, desc=DIGITAL TRANSF CR 93-7890-5953 ABSA BANK
+2026-05-24 08:01:51,625 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-04-01, amount=-751140, desc=DC TRACK INTERNAL ABSAHL 8095413262 2604
+2026-05-24 08:01:51,625 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-04-01, amount=-30000, desc=MONTHLY ACC FEE
+2026-05-24 08:01:51,625 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-04-01, amount=-637175, desc=ACB DEBIT:EXTERNAL QUARTZ 399286397 NETC
+2026-05-24 08:01:51,625 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-04-02, amount=16000000, desc=DIGITAL TRANSF CR 93-7890-5953 ABSA BANK
+2026-05-24 08:01:51,626 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-04-02, amount=-14249050, desc=DIGITAL PAYMENT DT ABSA BANK CR/MD/MAT20
+2026-05-24 08:01:51,626 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-04-02, amount=-27050, desc=INT DEBIT ORDER TO ABSA LIFE 6433848601
+2026-05-24 08:01:51,626 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-04-05, amount=-6999, desc=OVERSEAS PURCHASE (EFFEC 03042026) Spoti
+2026-05-24 08:01:51,626 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-04-07, amount=-350000, desc=DIGITAL PAYMENT DT ABSA BANK SJ park ave
+2026-05-24 08:01:51,627 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-04-08, amount=-25702, desc=OVERSEAS PURCHASE (EFFEC 04042026) MICRO
+2026-05-24 08:01:51,627 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-04-09, amount=-8900, desc=POS PURCHASE (EFFEC 05042026) VODACOM BU
+2026-05-24 08:01:51,627 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-04-11, amount=-50000, desc=CASHSEND DIGITAL CARD NO. 6179 ABSA BANK
+2026-05-24 08:01:51,627 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-04-11, amount=-50000, desc=CASHSEND DIGITAL CARD NO. 6179 ABSA BANK
+2026-05-24 08:01:51,628 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-04-12, amount=100000, desc=DIGITAL PAYMENT CR ABSA BANK Dankie
+2026-05-24 08:01:51,628 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-04-12, amount=-100000, desc=CASHSEND DIGITAL CARD NO. 6179 ABSA BANK
+2026-05-24 08:01:51,628 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-04-12, amount=-5000, desc=POS PURCHASE (EFFEC 10042026) DL UBER CP
+2026-05-24 08:01:51,628 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-04-13, amount=-100000, desc=DIGITAL PAYMENT DT ABSA BANK CR/MD/MAT20
+2026-05-24 08:01:51,629 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-04-18, amount=-50000, desc=CASHSEND DIGITAL CARD NO. 6179 ABSA BANK
+2026-05-24 08:01:51,629 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-04-18, amount=-65000, desc=CASHSEND DIGITAL CARD NO. 6179 ABSA BANK
+2026-05-24 08:01:51,629 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-04-18, amount=-50000, desc=CASHSEND DIGITAL CARD NO. 6179 ABSA BANK
+2026-05-24 08:01:51,629 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-04-18, amount=65000, desc=CAN CASHSEND IB CARD NO. 6179 0793180000
+2026-05-24 08:01:51,630 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-04-18, amount=-30000, desc=PREPAID DEBIT CARD NO. 9726 ELECTRICITY:
+2026-05-24 08:01:51,630 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-04-20, amount=-11000, desc=AIRTIME DEBIT CARD NO. 9726 VODACOM: 079
+2026-05-24 08:01:51,630 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-04-24, amount=2000000, desc=ACB CREDIT Shaun from discovery
+2026-05-24 08:01:51,630 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-04-25, amount=-100000, desc=CASHSEND DIGITAL CARD NO. 6179 ABSA BANK
+2026-05-24 08:01:51,630 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-04-29, amount=-25219, desc=OVERSEAS PURCHASE (EFFEC 26042026) MICRO
+2026-05-24 08:01:51,630 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-04-30, amount=-754384, desc=DC TRACK INTERNAL ABSAHL 8095413262 2605
+2026-05-24 08:01:51,631 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-04-30, amount=50000, desc=DIGITAL PAYMENT CR ABSA BANK Dankie
+2026-05-24 08:01:51,631 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-05-01, amount=115, desc=CREDIT INTEREST
+2026-05-24 08:01:51,631 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-05-01, amount=-30000, desc=MONTHLY ACC FEE
+2026-05-24 08:01:51,631 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-05-02, amount=-50000, desc=CASHSEND DIGITAL CARD NO. 6179 ABSA BANK
+2026-05-24 08:01:51,632 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-05-02, amount=-234558, desc=ACB DEBIT:EXTERNAL QUARTZ 405689588 NETC
+2026-05-24 08:01:51,632 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-05-02, amount=-27050, desc=INT DEBIT ORDER TO ABSA LIFE 6433848601
+2026-05-24 08:01:51,632 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-05-02, amount=25000, desc=DIGITAL PAYMENT CR ABSA BANK debt settle
+2026-05-24 08:01:51,632 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-05-03, amount=-350000, desc=DIGITAL PAYMENT DT ABSA BANK SJ park ave
+2026-05-24 08:01:51,633 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-05-05, amount=-6999, desc=OVERSEAS PURCHASE (EFFEC 03052026) Spoti
+2026-05-24 08:01:51,633 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-05-08, amount=-24900, desc=POS PURCHASE (EFFEC 05052026) VODACOM BU
+2026-05-24 08:01:51,633 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-05-08, amount=-209224, desc=OVERSEAS PURCHASE (EFFEC 06052026) AIRBN
+2026-05-24 08:01:51,633 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-05-11, amount=-99900, desc=DIGITAL PAYMENT DT ABSA BANK JTC53
+2026-05-24 08:01:51,634 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-05-12, amount=-5000, desc=POS PURCHASE (EFFEC 10052026) DL UBER CP
+2026-05-24 08:01:51,634 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-05-13, amount=-11000, desc=AIRTIME DEBIT CARD NO. 9726 VODACOM: 079
+2026-05-24 08:01:51,634 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-05-13, amount=-75000, desc=PayShap Ext Debit CLAIM 819441 - 104 Q
+2026-05-24 08:01:51,634 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-05-15, amount=-50000, desc=CASHSEND DIGITAL CARD NO. 6179 ABSA BANK
+2026-05-24 08:01:51,634 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-05-16, amount=-50000, desc=CASHSEND DIGITAL CARD NO. 6179 ABSA BANK
+2026-05-24 08:01:51,635 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-05-16, amount=-3500, desc=POS PURCHASE (EFFEC 13052026) Microsoft 
+2026-05-24 08:01:51,635 [DEBUG] mcp_servers.document_catalog.finance.importers.import_orchestrator: Duplicate skipped: date=2026-05-20, amount=-30000, desc=PREPAID DEBIT CARD NO. 9726 ELECTRICITY:
+2026-05-24 08:01:51,635 [INFO] mcp_servers.document_catalog.finance.importers.import_orchestrator: Skipped 85 duplicate transactions (of 85 total)
+2026-05-24 08:01:51,635 [DEBUG] mcp_servers.document_catalog.finance.ledger_db: insert_transactions: no transactions to insert
+2026-05-24 08:01:51,635 [INFO] mcp_servers.document_catalog.finance.importers.import_orchestrator: === Import COMPLETE: statement=a8d2f6f4-abcd-4e12-a80a-8b412a9c98eb, parsed=85, imported=0, duplicates=85 ===
