@@ -26,6 +26,7 @@ logger = logging.getLogger(__name__)
 async def handle_extract_document(
     document_id: str,
     force: bool = False,
+    page: int | None = None,
     *,
     vault: VaultManager,
     catalog: CatalogDB,
@@ -38,21 +39,26 @@ async def handle_extract_document(
 
     Orchestration flow:
         1. Look up document in catalog by document_id
-        2. If extraction_status == "extracted" and force is False → return existing
-        3. Get the original file path from vault
-        4. Select engine: Docling for PDFs, MarkItDown for everything else
-        5. Run extraction
-        6. Write artifacts to extracted/<sha256>/
-        7. Update catalog: extraction_status → "extracted"
-        8. Return result summary
+        2. If page is specified → extract just that page from a pre-split PDF
+        3. If extraction_status == "extracted" and force is False → return existing
+        4. Get the original file path from vault
+        5. Select engine: Docling for PDFs, MarkItDown for everything else
+        6. Run extraction
+        7. Write artifacts to extracted/<sha256>/
+        8. Update catalog: extraction_status → "extracted"
+        9. Return result summary
 
     Args:
         document_id: UUID of the document to extract.
         force: If True, re-extract even if already extracted.
+        page: If specified, extract only this page number (1-indexed)
+              from a previously split PDF.
         vault: VaultManager instance.
         catalog: CatalogDB instance.
         docling_engine: DoclingEngine instance.
         markitdown_engine: MarkItDownEngine instance.
+        pdfplumber_engine: PdfPlumberEngine for table extraction.
+        finance_pipeline: FinancialExtractionPipeline (optional).
 
     Returns:
         Structured dict with extraction results or error info.
@@ -63,6 +69,17 @@ async def handle_extract_document(
     if doc is None:
         logger.error("Document '%s' not found in catalog", document_id)
         return _error("not_found", f"Document '{document_id}' not found in catalog")
+
+    # ── 1.5. Single-page extraction mode ─────────────────────────
+    if page is not None:
+        return await _extract_single_page(
+            document_id=document_id,
+            page=page,
+            doc=doc,
+            vault=vault,
+            docling_engine=docling_engine,
+            markitdown_engine=markitdown_engine,
+        )
 
     # ── 2. Check if already extracted ────────────────────────────
     if doc.extraction_status == "extracted" and not force:
@@ -275,3 +292,179 @@ def _error(code: str, message: str) -> dict:
     """Return a structured error response."""
     logger.warning("Extract error [%s]: %s", code, message)
     return {"error": code, "message": message}
+
+
+async def _extract_single_page(
+    document_id: str,
+    page: int,
+    doc,
+    vault: VaultManager,
+    docling_engine: DoclingEngine,
+    markitdown_engine: MarkItDownEngine,
+) -> dict:
+    """Extract a single page from a pre-split PDF.
+
+    Looks for the page file at vault/extracted/<sha256>/pages/page_NNNN.pdf,
+    extracts it via Docling, and saves per-page artifacts alongside the page file.
+
+    Args:
+        document_id: UUID of the parent document.
+        page: Page number (1-indexed).
+        doc: Document metadata from catalog.
+        vault: VaultManager instance.
+        docling_engine: DoclingEngine instance.
+        markitdown_engine: MarkItDownEngine (fallback).
+
+    Returns:
+        Dict with per-page extraction results.
+    """
+    import json
+    import time
+
+    logger.info("extract_document(page=%d) called for document_id=%s", page, document_id)
+
+    # ── 1. Find the split page file ──────────────────────────────
+    extraction_dir = vault.get_extraction_dir(doc.sha256_hash)
+    pages_dir = os.path.join(extraction_dir, "pages")
+    page_pdf_path = os.path.join(pages_dir, f"page_{page:04d}.pdf")
+
+    if not os.path.isfile(page_pdf_path):
+        # Check if the pages directory exists at all
+        if not os.path.isdir(pages_dir):
+            return _error(
+                "not_split",
+                f"PDF has not been split yet. Call split_pdf first.",
+            )
+        # Check how many pages exist
+        existing = sorted([
+            f for f in os.listdir(pages_dir)
+            if f.startswith("page_") and f.endswith(".pdf")
+        ])
+        return _error(
+            "page_not_found",
+            f"Page {page} not found. Available pages: 1-{len(existing)}.",
+        )
+
+    # ── 2. Check if already extracted ────────────────────────────
+    page_md_path = os.path.join(pages_dir, f"page_{page:04d}.md")
+    if os.path.isfile(page_md_path):
+        logger.debug("Page %d already extracted, reading existing result", page)
+        with open(page_md_path, encoding="utf-8") as f:
+            existing_md = f.read()
+
+        # Read page count from split_meta
+        total_pages = _get_total_pages(pages_dir)
+
+        return {
+            "document_id": document_id,
+            "page": page,
+            "total_pages": total_pages,
+            "extraction_status": "extracted",
+            "char_count": len(existing_md),
+            "message": f"Page {page}/{total_pages} already extracted ({len(existing_md)} chars). Use force=true on the document to re-extract.",
+        }
+
+    # ── 3. Extract the single page ───────────────────────────────
+    total_pages = _get_total_pages(pages_dir)
+    logger.info("Extracting page %d/%d via Docling...", page, total_pages)
+
+    t0 = time.monotonic()
+    result = None
+    engine_used = "docling"
+
+    try:
+        result = docling_engine.convert_single_page(page_pdf_path, page)
+    except Exception as exc:
+        logger.warning(
+            "Docling failed on page %d, falling back to MarkItDown: %s",
+            page, exc,
+        )
+        try:
+            result = markitdown_engine.convert(page_pdf_path)
+            engine_used = "markitdown"
+            result.warnings.append(f"Docling failed on page {page}, used MarkItDown: {exc}")
+        except Exception as fallback_exc:
+            logger.error("Both engines failed on page %d: %s", page, fallback_exc)
+            return _error(
+                "extraction_failed",
+                f"Both engines failed on page {page}. Docling: {exc}. MarkItDown: {fallback_exc}",
+            )
+
+    duration = time.monotonic() - t0
+
+    # ── 4. Save per-page artifacts ───────────────────────────────
+    # Save markdown
+    with open(page_md_path, "w", encoding="utf-8") as f:
+        f.write(result.markdown)
+
+    # Save tables as JSON
+    tables_data = []
+    if result.tables:
+        for t in result.tables:
+            tables_data.append({
+                "page_number": page,
+                "table_index": t.table_index,
+                "headers": t.headers,
+                "rows": t.rows,
+                "caption": t.caption,
+            })
+    elif result.table_count > 0:
+        # Reason: MarkItDown doesn't produce structured tables,
+        # but reports a table count. We note this for finalize_extraction.
+        logger.debug("Page %d: %d tables detected but no structured data (engine=%s)", page, result.table_count, engine_used)
+
+    page_tables_path = os.path.join(pages_dir, f"page_{page:04d}_tables.json")
+    with open(page_tables_path, "w") as f:
+        json.dump(tables_data, f, indent=2)
+
+    # Save page metadata
+    page_meta = {
+        "page_number": page,
+        "char_count": result.char_count,
+        "table_count": len(tables_data),
+        "has_tables": len(tables_data) > 0,
+        "has_images": any(p.has_images for p in result.pages) if result.pages else False,
+        "engine": engine_used,
+        "duration_seconds": round(duration, 2),
+        "warnings": result.warnings if result.warnings else [],
+    }
+    page_meta_path = os.path.join(pages_dir, f"page_{page:04d}_meta.json")
+    with open(page_meta_path, "w") as f:
+        json.dump(page_meta, f, indent=2)
+
+    logger.info(
+        "Extracted page %d/%d: %d chars, %d tables, engine=%s (%.1fs)",
+        page, total_pages, result.char_count, len(tables_data),
+        engine_used, duration,
+    )
+
+    return {
+        "document_id": document_id,
+        "page": page,
+        "total_pages": total_pages,
+        "extraction_status": "extracted",
+        "engine": engine_used,
+        "char_count": result.char_count,
+        "table_count": len(tables_data),
+        "duration_seconds": round(duration, 2),
+        "warnings": result.warnings if result.warnings else None,
+        "message": f"Extracted page {page}/{total_pages}: {result.char_count} chars, {len(tables_data)} tables ({duration:.1f}s)",
+    }
+
+
+def _get_total_pages(pages_dir: str) -> int:
+    """Count the total number of split page PDFs in a directory."""
+    try:
+        split_meta_path = os.path.join(pages_dir, "split_meta.json")
+        if os.path.isfile(split_meta_path):
+            import json
+            with open(split_meta_path) as f:
+                return json.load(f).get("page_count", 0)
+    except Exception:
+        pass
+    # Fallback: count PDF files
+    return len([
+        f for f in os.listdir(pages_dir)
+        if f.startswith("page_") and f.endswith(".pdf")
+    ])
+

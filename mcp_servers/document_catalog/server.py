@@ -33,6 +33,8 @@ from .tools.find_anomalies import handle_find_anomalies
 from .tools.review import handle_get_validation_issues, handle_override_validation, handle_set_document_status
 from .tools.report import handle_run_financial_report
 from .tools.import_transactions import handle_import_transactions
+from .tools.split_pdf import handle_split_pdf
+from .tools.finalize_extraction import handle_finalize_extraction
 
 logger = logging.getLogger("document_catalog_mcp")
 
@@ -150,7 +152,8 @@ TOOLS = [
         description=(
             "Extract text, tables, and structure from an ingested document. "
             "Uses Docling for PDFs and MarkItDown for other formats. "
-            "Writes artifacts (document.md, pages.json, tables.json) to the vault. "
+            "When 'page' is specified, extracts only that single page from a "
+            "previously split PDF (call split_pdf first). "
             "Returns extraction summary with page count, table count, and engine used."
         ),
         inputSchema={
@@ -164,6 +167,53 @@ TOOLS = [
                     "type": "boolean",
                     "description": "If true, re-extract even if already done",
                     "default": False,
+                },
+                "page": {
+                    "type": "integer",
+                    "description": (
+                        "Page number to extract (1-indexed). "
+                        "Only for PDFs that have been split via split_pdf. "
+                        "Omit to extract the entire document."
+                    ),
+                },
+            },
+            "required": ["document_id"],
+        },
+    ),
+    Tool(
+        name="split_pdf",
+        description=(
+            "Split a multi-page PDF into individual single-page PDF files. "
+            "Must be called before per-page extraction. Returns the page count "
+            "and list of pages. After splitting, extract each page individually "
+            "using extract_document with page=N, then call finalize_extraction."
+        ),
+        inputSchema={
+            "type": "object",
+            "properties": {
+                "document_id": {
+                    "type": "string",
+                    "description": "UUID of the ingested PDF document to split",
+                },
+            },
+            "required": ["document_id"],
+        },
+    ),
+    Tool(
+        name="finalize_extraction",
+        description=(
+            "Combine per-page extraction results into a unified document. "
+            "Call this after extracting all pages individually. "
+            "Combines page markdowns, runs document classification, "
+            "and triggers the financial pipeline for bank statements/invoices "
+            "to import transactions into the ledger."
+        ),
+        inputSchema={
+            "type": "object",
+            "properties": {
+                "document_id": {
+                    "type": "string",
+                    "description": "UUID of the document whose pages have been extracted",
                 },
             },
             "required": ["document_id"],
@@ -507,10 +557,26 @@ async def call_tool(name: str, arguments: dict) -> list[TextContent]:
             result = await handle_extract_document(
                 document_id=arguments.get("document_id", ""),
                 force=arguments.get("force", False),
+                page=arguments.get("page"),
                 vault=_vault,
                 catalog=_catalog,
                 docling_engine=_docling_engine,
                 markitdown_engine=_markitdown_engine,
+                pdfplumber_engine=_pdfplumber_engine,
+                finance_pipeline=_finance_pipeline,
+            )
+        elif name == "split_pdf":
+            result = await handle_split_pdf(
+                document_id=arguments.get("document_id", ""),
+                vault=_vault,
+                catalog=_catalog,
+                pdfplumber_engine=_pdfplumber_engine,
+            )
+        elif name == "finalize_extraction":
+            result = await handle_finalize_extraction(
+                document_id=arguments.get("document_id", ""),
+                vault=_vault,
+                catalog=_catalog,
                 pdfplumber_engine=_pdfplumber_engine,
                 finance_pipeline=_finance_pipeline,
             )
