@@ -64,9 +64,20 @@ async def handle_import_transactions(
     elif "ofx" in mime or "qfx" in mime or ext_lower in {".ofx", ".qfx"}:
         return orchestrator.import_ofx(original_path, document_id)
     elif mime == "application/pdf" or ext_lower == ".pdf":
+        logger.info(
+            "PDF detected for document %s — redirecting to split/extract/finalize workflow",
+            document_id,
+        )
         return {
-            "error": "use_extract_document",
-            "message": "PDFs should be processed via the 'extract_document' tool with document_type='bank_statement'."
+            "error": "use_split_extract_finalize",
+            "message": (
+                "PDFs cannot be imported directly via import_transactions. "
+                "Use this workflow instead: "
+                "1) split_pdf(document_id) to split into pages, "
+                "2) extract_document(document_id, page=N) for each page, "
+                "3) finalize_extraction(document_id) to combine pages and "
+                "import transactions into the ledger."
+            ),
         }
     else:
         return {
