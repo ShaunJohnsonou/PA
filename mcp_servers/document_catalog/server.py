@@ -759,11 +759,14 @@ async def _run() -> None:
     _markitdown_engine = MarkItDownEngine(vault_path)
     _pdfplumber_engine = PdfPlumberEngine(vault_path)
 
-    # Reason: pre-warm Docling's ML models at startup so the first
-    # extract_document call doesn't block for ~3.5 minutes.
-    # The server will take longer to start, but every extraction
-    # call will be fast afterwards.
-    _docling_engine.warm_up()
+    # Reason: pre-warm Docling's ML models in a background thread so
+    # the MCP server can start accepting connections immediately.
+    # Previously this blocked for ~3.5 minutes, causing Hermes to
+    # fail the initial connection (timeout after 3 retries).
+    import threading
+    def _warm_up_docling():
+        _docling_engine.warm_up()
+    threading.Thread(target=_warm_up_docling, daemon=True, name="docling-warmup").start()
 
     # ── Phase 3: search subsystem ────────────────────────────────
     from .search.embeddings import EmbeddingService
