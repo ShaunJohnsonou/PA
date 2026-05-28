@@ -579,6 +579,7 @@ async def call_tool(name: str, arguments: dict) -> list[TextContent]:
                 catalog=_catalog,
                 pdfplumber_engine=_pdfplumber_engine,
                 finance_pipeline=_finance_pipeline,
+                ledger=_finance_ledger,
             )
         elif name == "get_document_page":
             result = await handle_get_document_page(

@@ -28,6 +28,7 @@ async def handle_finalize_extraction(
     catalog: CatalogDB,
     pdfplumber_engine: PdfPlumberEngine,
     finance_pipeline: Any = None,
+    ledger: Any = None,
 ) -> dict:
     """Combine per-page extraction results and run the financial pipeline.
 
@@ -262,10 +263,22 @@ async def handle_finalize_extraction(
             logger.error("Financial extraction pipeline failed: %s", exc)
             warnings.append(f"Financial extraction pipeline failed: {exc}")
 
+    # ── 10. Run transfer detection ───────────────────────────────
+    transfers_tagged = 0
+    if ledger and document_type in ("bank_statement", "invoice"):
+        try:
+            logger.info("Running inter-account transfer detection...")
+            transfers_tagged = ledger.detect_transfers()
+            if transfers_tagged > 0:
+                logger.info("Tagged %d transactions as inter-account transfers", transfers_tagged)
+        except Exception as exc:
+            logger.warning("Transfer detection failed (non-fatal): %s", exc)
+            warnings.append(f"Transfer detection failed: {exc}")
+
     logger.info(
-        "finalize_extraction COMPLETE: %s — %d/%d pages, %d tables, %d chars. Finance: %s",
+        "finalize_extraction COMPLETE: %s — %d/%d pages, %d tables, %d chars. Finance: %s. Transfers: %d",
         doc.original_filename, pages_extracted, total_pages,
-        len(all_tables), total_chars, finance_output_summary,
+        len(all_tables), total_chars, finance_output_summary, transfers_tagged,
     )
 
     return {
@@ -278,12 +291,14 @@ async def handle_finalize_extraction(
         "total_tables": len(all_tables),
         "total_chars": total_chars,
         "financial_pipeline_result": finance_output_summary,
+        "transfers_tagged": transfers_tagged,
         "warnings": warnings if warnings else None,
         "message": (
             f"Finalised {doc.original_filename}: "
             f"{pages_extracted}/{total_pages} pages, "
             f"{len(all_tables)} tables, {total_chars} chars. "
-            f"Financial Pipeline: {finance_output_summary}"
+            f"Financial Pipeline: {finance_output_summary}. "
+            f"Transfers tagged: {transfers_tagged}"
         ),
     }
 
