@@ -39,7 +39,7 @@ fi
 echo ""
 echo "🛑 Stopping containers..."
 cd "$PROJECT_DIR"
-docker compose down 2>/dev/null || true
+docker compose stop 2>/dev/null || true
 
 echo ""
 echo "🗑️  Deleting databases..."
