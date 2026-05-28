@@ -35,6 +35,7 @@ from .tools.report import handle_run_financial_report
 from .tools.import_transactions import handle_import_transactions
 from .tools.split_pdf import handle_split_pdf
 from .tools.finalize_extraction import handle_finalize_extraction
+from .tools.manage_categories import handle_manage_categories
 
 logger = logging.getLogger("document_catalog_mcp")
 
@@ -217,6 +218,40 @@ TOOLS = [
                 },
             },
             "required": ["document_id"],
+        },
+    ),
+    Tool(
+        name="manage_categories",
+        description=(
+            "Manage document categories (life-area labels like finance, medicine, "
+            "fitness, work, real_estate, family, etc.). Actions: "
+            "'list' — show all categories. "
+            "'create' — register a new category. "
+            "'assign' — assign a category to a document. "
+            "'documents' — list all documents in a category."
+        ),
+        inputSchema={
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "Action: list, create, assign, or documents",
+                    "enum": ["list", "create", "assign", "documents"],
+                },
+                "category_name": {
+                    "type": "string",
+                    "description": "Category name (required for create, assign, documents)",
+                },
+                "category_description": {
+                    "type": "string",
+                    "description": "Description for new category (optional, for create)",
+                },
+                "document_id": {
+                    "type": "string",
+                    "description": "Document UUID (required for assign)",
+                },
+            },
+            "required": ["action"],
         },
     ),
     Tool(
@@ -703,6 +738,14 @@ async def call_tool(name: str, arguments: dict) -> list[TextContent]:
                 catalog=_catalog,
                 vault=_vault,
                 ledger=_finance_ledger,
+            )
+        elif name == "manage_categories":
+            result = await handle_manage_categories(
+                action=arguments.get("action", ""),
+                catalog=_catalog,
+                category_name=arguments.get("category_name"),
+                category_description=arguments.get("category_description"),
+                document_id=arguments.get("document_id"),
             )
         else:
             result = {"error": "unknown_tool", "message": f"Unknown tool: {name}"}

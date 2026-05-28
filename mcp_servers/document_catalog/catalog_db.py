@@ -33,6 +33,7 @@ class DocumentRow:
     mime_type: str | None = None
     file_size_bytes: int | None = None
     document_type: str | None = None
+    category: str | None = None
     upload_time: str = ""
     source: str | None = None
     date_range_start: str | None = None
@@ -54,6 +55,7 @@ _SORTABLE_COLUMNS = frozenset(
         "upload_time",
         "original_filename",
         "document_type",
+        "category",
         "status",
         "created_at",
         "file_size_bytes",
@@ -69,7 +71,7 @@ _SORT_ORDERS = frozenset({"asc", "desc"})
 class CatalogDB:
     """SQLite-backed document catalog with WAL mode and versioned schema."""
 
-    CURRENT_SCHEMA_VERSION = 2
+    CURRENT_SCHEMA_VERSION = 3
 
     def __init__(self, db_path: str) -> None:
         """Open (or create) the catalog database.
@@ -115,6 +117,7 @@ class CatalogDB:
                 mime_type                  TEXT,
                 file_size_bytes            INTEGER,
                 document_type              TEXT,
+                category                   TEXT,
                 upload_time                TEXT NOT NULL,
                 source                     TEXT,
                 date_range_start           TEXT,
@@ -131,13 +134,28 @@ class CatalogDB:
             """
         )
 
+        # Reason: document_categories stores the registry of valid
+        # life-area categories. Seeded with defaults, extensible by agent.
+        cur.execute(
+            """
+            CREATE TABLE IF NOT EXISTS document_categories (
+                name        TEXT PRIMARY KEY,
+                description TEXT,
+                created_at  TEXT NOT NULL
+            )
+            """
+        )
+
         cur.execute("CREATE INDEX IF NOT EXISTS idx_documents_hash ON documents(sha256_hash)")
         cur.execute("CREATE INDEX IF NOT EXISTS idx_documents_type ON documents(document_type)")
+        cur.execute("CREATE INDEX IF NOT EXISTS idx_documents_category ON documents(category)")
         cur.execute(
             "CREATE INDEX IF NOT EXISTS idx_documents_date "
             "ON documents(date_range_start, date_range_end)"
         )
         cur.execute("CREATE INDEX IF NOT EXISTS idx_documents_status ON documents(status)")
+
+        self._seed_default_categories(cur)
 
         # Upsert schema version
         row = cur.execute("SELECT version FROM schema_version").fetchone()
@@ -153,21 +171,68 @@ class CatalogDB:
 
         self._conn.commit()
 
+    # Reason: default life-area categories seeded on first run.
+    # Agent can add more via manage_categories tool.
+    _DEFAULT_CATEGORIES = [
+        ("finance", "Bank statements, invoices, tax documents, budgets"),
+        ("medicine", "Medical records, prescriptions, lab results, health insurance"),
+        ("fitness", "Gym memberships, training plans, health apps"),
+        ("work", "Employment contracts, work correspondence, professional development"),
+        ("real_estate", "Property deeds, lease agreements, mortgage documents, rates"),
+        ("family", "Family documents, school reports, certificates"),
+        ("education", "Degrees, transcripts, course materials, student loans"),
+        ("insurance", "Insurance policies, claims, quotes"),
+        ("legal", "Contracts, legal correspondence, court documents, wills"),
+        ("automotive", "Vehicle registration, service records, traffic fines"),
+        ("personal", "ID documents, passports, personal correspondence"),
+        ("utilities", "Electricity, water, internet, phone bills"),
+    ]
+
+    def _seed_default_categories(self, cur: sqlite3.Cursor) -> None:
+        """Insert default categories if the table is empty."""
+        count = cur.execute("SELECT COUNT(*) FROM document_categories").fetchone()[0]
+        if count > 0:
+            return
+        now = _utc_now()
+        for name, desc in self._DEFAULT_CATEGORIES:
+            cur.execute(
+                "INSERT OR IGNORE INTO document_categories (name, description, created_at) "
+                "VALUES (?, ?, ?)",
+                (name, desc, now),
+            )
+        logger.info("Seeded %d default document categories", len(self._DEFAULT_CATEGORIES))
+
     def _run_migrations(self, from_version: int) -> None:
         """Apply sequential migrations from *from_version*."""
         cur = self._conn.cursor()
 
         if from_version < 2:
-            # Reason: Phase 3 added indexing_status to track which documents
-            # have been chunked, embedded, and indexed for search.
             try:
                 cur.execute(
                     "ALTER TABLE documents ADD COLUMN indexing_status TEXT DEFAULT 'pending'"
                 )
                 logger.info("Migration v1→v2: added indexing_status column")
             except sqlite3.OperationalError:
-                # Column already exists (e.g. fresh DB created at v2)
                 pass
+
+        if from_version < 3:
+            # Reason: v3 adds document categories for life-area organisation
+            try:
+                cur.execute("ALTER TABLE documents ADD COLUMN category TEXT")
+                logger.info("Migration v2→v3: added category column to documents")
+            except sqlite3.OperationalError:
+                pass
+            cur.execute(
+                """
+                CREATE TABLE IF NOT EXISTS document_categories (
+                    name        TEXT PRIMARY KEY,
+                    description TEXT,
+                    created_at  TEXT NOT NULL
+                )
+                """
+            )
+            self._seed_default_categories(cur)
+            logger.info("Migration v2→v3: created document_categories table")
 
         cur.execute(
             "UPDATE schema_version SET version = ?",
@@ -197,11 +262,11 @@ class CatalogDB:
                 """
                 INSERT INTO documents (
                     document_id, sha256_hash, original_filename, canonical_path,
-                    mime_type, file_size_bytes, document_type, upload_time,
+                    mime_type, file_size_bytes, document_type, category, upload_time,
                     source, date_range_start, date_range_end, status,
                     extraction_status, financial_validation_status,
                     summary, tags, created_at, updated_at
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 (
                     doc.document_id,
@@ -211,6 +276,7 @@ class CatalogDB:
                     doc.mime_type,
                     doc.file_size_bytes,
                     doc.document_type,
+                    doc.category,
                     doc.upload_time,
                     doc.source,
                     doc.date_range_start,
@@ -267,6 +333,7 @@ class CatalogDB:
     def list_documents(
         self,
         document_type: str | None = None,
+        category: str | None = None,
         status: str | None = None,
         date_from: str | None = None,
         date_to: str | None = None,
@@ -314,6 +381,9 @@ class CatalogDB:
         if document_type:
             where_parts.append("document_type = ?")
             params.append(document_type)
+        if category:
+            where_parts.append("category = ?")
+            params.append(category)
         if status:
             where_parts.append("status = ?")
             params.append(status)
@@ -354,6 +424,43 @@ class CatalogDB:
         )
         self._conn.commit()
         return cur.rowcount > 0
+
+    # ── Category CRUD ─────────────────────────────────────────────
+
+    def list_categories(self) -> list[dict]:
+        """Return all registered document categories."""
+        rows = self._conn.execute(
+            "SELECT name, description, created_at FROM document_categories ORDER BY name"
+        ).fetchall()
+        return [{"name": r[0], "description": r[1], "created_at": r[2]} for r in rows]
+
+    def add_category(self, name: str, description: str = "") -> bool:
+        """Register a new document category.
+
+        Returns:
+            ``True`` if the category was created, ``False`` if it
+            already existed.
+        """
+        try:
+            self._conn.execute(
+                "INSERT INTO document_categories (name, description, created_at) "
+                "VALUES (?, ?, ?)",
+                (name.lower().strip(), description, _utc_now()),
+            )
+            self._conn.commit()
+            logger.info("Created new category: %s", name)
+            return True
+        except sqlite3.IntegrityError:
+            logger.debug("Category '%s' already exists", name)
+            return False
+
+    def get_documents_by_category(self, category: str) -> list[DocumentRow]:
+        """Return all documents in a given category."""
+        rows = self._conn.execute(
+            "SELECT * FROM documents WHERE category = ? ORDER BY upload_time DESC",
+            (category,),
+        ).fetchall()
+        return [_row_to_doc(r) for r in rows]
 
 
 # ── Helpers ─────────────────────────────────────────────────────────
