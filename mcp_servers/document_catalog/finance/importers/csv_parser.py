@@ -39,6 +39,7 @@ class BankTemplate:
     currency: str = "ZAR"
     encoding: str = "utf-8"
     header_patterns: list[str] = field(default_factory=list)
+    content_patterns: list[str] = field(default_factory=list)
 
     @classmethod
     def from_dict(cls, data: dict) -> BankTemplate:
@@ -57,6 +58,7 @@ class BankTemplate:
             currency=data.get("currency", "ZAR"),
             encoding=data.get("encoding", "utf-8"),
             header_patterns=data.get("header_patterns", []),
+            content_patterns=data.get("content_patterns", []),
         )
 
 
@@ -113,7 +115,8 @@ class CSVBankParser:
 
         Reads up to 10 rows of the file and checks whether every
         header_pattern from any template is present in the CSV header
-        row.
+        row. When multiple templates match on headers, uses
+        content_patterns to differentiate (e.g. 'ABSA' in descriptions).
 
         Args:
             csv_path: Path to the CSV file.
@@ -121,11 +124,13 @@ class CSVBankParser:
         Returns:
             The bank name (original casing) or ``None`` if no match.
         """
+        # Reason: collect ALL matching templates first, then pick the
+        # best one using content_patterns as a tiebreaker.
+        header_matches: list[BankTemplate] = []
+
         for template in self._templates.values():
             try:
                 with open(csv_path, encoding=template.encoding, errors="replace") as fh:
-                    # Reason: read first 10 rows to find the header row, some
-                    # CSVs have metadata rows before the actual header
                     lines: list[str] = []
                     for i, line in enumerate(fh):
                         lines.append(line)
@@ -135,16 +140,49 @@ class CSVBankParser:
                 combined = " ".join(lines).lower()
                 patterns = template.header_patterns
                 if patterns and all(p.lower() in combined for p in patterns):
-                    logger.info("Detected bank '%s' for %s", template.bank_name, csv_path)
-                    return template.bank_name
+                    header_matches.append(template)
             except Exception as exc:
                 logger.debug(
                     "Error probing %s with template %s: %s",
                     csv_path, template.bank_name, exc,
                 )
 
-        logger.debug("No bank detected for %s", csv_path)
-        return None
+        if not header_matches:
+            logger.debug("No bank detected for %s", csv_path)
+            return None
+
+        if len(header_matches) == 1:
+            logger.info("Detected bank '%s' for %s", header_matches[0].bank_name, csv_path)
+            return header_matches[0].bank_name
+
+        # Reason: multiple templates matched the same headers (e.g. ABSA and
+        # FNB both use Date/Description/Amount/Balance). Read the file content
+        # and check content_patterns to disambiguate.
+        logger.info(
+            "Multiple header matches for %s: %s — using content_patterns to disambiguate",
+            csv_path, [t.bank_name for t in header_matches],
+        )
+        try:
+            with open(csv_path, encoding="utf-8", errors="replace") as fh:
+                content = fh.read().upper()
+        except Exception:
+            content = ""
+
+        for template in header_matches:
+            if template.content_patterns:
+                if any(cp.upper() in content for cp in template.content_patterns):
+                    logger.info(
+                        "Content pattern matched: detected bank '%s' for %s",
+                        template.bank_name, csv_path,
+                    )
+                    return template.bank_name
+
+        # Reason: no content_patterns matched — fall back to first match
+        logger.info(
+            "No content patterns matched, defaulting to '%s' for %s",
+            header_matches[0].bank_name, csv_path,
+        )
+        return header_matches[0].bank_name
 
     # ── Main parse entry point ──────────────────────────────────────
 

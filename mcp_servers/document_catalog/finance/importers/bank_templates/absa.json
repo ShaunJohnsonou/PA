@@ -1,13 +1,14 @@
 {
     "bank_name": "ABSA",
     "skip_rows": 0,
-    "date_column": "Posting Date",
-    "date_format": "%Y/%m/%d",
+    "date_column": "Date",
+    "date_format": "%Y%m%d",
     "description_column": "Description",
     "amount_column": "Amount",
-    "balance_column": "Running Balance",
+    "balance_column": "Balance",
     "amount_sign": "negative_is_debit",
     "currency": "ZAR",
     "encoding": "utf-8",
-    "header_patterns": ["Posting Date", "Description", "Amount", "Running Balance"]
+    "header_patterns": ["Date", "Description", "Amount", "Balance"],
+    "content_patterns": ["ABSA", "ABSAHL", "ABSA BANK"]
 }
